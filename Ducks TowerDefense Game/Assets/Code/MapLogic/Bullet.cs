@@ -1,52 +1,44 @@
 using UnityEngine;
-public class Bullet : MonoBehaviour
-{
+
+public class Bullet : MonoBehaviour{
+
     private Transform target;
     public float speed = 30f;
     public GameObject effect;
-    private Economy economy;
 
-    void Start()
-    {
-        economy = FindObjectOfType<Economy>();
-    }
-
-    public void Seek(Transform _target)
-    {
+    public void Seek(Transform _target){
         target = _target;
     }
 
-    void Update()
-    {
-        if (target == null)
-        {
+    // Update is called once per frame
+    void Update(){
+        if(target == null){
             Destroy(gameObject);
-            return;
+            return;//Destroy code will sometime take some time so calling a return prevent the code from continuing until it destroy the object
         }
+
 
         Vector3 direction = target.position - transform.position;
         float distanceOfFrame = speed * Time.deltaTime;
-
-        if (direction.magnitude <= distanceOfFrame)
-        {
+        
+        if(direction.magnitude <= distanceOfFrame){
             HitTarget();
             return;
         }
 
         transform.Translate(direction.normalized * distanceOfFrame, Space.World);
+
+
     }
 
-    void HitTarget()
-    {
+    void HitTarget(){
         GameObject effectIns = (GameObject)Instantiate(effect, transform.position, transform.rotation);
         Destroy(effectIns, 0.5f);
-
-        if (economy != null)
-        {
-            economy.AddMoney(20);
-        }
-
         Destroy(target.gameObject);
         Destroy(gameObject);
+        return;
+
     }
+
+
 }
