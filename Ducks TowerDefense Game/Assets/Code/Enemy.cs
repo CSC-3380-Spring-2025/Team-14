@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour{
 
     void GetNextWayPoint(){
 
-        //Destroyed enemy at the end
         if(wavepointIdenx >= WayPoint.points.Length - 1){
             Destroy(gameObject);//once index is greater then or equal to the total waypoint, destroy the asset(enemy)
             return;//sometime the destroy method take a bit of time before calling it, causes the code to continue reading, so to make sure if this happens call return

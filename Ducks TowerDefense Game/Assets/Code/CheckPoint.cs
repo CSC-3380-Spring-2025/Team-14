@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public static Transform[] points;//number of positions in the array
 
