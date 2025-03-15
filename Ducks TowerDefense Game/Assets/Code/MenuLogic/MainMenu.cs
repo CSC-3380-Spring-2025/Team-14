@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     //Currently will load the first map and immediately play it
     //Goal of this is to load a map selector and estart the game
     public void playGame() {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene("Map Selection");
     }
 
     //Quits the game
