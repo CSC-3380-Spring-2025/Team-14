@@ -9152,7 +9152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 164.1, y: -81.24936}
+  m_AnchoredPosition: {x: 164.1001, y: -81.24927}
   m_SizeDelta: {x: 110, y: 105.4988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071455414
@@ -9571,6 +9571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopPanel: {fileID: 1470149014}
   startButton: {fileID: 1040565721}
+  slideSpeed: 500
 --- !u!1001 &1101593378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12347,11 +12348,11 @@ RectTransform:
   - {fileID: 1264189919}
   m_Father: {fileID: 733291524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 509.99875, y: -0.000061035156}
-  m_SizeDelta: {x: -579.9975, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 219.99979, y: 0}
+  m_SizeDelta: {x: 220.0025, y: 450}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1470149015
 MonoBehaviour:
   m_ObjectHideFlags: 0
