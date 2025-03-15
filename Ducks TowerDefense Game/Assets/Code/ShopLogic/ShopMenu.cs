@@ -1,35 +1,43 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
-{
-    public RectTransform shopPanel;    // Reference to the Shop Panel
-    public Button startButton;         // Reference to the Start Button
-    private float shopPanelWidth;      // Store the width of the shop panel
+public class ShopManager : MonoBehaviour{
+    //[SerializeField] is an attribute in Unity that allows you to keep private variables visible and editable in the Inspector while maintaining encapsulation in your code.
+    [SerializeField] private RectTransform shopPanel;  // Reference to the Shop Panel
+    [SerializeField] private Button startButton;       // Reference to the Start Button
+
+    private Vector2 offScreenPosition;
+    private Vector2 onScreenPosition;
 
     private void Start(){
-        // Store the width of the shop panel
-        shopPanelWidth = shopPanel.rect.width;
+        if (shopPanel == null || startButton == null){
+            Debug.LogError("ShopManager: UI references are not assigned!");
+            return;
+        }
+
+        // Define positions based on the panel width
+        offScreenPosition = new Vector2(292 * 2, 0); 
+        onScreenPosition = new Vector2(292, 0);
 
         // Hide the shop panel at the start
-        shopPanel.anchoredPosition = new Vector2((272*2), 0);
+        shopPanel.anchoredPosition = offScreenPosition;
     }
 
-    // Called when the Shop button is clicked
+    // Opens the shop panel
     public void OpenShop(){
-        Debug.Log("OpenShop called" + shopPanelWidth);
-        // Show the shop panel by moving it into view
-        shopPanel.anchoredPosition = new Vector2(292, 0);
-        // Disable the Start Button
+        if (shopPanel == null || startButton == null) return;
+
+        Debug.Log($"{nameof(OpenShop)} called");
+        shopPanel.anchoredPosition = onScreenPosition;
         startButton.gameObject.SetActive(false);
     }
 
-    // Called when the Close button is clicked
+    // Closes the shop panel
     public void CloseShop(){
-        Debug.Log("CloseShop called");
-        // Hide the shop panel by moving it off-screen
-        shopPanel.anchoredPosition = new Vector2((272*2), 0);
-        // Enable the Start Button
+        if (shopPanel == null || startButton == null) return;
+
+        Debug.Log($"{nameof(CloseShop)} called");
+        shopPanel.anchoredPosition = offScreenPosition;
         startButton.gameObject.SetActive(true);
     }
 }
