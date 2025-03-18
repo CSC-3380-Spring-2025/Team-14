@@ -5,25 +5,26 @@ using System.Collections;
 public class WaveTimer : MonoBehaviour
 {
     public Text waveText;  // UI Text to show wave info
-    public float timeBetweenWaves = 10f; // Time before the next wave
+    public float timeBetweenWaves = 5f; // Time before the next wave
     private int currentWave = 0;
-    private float countdown;
+    private float countDown;
 
     private Spawner spawner; // Reference to the Spawner script
 
     void Start()
     {
-        countdown = timeBetweenWaves;
+        
         UpdateWaveText();
         StartCoroutine(WaveLoop());
+        countDown = timeBetweenWaves;
 
         // Find and link the Spawner script in the scene
-        spawner = FindObjectOfType<Spawner>();
+        spawner = Object.FindAnyObjectByType<Spawner>();
     }
 
     void Update()
     {
-        countdown -= Time.deltaTime;
+        countDown -= Time.deltaTime;
         UpdateWaveText();
     }
 
@@ -40,7 +41,7 @@ public class WaveTimer : MonoBehaviour
     void StartNewWave()
     {
         currentWave++; // Increase wave count
-        countdown = timeBetweenWaves; // Reset countdown
+        countDown = timeBetweenWaves; // Reset countdown
 
         if (spawner != null)
         {
@@ -52,6 +53,6 @@ public class WaveTimer : MonoBehaviour
 
     void UpdateWaveText()
     {
-        waveText.text = $"Wave: {currentWave} Next: {Mathf.Ceil(countdown)}s";
+        waveText.text = $"Wave: {currentWave} Next: {Mathf.Ceil(countDown)}s";
     }
 }
