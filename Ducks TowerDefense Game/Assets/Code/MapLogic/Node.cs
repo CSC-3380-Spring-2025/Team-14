@@ -28,7 +28,7 @@ public class Node : MonoBehaviour{
         }
 
 
-        //build a turre
+        //build a turret
         //reference PlaceTurret
         //stores placeTurret.BuildTurret() into turretBuilding and instantiate it
         GameObject turretBuilding = placeTurret.BuildTurret();

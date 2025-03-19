@@ -6,8 +6,6 @@ public class Spawner : MonoBehaviour
 {
     public Transform enemy; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
-
-    public TextMeshProUGUI CountDownTimerText; // UI Text for countdown
     private int waveNumber = 0; // Current wave number
 
     // Start a new wave (called by WaveTimer)

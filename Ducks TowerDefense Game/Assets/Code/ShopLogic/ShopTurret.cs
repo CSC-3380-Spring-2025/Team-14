@@ -6,13 +6,13 @@ public class Shop : MonoBehaviour{
     void Start(){
         placeTurret = PlaceTurret.instance;
     }
-    public void Purchase(){
+    public void BlobTurret(){
         Debug.Log("Turret Selected");
-        placeTurret.setTurretToBuild(placeTurret.turretPrefab);
+        placeTurret.setTurretToBuild(placeTurret.BlobTurretPrefab);
     }
-    public void Purchase2(){
+    public void DuckTurret(){
         Debug.Log("Turret Selected 2");
-        placeTurret.setTurretToBuild(placeTurret.other_Turret_Prefab);
+        placeTurret.setTurretToBuild(placeTurret.DuckTurretPrefab);
 
     }
     

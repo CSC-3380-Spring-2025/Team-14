@@ -11,14 +11,14 @@ public class Turret : MonoBehaviour{
 
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
-    public float fireRate = 1f;
+    public float fireRate = 2f;
     private float fireCountDown = 0f;
 
 
 
     [Header("Unity SetUp Fields")]
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
-    public float rotationSpeed = 5f; // Speed at which the turret rotates
+    public float rotationSpeed = 30f; // Speed at which the turret rotates
     public GameObject bulletPrefab;
     public Transform firePoint;
     

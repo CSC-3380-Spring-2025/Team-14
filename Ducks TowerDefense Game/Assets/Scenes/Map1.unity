@@ -5305,7 +5305,7 @@ GameObject:
   - component: {fileID: 704933884}
   - component: {fileID: 704933883}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: DuckTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5377,7 +5377,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: Purchase
+        m_MethodName: DuckTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5407,8 +5407,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5742,7 +5742,7 @@ Transform:
   m_GameObject: {fileID: 727785867}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -406.25, y: -222.08, z: 3}
+  m_LocalPosition: {x: -407.02, y: -225.03, z: 3}
   m_LocalScale: {x: 0.39658484, y: 0.38980368, z: 0.7130125}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9220,7 +9220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 7894981185029053768, guid: cef25e67169422847b89bdff835cc69b, type: 3}
   spawnPoint: {fileID: 1510124147}
-  CountDownTimerText: {fileID: 0}
 --- !u!4 &1100544010
 Transform:
   m_ObjectHideFlags: 0
@@ -9248,8 +9247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9eea74688f722b4bac781c66d1cf381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
-  other_Turret_Prefab: {fileID: 0}
+  BlobTurretPrefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
+  DuckTurretPrefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
 --- !u!114 &1100544012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10382,8 +10381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 66.8466, y: -18.908}
+  m_SizeDelta: {x: 133.6931, y: 37.817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1248766767 stripped
 Transform:
@@ -12105,7 +12104,7 @@ GameObject:
   - component: {fileID: 1470149015}
   - component: {fileID: 1470149017}
   m_Layer: 5
-  m_Name: ShopPanel
+  m_Name: ShopTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15664,7 +15663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16903,7 +16902,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: Purchase
+        m_MethodName: BlobTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
