@@ -53,10 +53,14 @@ public class ShopManager : MonoBehaviour
     public void OpenShop(){
         // Check if UI references are assigned
         if (shopPanel == null || startButton == null) return;
-
+    
         Debug.Log($"{nameof(OpenShop)} called");
         isShopOpen = true;
+        if (isShopOpen == true){
+
+        shopPanel.gameObject.SetActive(true); // Show shop panel
         startButton.gameObject.SetActive(false);
+        }
     }
 
     // Closes the shop panel
@@ -66,6 +70,11 @@ public class ShopManager : MonoBehaviour
 
         Debug.Log($"{nameof(CloseShop)} called");
         isShopOpen = false;
+         if (!isShopOpen) 
+    {
+        Debug.Log("Re-enabling Start Button");
         startButton.gameObject.SetActive(true);
+    }
+        
     }
 }

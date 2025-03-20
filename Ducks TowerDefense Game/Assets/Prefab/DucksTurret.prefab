@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6902105089744301714}
   - component: {fileID: 8875862688433356179}
-  - component: {fileID: 3299423096762627974}
+  - component: {fileID: -2573491568724097908}
   m_Layer: 0
   m_Name: DucksTurret
   m_TagString: Untagged
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3299423096762627974
+--- !u!114 &-2573491568724097908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

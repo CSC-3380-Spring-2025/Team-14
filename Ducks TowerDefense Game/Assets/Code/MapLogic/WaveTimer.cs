@@ -7,6 +7,8 @@ public class WaveTimer : MonoBehaviour{
     private int currentWave = 0; // Current wave number
     private Spawner spawner; // Reference to the Spawner script
 
+    private bool isWaveActive = false;
+
 
 
 //Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,6 +39,13 @@ public class WaveTimer : MonoBehaviour{
         // Enable the "Continue" button so the player can start the next wave
         Debug.Log("Wave defeated! Enabling Continue Button.");
         continueButton.interactable = true; // Enable the button
+        isWaveActive = false;
+
+          if (continueButton != null)
+    {
+        Debug.LogWarning("Showing Start Button because wave is over.");
+        continueButton.gameObject.SetActive(true);
+    }
     }
 //--------------------------------------------------------------------
 
@@ -55,6 +64,7 @@ public class WaveTimer : MonoBehaviour{
 
         // Increase wave count
         currentWave++; 
+        isWaveActive = true;
         Debug.Log($"Current wave: {currentWave}");
 
 
@@ -68,6 +78,13 @@ public class WaveTimer : MonoBehaviour{
         }
 
         UpdateWaveText(); // Update the wave text
+
+        if (continueButton != null)
+    {
+        Debug.LogWarning("Hiding Start Button because wave started.");
+        continueButton.gameObject.SetActive(false);
+    }
+        
     }
 //--------------------------------------------------------------------
 

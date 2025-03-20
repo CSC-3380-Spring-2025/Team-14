@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: d9eea74688f722b4bac781c66d1cf381
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BlobTurretPrefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
+  - DuckTurretPrefab: {instanceID: 0}
+  - DoubleTurretPrefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -24,8 +24,12 @@ public class PlaceTurret : MonoBehaviour{
 
 
     public GameObject BlobTurretPrefab;
-    public GameObject DuckTurretPrefab;  //Turret
+
+    public GameObject DuckTurretPrefab;
+    
     private GameObject turretBuilding;
+
+    
 
 
     public GameObject BuildTurret(){
@@ -36,5 +40,6 @@ public class PlaceTurret : MonoBehaviour{
     public void setTurretToBuild(GameObject turret){
         turretBuilding = turret;
     }
+    
    
 }
