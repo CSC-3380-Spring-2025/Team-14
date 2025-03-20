@@ -29,10 +29,10 @@ public class ShopManager : MonoBehaviour
     private void Update(){
         // Smoothly move the shop panel
         if (isShopOpen){
-            shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, onScreenPosition, slideSpeed * Time.deltaTime);
+            shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, onScreenPosition, slideSpeed * Time.unscaledDeltaTime );
         }
         else{
-            shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, offScreenPosition, slideSpeed * Time.deltaTime);
+            shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, offScreenPosition, slideSpeed * Time.unscaledDeltaTime );
         }
     }
 
