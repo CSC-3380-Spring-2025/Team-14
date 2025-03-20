@@ -1,31 +1,52 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
 
-public class Spawner : MonoBehaviour
-{
+public class Spawner : MonoBehaviour{
     public Transform enemy; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
     private int waveNumber = 0; // Current wave number
 
-    // Start a new wave (called by WaveTimer)
-    public void StartWave(int wave)
-    {
+    
+
+
+    
+// Start is called once before the first execution of Update after the MonoBehaviour is created
+//--------------------------------------------------------------------
+    public void StartWave(int wave){
+        Debug.Log($"Starting wave {wave}");
         waveNumber = wave; // Update the wave number
+        Enemy.enemiesRemaining = 0; // Reset the enemy counter
         StartCoroutine(SpawnWave()); // Start spawning
     }
+//--------------------------------------------------------------------
 
-    IEnumerator SpawnWave()
-    {
-        for (int i = 0; i < waveNumber; i++) // Spawn more enemies as waves increase
-        {
+
+
+
+
+// SpawnWave is called to spawn a wave of enemies
+//Ienumerator is a coroutine, which is a function that can pause execution and return control to Unity but then continue where it left off on the following frame
+//This is useful for creating animations, moving objects, and other tasks that require a series of steps to be completed over time
+//--------------------------------------------------------------------
+    IEnumerator SpawnWave(){
+        Debug.Log("Spawning wave...");
+        // Spawn enemies in the wave
+        for (int i = 0; i < waveNumber; i++){
+            Debug.Log($"Spawning enemy {i + 1} of {waveNumber}");
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
         }
     }
+//--------------------------------------------------------------------
 
-    void SpawnEnemy()
-    {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+
+
+
+
+// SpawnEnemy is called to spawn a single enemy
+//--------------------------------------------------------------------
+    void SpawnEnemy(){
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation); // Spawn the enemy at the spawn point
     }
-}
+//--------------------------------------------------------------------
+}//end of class
