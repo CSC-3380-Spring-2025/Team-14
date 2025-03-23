@@ -6,7 +6,7 @@ public class Node : MonoBehaviour{
     public Color hoverColor;
     public Vector3 positionOffSet;//Set the position of turret in the GameObject(square)
     public Vector3 roatationOffSet;//set the rotation og turret in the GameObject(square)
-    private GameObject turret;
+    public GameObject turret;
     private Renderer rend;
     private Color startColor;
     PlaceTurret placeTurret; //reference PlaceTurret Script
@@ -17,9 +17,14 @@ public class Node : MonoBehaviour{
         placeTurret = PlaceTurret.instance;
     }
 
+    public Vector3 GetPlacePosition()
+    {
+        return transform.position + positionOffSet;
+    }
+
     void OnMouseDown(){
         if(EventSystem.current.IsPointerOverGameObject()) return;
-        if(placeTurret.BuildTurret() == null) return;
+        if(!placeTurret.CanPlace) return;
 
         
         if(turret != null){
@@ -31,17 +36,14 @@ public class Node : MonoBehaviour{
         //build a turret
         //reference PlaceTurret
         //stores placeTurret.BuildTurret() into turretBuilding and instantiate it
-        GameObject turretBuilding = placeTurret.BuildTurret();
-        
-        //Singleton Pattern you will have to cast GameObject
-        turret = (GameObject)Instantiate(turretBuilding, transform.position + positionOffSet, transform.rotation * Quaternion.Euler(roatationOffSet));
+        placeTurret.PlaceTurretOn(this);
     }
 
 
     // In order for this effect to work, I would need to add a Box Collider Component in the inspector of the game Object (Square)
     void OnMouseEnter(){ //OnMouseEnter - Enter the node
         if(EventSystem.current.IsPointerOverGameObject()) return;
-        if(placeTurret.BuildTurret() == null) return;
+        if(!placeTurret.CanPlace) return;
         rend.sharedMaterial.color = hoverColor;
     }
 
