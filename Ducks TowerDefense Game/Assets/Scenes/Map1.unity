@@ -5609,7 +5609,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: DuckTurret
+        m_MethodName: purchaseDuckTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9579,6 +9579,7 @@ GameObject:
   - component: {fileID: 1100544013}
   - component: {fileID: 1100544012}
   - component: {fileID: 1100544014}
+  - component: {fileID: 1100544015}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -9673,6 +9674,19 @@ MonoBehaviour:
   PausePanel: {fileID: 298444683}
   PauseButton: {fileID: 1179129941}
   slideSpeed: 500
+--- !u!114 &1100544015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100544008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b56cc4dc4daec747a93cb65b4c34198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
 --- !u!1001 &1101593378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12935,6 +12949,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c380544a213da0418c038f639345c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlobTurret:
+    prefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
+    cost: 500
+  DuckTurret:
+    prefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
+    cost: 200
 --- !u!1001 &1470846396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18138,7 +18158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: BlobTurret
+        m_MethodName: purchaseBlobTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
