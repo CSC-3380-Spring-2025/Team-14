@@ -34,6 +34,7 @@ public class ShopManager : MonoBehaviour
         else{
             shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, offScreenPosition, slideSpeed * Time.unscaledDeltaTime );
         }
+        UpdateStartButtonState();
     }
 
     // Calculate the on-screen and off-screen positions dynamically
@@ -56,11 +57,7 @@ public class ShopManager : MonoBehaviour
     
         Debug.Log($"{nameof(OpenShop)} called");
         isShopOpen = true;
-        if (isShopOpen == true){
-
-        shopPanel.gameObject.SetActive(true); // Show shop panel
         startButton.gameObject.SetActive(false);
-        }
     }
 
     // Closes the shop panel
@@ -70,11 +67,32 @@ public class ShopManager : MonoBehaviour
 
         Debug.Log($"{nameof(CloseShop)} called");
         isShopOpen = false;
-         if (!isShopOpen) 
-    {
-        Debug.Log("Re-enabling Start Button");
-        startButton.gameObject.SetActive(true);
-    }
         
+    }
+
+     // Updates the start button's visibility and interactability based on the shop panel's position
+    private void UpdateStartButtonState(){
+        if (shopPanel == null || startButton == null) return;
+
+        // Check if the shop panel has fully left the screen
+        if (HasShopPanelLeftScreen()) {
+            // Show and enable the start button when the shop panel is fully off-screen
+            startButton.interactable = true;
+            startButton.gameObject.SetActive(true);
+        }
+        else {
+            // Hide and disable the start button while the shop panel is still moving
+            startButton.interactable = false;
+            startButton.gameObject.SetActive(false);
+        }
+    }
+     public bool HasShopPanelLeftScreen(){
+        // Compare the current position of the shop panel to its off-screen position
+        float distance = Vector2.Distance(shopPanel.anchoredPosition, offScreenPosition);
+        return distance < 1f; // Allow a small threshold for floating-point inaccuracies
+    }
+
+    public bool IsShopOpen() {
+        return isShopOpen;
     }
 }
