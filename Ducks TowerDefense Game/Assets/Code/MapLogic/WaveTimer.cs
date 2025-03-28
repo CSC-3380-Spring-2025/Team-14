@@ -7,7 +7,7 @@ public class WaveTimer : MonoBehaviour{
     private int currentWave = 0; // Current wave number
     private Spawner spawner; // Reference to the Spawner script
     private ShopManager shopManager; // Reference to the ShopManager script
-    private bool isWaveActive = false;
+    private bool isWaveActive = false; // Flag to check if the wave is active, false means the wave is not active, true means the wave is active
 
 
 
@@ -64,12 +64,13 @@ public class WaveTimer : MonoBehaviour{
 //OnWaveDefeated is called when the current wave is defeated
 //--------------------------------------------------------------------
     public void OnWaveDefeated(){
+        if (!isWaveActive) return; // Exit if the wave is not active,
         // Check if the button is already enabled
         if (continueButton.interactable) return; // Exit if the button is already enabled
         
         // Enable the "Continue" button so the player can start the next wave
         Debug.Log("Wave defeated! Enabling Continue Button.");
-        isWaveActive = false;
+        isWaveActive = false; // Wave is no longer active
         continueButton.interactable = true; // Enable the button
   
     }
@@ -88,9 +89,7 @@ public class WaveTimer : MonoBehaviour{
         Debug.Log("Starting new wave...");
         isWaveActive = true; // Wave is now active
         continueButton.interactable = false; // Disable the button until the next wave is defeated
-
-        // Increase wave count
-        currentWave++; 
+        currentWave++; // Increase wave count
         Debug.Log($"Current wave: {currentWave}");
 
 
@@ -107,6 +106,9 @@ public class WaveTimer : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
+public bool IsWaveActive() {
+    return isWaveActive;
+}
 
 //IsShopOpen checks if the shop panel is open
 //--------------------------------------------------------------------

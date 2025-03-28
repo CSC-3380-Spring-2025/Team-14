@@ -75,7 +75,7 @@ public class Turret : MonoBehaviour{
 
 
         // Notify WaveTimer if all enemies are defeated
-        if (enemies.Length == 0 && waveTimer != null){
+        if (enemies.Length == 0 && waveTimer != null && waveTimer.IsWaveActive()){
             waveTimer.OnWaveDefeated();
         }
     }

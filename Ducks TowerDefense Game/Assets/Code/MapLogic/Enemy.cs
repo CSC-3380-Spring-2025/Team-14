@@ -65,7 +65,6 @@ public class Enemy : MonoBehaviour{
         //if the wavepointIndex is less then the total number of waypoints, increment the index and set the target to the next waypoint
         if(wavepointIndex >= WayPoint.points.Length - 1){
             Destroy(gameObject, 0f);//once index is greater then or equal to the total waypoint, destroy the asset(enemy)
-            OnEnemyDefeated(); // Notify that this enemy is defeated
             return;//sometime the destroy method take a bit of time before calling it, causes the code to continue reading, so to make sure if this happens call return
         }
         wavepointIndex++;//increment the index
@@ -73,24 +72,5 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-
-
-
-
-// OnEnemyDefeated is called when the enemy is defeated
-//--------------------------------------------------------------------
-    void OnEnemyDefeated(){
-        enemiesRemaining--; // Decrement the number of enemies
-
-        // Notify WaveTimer if all enemies are defeated
-        //if the number of enemies remaining is less then or equal to 0, then the wave is defeated
-        if (enemiesRemaining <= 0){
-            Debug.Log("Wave defeated!");
-            if (waveTimer != null){
-                waveTimer.OnWaveDefeated(); // Notify WaveTimer that the wave is defeated
-            }
-        }
-    }
-//--------------------------------------------------------------------
 
 }//end of class Enemy
