@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 77db7e7c21fee5b4a89dc09825e2b7fe
+guid: 2d90a4d06ee685745996bd07afd2e011
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5076159190750482865
-    second: Map1 Screenshot_0
+      213: 4341994876834719053
+    second: slotimage2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,46 +84,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -152,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Map1 Screenshot_0
+      name: slotimage2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1796
-        height: 1009
+        width: 224
+        height: 225
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b1540ca3e3227640800000000000000
-      internalID: 5076159190750482865
+      spriteID: d45ac4ae55dd14c30800000000000000
+      internalID: 4341994876834719053
       vertices: []
       indices: 
       edges: []
@@ -187,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Map1 Screenshot_0: 5076159190750482865
+      slotimage2_0: 4341994876834719053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -23,22 +23,32 @@ public class PlaceTurret : MonoBehaviour{
 
 
 
-    public GameObject turretPrefab;
-    public GameObject other_Turret_Prefab;  //Turret
-    private GameObject turretBuilding;
+    public GameObject BlobTurretPrefab;
 
+    public GameObject DuckTurretPrefab;
+    
+    private TurretBlueprint turretBuilding;
 
-    public GameObject BuildTurret(){
-        return turretBuilding;
+    public bool CanPlace { get { return turretBuilding != null; } }
+
+    public void PlaceTurretOn(Node node)
+    {
+        if (PlayerStats.Money < turretBuilding.cost)
+        {
+            Debug.Log("Not enough money to build that!");
+            return;
+        }
+        PlayerStats.Money -= turretBuilding.cost;
+        GameObject turret = (GameObject)Instantiate(turretBuilding.prefab, node.GetPlacePosition(), transform.rotation);
+        node.turret = turret;
+
+        Debug.Log ("Money left after building: " + PlayerStats.Money);
     }
-    // void Start(){
-    //     turretBuilding = turretPrefab;
-    // }
 
     //You can choice which turret to build
-    public void setTurretToBuild(GameObject turret){
+
+    public void selectTurretToPlace (TurretBlueprint turret) {
         turretBuilding = turret;
     }
-    // Update is called once per frame
    
 }

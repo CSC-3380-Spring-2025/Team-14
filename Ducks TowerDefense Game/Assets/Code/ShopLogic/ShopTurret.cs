@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour{
 
+    public TurretBlueprint BlobTurret;
+    public TurretBlueprint DuckTurret;
+
     PlaceTurret placeTurret;
     void Start(){
         placeTurret = PlaceTurret.instance;
     }
-    public void Purchase(){
+    public void purchaseBlobTurret(){
         Debug.Log("Turret Selected");
-        placeTurret.setTurretToBuild(placeTurret.turretPrefab);
+        placeTurret.selectTurretToPlace(BlobTurret);
     }
-    public void Purchase2(){
+    public void purchaseDuckTurret(){
         Debug.Log("Turret Selected 2");
-        placeTurret.setTurretToBuild(placeTurret.other_Turret_Prefab);
+        placeTurret.selectTurretToPlace(DuckTurret);
 
     }
     
