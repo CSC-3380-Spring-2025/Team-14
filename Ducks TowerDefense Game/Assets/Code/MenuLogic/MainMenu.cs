@@ -15,6 +15,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Map Selection");
     }
 
+    public void playMiniGameSlots() {
+        SceneManager.LoadScene("slotmachinegame");
+    }
+
     //Quits the game
     public void quitGame() {
         //Debug code one line down, remove in final
