@@ -764,8 +764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459.90002, y: -201.6}
-  m_SizeDelta: {x: 265, y: 90}
+  m_AnchoredPosition: {x: -293.52, y: -153.65002}
+  m_SizeDelta: {x: 214.36, y: 48.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249845738
 MonoBehaviour:
@@ -1436,8 +1436,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 5}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1753,8 +1753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -512.4, y: -291.6}
-  m_SizeDelta: {x: 160, y: 90}
+  m_AnchoredPosition: {x: -323.53, y: -201.7}
+  m_SizeDelta: {x: 154.35, y: 48.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &587036843
 MonoBehaviour:
@@ -1962,8 +1962,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 11.634422, w: 12.216202}
+  m_margin: {x: 0, y: 0, z: 0, w: 9}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3779,8 +3779,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3817,7 +3817,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 15.087996}
+  m_margin: {x: 0, y: 0, z: 0, w: 11}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4721,8 +4721,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -517.4, y: -19.5}
-  m_SizeDelta: {x: 150, y: 100}
+  m_AnchoredPosition: {x: -308.9, y: -56.43002}
+  m_SizeDelta: {x: 183.62, y: 53.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499369009
 MonoBehaviour:
@@ -6779,8 +6779,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6817,7 +6817,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 10.160854}
+  m_margin: {x: 0, y: 0, z: 0, w: 5}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7028,8 +7028,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 400.25, y: -0.24995}
-  m_SizeDelta: {x: 1184.8, y: 667.49}
+  m_AnchoredPosition: {x: 400.25, y: -0.021481}
+  m_SizeDelta: {x: 799.49, y: 449.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090695092
 MonoBehaviour:
@@ -7080,8 +7080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -411.7, y: -111.6}
-  m_SizeDelta: {x: 361.4, y: 90}
+  m_AnchoredPosition: {x: -268.55, y: -105.60001}
+  m_SizeDelta: {x: 264.31, y: 48.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128224549
 MonoBehaviour:
