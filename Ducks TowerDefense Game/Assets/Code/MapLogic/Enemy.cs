@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour{
     public float speed = 10f;//Speed
@@ -7,7 +8,9 @@ public class Enemy : MonoBehaviour{
     public static int enemiesRemaining = 0; // Static variable to track the number of enemies remaining
     private  WaveTimer waveTimer; // Reference to the WaveTimer script
 
+    public int health = 100; 
 
+    public int value = 50;
 
 
 
@@ -27,9 +30,22 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
+//--------------------------------------------------------------------
+    public void TakeDamage( int amount ){
+        health -= amount;
 
+        if (health <= 0){
+            Die();
+        }
+    }
+//--------------------------------------------------------------------
 
-
+//--------------------------------------------------------------------
+    void Die(){
+        PlayerStats.Money += value;
+        Destroy(gameObject);
+    }   
+//--------------------------------------------------------------------
 
 // Update is called once per frame, updating target to each waypoint
 //--------------------------------------------------------------------
@@ -64,7 +80,7 @@ public class Enemy : MonoBehaviour{
         //if the wavepointIndex is greater then or equal to the total number of waypoints, destroy the enemy and notify that the enemy is defeated
         //if the wavepointIndex is less then the total number of waypoints, increment the index and set the target to the next waypoint
         if(wavepointIndex >= WayPoint.points.Length - 1){
-            Destroy(gameObject, 0f);//once index is greater then or equal to the total waypoint, destroy the asset(enemy)
+            Endpath();// this calls end path that causes the numb of lives to go down and to kill the final enemy if it hits the end of the path 
             return;//sometime the destroy method take a bit of time before calling it, causes the code to continue reading, so to make sure if this happens call return
         }
         wavepointIndex++;//increment the index
@@ -72,5 +88,10 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-
+//--------------------------------------------------------------------
+    void Endpath (){
+        PlayerStats.Lives--;// once the enemy hits the end the number of lives the player has goes down by 1 
+        Destroy(gameObject, 0f);//once index is greater then or equal to the total waypoint, destroy the asset(enemy)
+    }
+//--------------------------------------------------------------------
 }//end of class Enemy
