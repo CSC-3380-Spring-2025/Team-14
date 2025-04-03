@@ -7828,7 +7828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9687,6 +9687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 500
+  startLives: 20
 --- !u!1001 &1101593378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12955,6 +12956,9 @@ MonoBehaviour:
   DuckTurret:
     prefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
     cost: 200
+  LaserBeamerTurret:
+    prefab: {fileID: 0}
+    cost: 0
 --- !u!1001 &1470846396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15804,7 +15808,7 @@ GameObject:
   - component: {fileID: 1848432530}
   - component: {fileID: 1848432529}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: LazerTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15876,7 +15880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: Purchase
+        m_MethodName: purchaseLaserBeamerTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15906,8 +15910,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
