@@ -11,16 +11,19 @@ public class Turret : MonoBehaviour{
 
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
+     [Header("Use Bullets")]
     public float fireRate = 2f; //Rate of fire (How Fast turret fire)
     private float fireCountDown = 0f; //Countdown to fire
+    public GameObject bulletPrefab; //Set an asset on unity to the bullet prefab, basically setting up the bullet
 
-
+    [Header("Use Laser")]
+    public bool useLaser = false; 
+    public LineRenderer lineRenderer;
 
     [Header("Unity SetUp Fields")]//Bascially setup a header on unity
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
     public float rotationSpeed = 30f; // Speed at which the turret rotates
-    public GameObject bulletPrefab; //Set an asset on unity to the bullet prefab, basically setting up the bullet
-    public Transform firePoint; //Set an asset on unity to the firepoint, basically setting up the firepoint
+        public Transform firePoint; //Set an asset on unity to the firepoint, basically setting up the firepoint
     
 
 
@@ -88,28 +91,54 @@ public class Turret : MonoBehaviour{
 // Update is called once per frame
 //--------------------------------------------------------------------
     void Update(){
-        if(target == null) return; //if there is no target, exit the method
+        if(target == null)  //if there is no target, exit the method
 
-        // Lock the turret to the target
-        Vector3 direction = target.position - transform.position; // Calculate the direction to the target
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate the angle in radians and convert to degrees
-        Quaternion targetRotation = Quaternion.Euler(0, 0, angle); // Create a target rotation using the calculated angle
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);// Smoothly rotate the turret towards the target
+        {
+            if ( useLaser){
+                if(lineRenderer.enabled)
+                    lineRenderer.enabled = false; 
+            }
+            return;
+            
+        }
 
+        LockOnTarget();
 
-        // Fire the turret
+        if (useLaser){
+            Laser();
+            return;
+        } else {
+            // Fire the turret
         if(fireCountDown <= 0f){
             Shoot();
             fireCountDown = 1f / fireRate;
         }
 
         fireCountDown -= Time.deltaTime; // Decrease the fire countdown
+        }
+          
     }
 //--------------------------------------------------------------------
 
+//--------------------------------------------------------------------
+    void LockOnTarget(){
+        
 
+        // Lock the turret to the target
+        Vector3 direction = target.position - transform.position; // Calculate the direction to the target
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate the angle in radians and convert to degrees
+        Quaternion targetRotation = Quaternion.Euler(0, 0, angle); // Create a target rotation using the calculated angle
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);// Smoothly rotate the turret towards the target
+        
+    }
+//--------------------------------------------------------------------
 
-
+    void Laser(){
+        if (!lineRenderer.enabled)
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+    }
 
 // Shoot is called to instantiate a bullet, set its position, and seek the target
 //--------------------------------------------------------------------
