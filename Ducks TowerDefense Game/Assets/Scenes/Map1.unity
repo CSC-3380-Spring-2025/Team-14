@@ -12957,8 +12957,8 @@ MonoBehaviour:
     prefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
     cost: 200
   LaserBeamerTurret:
-    prefab: {fileID: 0}
-    cost: 0
+    prefab: {fileID: 4227290576397885336, guid: db538b37da254994a86d0b28c3313834, type: 3}
+    cost: 500
 --- !u!1001 &1470846396
 PrefabInstance:
   m_ObjectHideFlags: 0

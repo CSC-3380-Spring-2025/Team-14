@@ -2,21 +2,29 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour{
-    public float speed = 10f;//Speed
+    public float startSpeed = 3f;//Speed
+    public float speed;
+
     private Transform target;//next target of wavepoint
     private int wavepointIndex  = 0;//incrementing to make sure we have the correct number of waypoint
     public static int enemiesRemaining = 0; // Static variable to track the number of enemies remaining
     private  WaveTimer waveTimer; // Reference to the WaveTimer script
 
-    public int health = 100; 
+    public float health = 100; 
 
     public int value = 50;
+
+    private Enemy enemy;
 
 
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     void Start(){
+        speed = startSpeed;
+
+        enemy = GetComponent<Enemy>();
+
         target = WayPoint.points[0];//Target is the first waypoint
         enemiesRemaining++; // Increment the number of enemies when spawned
 
@@ -31,7 +39,7 @@ public class Enemy : MonoBehaviour{
 //--------------------------------------------------------------------
 
 //--------------------------------------------------------------------
-    public void TakeDamage( int amount ){
+    public void TakeDamage( float amount ){
         health -= amount;
 
         if (health <= 0){
@@ -39,6 +47,10 @@ public class Enemy : MonoBehaviour{
         }
     }
 //--------------------------------------------------------------------
+
+    public void Slow (float Pct){
+        speed = startSpeed * (1f - Pct);
+    }
 
 //--------------------------------------------------------------------
     void Die(){
@@ -66,6 +78,7 @@ public class Enemy : MonoBehaviour{
             //if the character is lagging, you might need to change 0.2f to something else like 0.4f
             GetNextWayPoint();//new target will be the next waypoint
         }
+        enemy.speed = enemy.startSpeed;
 
     }
 //--------------------------------------------------------------------

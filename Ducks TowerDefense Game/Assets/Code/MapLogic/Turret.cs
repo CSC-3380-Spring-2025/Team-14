@@ -7,7 +7,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour{
 
     private Transform target; //turret targeting the target, it is hidden because private, but if public you will see active change as enemy come into range
-
+    private Enemy targetEnemy; 
 
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
@@ -18,7 +18,10 @@ public class Turret : MonoBehaviour{
      [Header("Use Laser")]
     public bool useLaser = false; 
     public LineRenderer lineRenderer;
+    
+    public int DamageOverTime = 30; // each sec the laser does 30 dmg 
 
+    public float slowAmount = .5f;
 
     [Header("Unity SetUp Fields")]//Bascially setup a header on unity
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
@@ -72,6 +75,7 @@ public class Turret : MonoBehaviour{
         // Otherwise, set the target to null
         if(nearestEnemy != null && shortestDistance <= range){ 
             target = nearestEnemy.transform;
+            targetEnemy = nearestEnemy.GetComponent<Enemy>();
         }
         else{ 
             target = null;
@@ -121,7 +125,7 @@ public class Turret : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-   //--------------------------------------------------------------------
+//--------------------------------------------------------------------
     void LockOnTarget(){
         
 
@@ -136,6 +140,9 @@ public class Turret : MonoBehaviour{
 
 //--------------------------------------------------------------------
  void Laser(){
+
+        targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowAmount);
         if (!lineRenderer.enabled)
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, firePoint.position);
