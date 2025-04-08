@@ -4,13 +4,13 @@ using System.Collections.Generic;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 30f;
+    public float speed = 10f;
 
     public int damage = 50; 
     public static int totalKills = 0;
 
     //For AOE effect
-    public float expolsionRadius = 0f;
+    public float explosionRadius = 0f;
     public GameObject effect;
     private Economy economy;
     private bool hasHitTarget = false; // Prevent multiple hits
@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
         GameObject effectIns = (GameObject)Instantiate(effect, transform.position, transform.rotation);
         Destroy(effectIns, 0.5f);
 
-        if (expolsionRadius > 0f) {
+        if (explosionRadius > 0f) {
             Explode();
         } else {
             Damage(target);
@@ -64,15 +64,16 @@ public class Bullet : MonoBehaviour
     }
 
     void Explode() {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, expolsionRadius);
-        HashSet<Enemy> damagedEnemies = new HashSet<Enemy>(); // Track damaged enemies
+        // Changed to Physics2D for 2D games
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        HashSet<Enemy> damagedEnemies = new HashSet<Enemy>();
 
-        foreach (Collider collider in colliders) {
+        foreach (Collider2D collider in colliders) {
             if (collider.tag == "Enemy") {
                 Enemy e = collider.GetComponent<Enemy>();
                 if (e != null && !damagedEnemies.Contains(e)) {
                     Damage(collider.transform);
-                    damagedEnemies.Add(e); // Mark this enemy as damaged
+                    damagedEnemies.Add(e);
                 }
             }
         }
@@ -88,6 +89,6 @@ public class Bullet : MonoBehaviour
 
     void OnDrawGizmosSelected(){
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, expolsionRadius);
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
