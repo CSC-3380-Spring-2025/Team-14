@@ -1,9 +1,7 @@
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : MonoBehaviour
-{
+public class PlayerStats : MonoBehaviour {
     [Header("UI References")]
     public Text moneyText; // Reference to the money UI text
     public Text livesText; // Reference to the lives UI text
@@ -13,11 +11,9 @@ public class PlayerStats : MonoBehaviour
     public int startLives = 20;  // Initial lives
 
     private static int money;
-    public static int Money
-    {
+    public static int Money {
         get { return money; }
-        set
-        {
+        set {
             Debug.Log($"Money updated: {value}"); // Debug log to check the value
             money = Mathf.Max(0, value); // Prevent negative money
             OnMoneyChanged?.Invoke(money); // Trigger the money changed event
@@ -25,34 +21,26 @@ public class PlayerStats : MonoBehaviour
     }
 
     private static int lives;
-    public static int Lives
-    {
+    public static int Lives {
         get { return lives; }
-        set
-        {
+        set {
             lives = Mathf.Max(0, value); // Prevent negative lives
             OnLivesChanged?.Invoke(lives); // Trigger the lives changed event
-            if (lives <= 0)
-            {
+            if (lives <= 0) {
                 // Handle game over logic here
                 Debug.Log("Game Over!");
             }
         }
     }
 
-    // Add the Rounds property here
-    public static int Rounds { get; set; }
-
     // Events to notify when money or lives change
     public static event System.Action<int> OnMoneyChanged;
     public static event System.Action<int> OnLivesChanged;
 
-    private void Start()
-    {
+    private void Start() {
         // Initialize stats
         Money = startMoney;
         Lives = startLives;
-        Rounds = 0; // Initialize Rounds
 
         // Subscribe to events
         OnMoneyChanged += UpdateMoneyText;
@@ -63,27 +51,22 @@ public class PlayerStats : MonoBehaviour
         UpdateLivesText(Lives);
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         // Unsubscribe from events to avoid memory leaks
         OnMoneyChanged -= UpdateMoneyText;
         OnLivesChanged -= UpdateLivesText;
     }
 
-    private void UpdateMoneyText(int currentMoney)
-    {
-        if (moneyText == null)
-        {
+    private void UpdateMoneyText(int currentMoney) {
+        if (moneyText == null) {
             Debug.LogError("MoneyText is not assigned in the inspector.");
             return;
         }
         moneyText.text = $"Money: {currentMoney}";
     }
 
-    private void UpdateLivesText(int currentLives)
-    {
-        if (livesText == null)
-        {
+    private void UpdateLivesText(int currentLives) {
+        if (livesText == null) {
             Debug.LogError("LivesText is not assigned in the inspector.");
             return;
         }
