@@ -22,10 +22,6 @@ public class PlaceTurret : MonoBehaviour{
 
 
 
-
-    public GameObject BlobTurretPrefab;
-
-    public GameObject DuckTurretPrefab;
     
     private TurretBlueprint turretBuilding;
 
