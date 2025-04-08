@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Spawner : MonoBehaviour{
     public Transform enemy; // The enemy prefab to spawn
@@ -30,6 +31,7 @@ public class Spawner : MonoBehaviour{
 //--------------------------------------------------------------------
     IEnumerator SpawnWave(){
         Debug.Log("Spawning wave...");
+        PlayerStats.Rounds++;
         // Spawn enemies in the wave
         for (int i = 0; i < waveNumber; i++){
             Debug.Log($"Spawning enemy {i + 1} of {waveNumber}");
