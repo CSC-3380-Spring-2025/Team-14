@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour{
 
     private Enemy enemy;
 
-
+    private bool isDestroyed = false; // Flag to prevent multiple destruction
+    public bool IsDestroyed => isDestroyed; // Public getter for the flag
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
@@ -40,6 +41,8 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     public void TakeDamage( float amount ){
+        if (isDestroyed) return; // Prevent further damage if already destroyed
+
         health -= amount;
 
         if (health <= 0){
@@ -54,8 +57,11 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void Die(){
-        PlayerStats.Money += value;
-        Destroy(gameObject);
+        if (isDestroyed) return; // Ensure Die() is only called once
+
+        isDestroyed = true; // Mark the enemy as destroyed
+        PlayerStats.Money += value; // Add money to the player's stats
+        Destroy(gameObject); // Destroy the enemy
     }   
 //--------------------------------------------------------------------
 
@@ -103,8 +109,8 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void Endpath (){
-        PlayerStats.Lives--;// once the enemy hits the end the number of lives the player has goes down by 1 
-        Destroy(gameObject, 0f);//once index is greater then or equal to the total waypoint, destroy the asset(enemy)
+        PlayerStats.Lives--; // Reduce player lives when the enemy reaches the end
+        Destroy(gameObject);
     }
 //--------------------------------------------------------------------
 }//end of class Enemy

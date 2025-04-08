@@ -9,20 +9,26 @@ public class Turret : MonoBehaviour{
     private Transform target; //turret targeting the target, it is hidden because private, but if public you will see active change as enemy come into range
     private Enemy targetEnemy; 
 
+
+    //Attributes of the turret
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
-    [Header("Use Bullets")]
     public float fireRate = 2f; //Rate of fire (How Fast turret fire)
     private float fireCountDown = 0f; //Countdown to fire
 
-     [Header("Use Laser")]
+
+    //laser attributes
+    [Header("Use Laser")]
     public bool useLaser = false; 
     public LineRenderer lineRenderer;
-    
     public int DamageOverTime = 30; // each sec the laser does 30 dmg 
-
     public float slowAmount = .5f;
 
+
+
+
+
+    //Basically setup a header on unity
     [Header("Unity SetUp Fields")]//Bascially setup a header on unity
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
     public float rotationSpeed = 30f; // Speed at which the turret rotates
@@ -139,26 +145,28 @@ public class Turret : MonoBehaviour{
 //--------------------------------------------------------------------
 
 //--------------------------------------------------------------------
- void Laser(){
+ void Laser() {
+    if (targetEnemy == null || targetEnemy.IsDestroyed) return; // Ensure the target is valid and not destroyed
 
-        targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime);
-        targetEnemy.Slow(slowAmount);
-        if (!lineRenderer.enabled)
+    targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime); // Apply damage over time
+    targetEnemy.Slow(slowAmount); // Apply slow effect
+
+    if (!lineRenderer.enabled)
         lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
-    }
+
+    lineRenderer.SetPosition(0, firePoint.position);
+    lineRenderer.SetPosition(1, target.position);
+}
 //--------------------------------------------------------------------
 // Shoot is called to instantiate a bullet, set its position, and seek the target
 //--------------------------------------------------------------------
-    void Shoot(){
-        //Debug.Log("Shoot");//goes to the console on unity and check if it printing out something, making sure the code is working
+    void Shoot() {
+        if (target == null) return; // Ensure there is a valid target
 
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//Instantiate a bullet, set its position and rotation
-        Bullet bullet = bulletGO.GetComponent<Bullet>();//Get the bullet component
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Instantiate bullet
+        Bullet bullet = bulletGO.GetComponent<Bullet>(); // Get the bullet component
 
-        // If the bullet is not null, seek the target
-        if(bullet != null) bullet.Seek(target);
+        if (bullet != null) bullet.Seek(target); // Assign the target to the bullet
     }
 //--------------------------------------------------------------------
 }//end of class

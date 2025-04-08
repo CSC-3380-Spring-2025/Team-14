@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 public class Bullet : MonoBehaviour
 {
     private Transform target;
@@ -11,11 +13,10 @@ public class Bullet : MonoBehaviour
     public float expolsionRadius = 0f;
     public GameObject effect;
     private Economy economy;
-     
+    private bool hasHitTarget = false; // Prevent multiple hits
 
     void Start(){
         economy = Object.FindFirstObjectByType<Economy>();
-        
     }
 
     public void Seek(Transform _target){
@@ -46,53 +47,47 @@ public class Bullet : MonoBehaviour
         //Debug.Log("Bullet Position: " + transform.position);//Check to see if bullet is moving
     }
 
-    void HitTarget(){
+    void HitTarget() {
+        if (hasHitTarget) return; // Prevent multiple hits
+        hasHitTarget = true;
+
         GameObject effectIns = (GameObject)Instantiate(effect, transform.position, transform.rotation);
         Destroy(effectIns, 0.5f);
-        
-        if (economy != null){
-            economy.AddMoney(20);
-        }
 
-
-        //AOE Effect
-        
-        if(expolsionRadius > 0f){
+        if (expolsionRadius > 0f) {
             Explode();
-        }
-        else{
+        } else {
             Damage(target);
         }
-        
-        Destroy(gameObject);    
-        return;
+
+        Destroy(gameObject);
     }
 
-    //For AOE affect
-    void Explode(){
+    void Explode() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, expolsionRadius);
-        foreach (Collider collider in colliders){
-            Debug.Log("Detected: " + collider.name);
-            if (collider.tag == "Enemy"){
-                Damage(collider.transform);
+        HashSet<Enemy> damagedEnemies = new HashSet<Enemy>(); // Track damaged enemies
+
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Enemy") {
+                Enemy e = collider.GetComponent<Enemy>();
+                if (e != null && !damagedEnemies.Contains(e)) {
+                    Damage(collider.transform);
+                    damagedEnemies.Add(e); // Mark this enemy as damaged
+                }
             }
         }
     }
 
-    void Damage(Transform enemy){
-       Enemy e = enemy.GetComponent<Enemy>();
-        
-        if ( e != null){
-             e.TakeDamage(damage);
-        }
-       
-    }
+    void Damage(Transform enemy) {
+        Enemy e = enemy.GetComponent<Enemy>();
 
+        if (e != null && !e.IsDestroyed) { // Check if the enemy is not already destroyed
+            e.TakeDamage(damage);
+        }
+    }
 
     void OnDrawGizmosSelected(){
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, expolsionRadius);
     }
-
-    
 }
