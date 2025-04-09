@@ -27,6 +27,14 @@ public class PauseGame : MonoBehaviour
     }
 
     private void Update(){
+        if(Input.GetKeyDown("escape")){
+            if (ifPause){
+                GameResume();
+            }
+            else{
+                GamePause();
+            }
+        }
         // Smoothly move the pause panel
         if (ifPause){
             PausePanel.anchoredPosition = Vector2.MoveTowards(PausePanel.anchoredPosition, onScreenPosition, slideSpeed * Time.unscaledDeltaTime );

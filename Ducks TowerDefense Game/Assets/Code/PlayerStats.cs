@@ -5,6 +5,7 @@ public class PlayerStats : MonoBehaviour {
     [Header("UI References")]
     public Text moneyText; // Reference to the money UI text
     public Text livesText; // Reference to the lives UI text
+    public static int Rounds;
 
     // Player stats
     [Header("Player Stats")]
@@ -63,7 +64,7 @@ public class PlayerStats : MonoBehaviour {
             Debug.LogError("MoneyText is not assigned in the inspector.");
             return;
         }
-        moneyText.text = $"Money: {currentMoney}";
+        moneyText.text = $"{currentMoney}";
     }
 
     private void UpdateLivesText(int currentLives) {
