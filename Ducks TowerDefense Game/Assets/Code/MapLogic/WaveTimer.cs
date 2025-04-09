@@ -37,8 +37,8 @@ public class WaveTimer : MonoBehaviour{
     void Update() {
         int currentLives = PlayerStats.Lives;
         if (lastLives != -1 && currentLives < lastLives) {
-        Debug.Log("Lives decreased during this wave.");
-    }
+            Debug.Log("Lives decreased during this wave.");
+        }
         lastLives = currentLives;
         // Check if the shop is open and update the continueButton state
         if (IsShopOpen()) {
