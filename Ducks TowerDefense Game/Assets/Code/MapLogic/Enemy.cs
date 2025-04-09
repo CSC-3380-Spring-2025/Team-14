@@ -61,6 +61,11 @@ public class Enemy : MonoBehaviour{
 
         isDestroyed = true; // Mark the enemy as destroyed
         PlayerStats.Money += value; // Add money to the player's stats
+        enemiesRemaining--;
+
+    if (enemiesRemaining <= 0 && waveTimer != null) {
+        waveTimer.OnWaveDefeated();
+    }
         Destroy(gameObject); // Destroy the enemy
     }   
 //--------------------------------------------------------------------
@@ -109,8 +114,17 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void Endpath (){
-        PlayerStats.Lives--; // Reduce player lives when the enemy reaches the end
-        Destroy(gameObject);
+       if (isDestroyed) return; // Prevent double-counting if somehow called again
+
+    isDestroyed = true; // Mark as destroyed so it's not handled twice
+    PlayerStats.Lives--; // Reduce lives
+    enemiesRemaining--; // Decrement enemy counter
+
+    if (enemiesRemaining <= 0 && waveTimer != null) {
+        waveTimer.OnWaveDefeated();
     }
+
+    Destroy(gameObject);
+}
 //--------------------------------------------------------------------
 }//end of class Enemy
