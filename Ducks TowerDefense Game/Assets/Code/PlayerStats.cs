@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour {
     public Text moneyText; // Reference to the money UI text
     public Text livesText; // Reference to the lives UI text
 
+    // Player stats
     [Header("Player Stats")]
     public int startMoney = 500; // Initial money
     public int startLives = 20;  // Initial lives
