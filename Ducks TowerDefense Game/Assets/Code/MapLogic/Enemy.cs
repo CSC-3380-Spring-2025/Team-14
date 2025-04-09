@@ -3,21 +3,18 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour{
     public float startSpeed = 3f;//Speed
-    private float speed;
+    public float speed;
 
     private Transform target;//next target of wavepoint
     private int wavepointIndex  = 0;//incrementing to make sure we have the correct number of waypoint
     public static int enemiesRemaining = 0; // Static variable to track the number of enemies remaining
     private  WaveTimer waveTimer; // Reference to the WaveTimer script
 
-    public float startHealth = 100; // Initial health of the enemy
-    public float health; // Health of the enemy
+    public float health = 100; 
 
     public int value = 50;
 
     private Enemy enemy;
-
-    public Image healthBar; // Reference to the health bar UI element
 
     private bool isDestroyed = false; // Flag to prevent multiple destruction
     public bool IsDestroyed => isDestroyed; // Public getter for the flag
@@ -26,7 +23,7 @@ public class Enemy : MonoBehaviour{
 //--------------------------------------------------------------------
     void Start(){
         speed = startSpeed;
-        health = startHealth; // Initialize health to the starting value
+
         enemy = GetComponent<Enemy>();
 
         target = WayPoint.points[0];//Target is the first waypoint
@@ -47,8 +44,6 @@ public class Enemy : MonoBehaviour{
         if (isDestroyed) return; // Prevent further damage if already destroyed
 
         health -= amount;
-
-        healthBar.fillAmount = health / startHealth; // Update the health bar UI
 
         if (health <= 0){
             Die();
