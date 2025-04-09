@@ -90,6 +90,7 @@ public class WaveTimer : MonoBehaviour{
         isWaveActive = true; // Wave is now active
         continueButton.interactable = false; // Disable the button until the next wave is defeated
         currentWave++; // Increase wave count
+        PlayerStats.Rounds++; // Increase rounds count in PlayerStats
         Debug.Log($"Current wave: {currentWave}");
 
 
