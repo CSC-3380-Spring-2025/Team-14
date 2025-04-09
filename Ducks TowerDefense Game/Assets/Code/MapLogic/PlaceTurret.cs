@@ -10,6 +10,7 @@ public class PlaceTurret : MonoBehaviour{
     //Public allow access without the class, and static because we want it be access only by PlaceTurret.cs 
     //This variable is a PlaceTurret inside a PlaceTurret. Basically stores a reference to itself
     public static PlaceTurret instance;
+    public Node LastNodeWithUI;
     void Awake(){
         if(instance != null){
             Debug.LogError("More than once PlaceTurret in scene");
@@ -27,6 +28,15 @@ public class PlaceTurret : MonoBehaviour{
 
     public bool CanPlace { get { return turretBuilding != null; } }
 
+
+    void Update() {
+    if (Input.GetMouseButtonDown(0) && !UIManager.main.IsHoveringUI()) {
+        if (LastNodeWithUI != null) {
+            LastNodeWithUI._turret.CloseUpgradeUI();
+            LastNodeWithUI = null;
+        }
+    }
+}
     public void PlaceTurretOn(Node node)
     {
         if (PlayerStats.Money < turretBuilding.cost)

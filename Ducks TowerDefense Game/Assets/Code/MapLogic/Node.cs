@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,14 +8,16 @@ public class Node : MonoBehaviour{
     public Vector3 positionOffSet;//Set the position of turret in the GameObject(square)
     public Vector3 roatationOffSet;//set the rotation og turret in the GameObject(square)
     public GameObject turret;
-    private Renderer rend;
+    public Turret _turret; 
+    private SpriteRenderer  rend;
     private Color startColor;
     PlaceTurret placeTurret; //reference PlaceTurret Script
 
     void Start(){
-        rend = GetComponent<Renderer>();
+        rend = GetComponent<SpriteRenderer>();
         startColor = rend.material.color;
         placeTurret = PlaceTurret.instance;
+        
     }
 
     public Vector3 GetPlacePosition()
@@ -23,20 +26,27 @@ public class Node : MonoBehaviour{
     }
 
     void OnMouseDown(){
+        if(UIManager.main.IsHoveringUI()) return;
         if(EventSystem.current.IsPointerOverGameObject()) return;
-        if(!placeTurret.CanPlace) return;
-
+            
+        
+        
+    
         
         if(turret != null){
-            Debug.Log("Can't build there - TODO: Display On Screen");
+            _turret.OpenUpgradeUI();
             return;
         }
-
+        
+        if(!placeTurret.CanPlace) return;
 
         //build a turret
         //reference PlaceTurret
         //stores placeTurret.BuildTurret() into turretBuilding and instantiate it
         placeTurret.PlaceTurretOn(this);
+        _turret = turret.GetComponent<Turret>();
+        _turret.OpenUpgradeUI();
+        
     }
 
 
@@ -48,6 +58,7 @@ public class Node : MonoBehaviour{
     }
 
     void OnMouseExit(){ //OnMouseExit - Exit the node
+    if (rend != null)
         rend.material.color = startColor;  
     }
 

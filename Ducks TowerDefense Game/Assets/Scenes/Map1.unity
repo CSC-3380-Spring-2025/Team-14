@@ -9646,6 +9646,7 @@ GameObject:
   - component: {fileID: 1100544014}
   - component: {fileID: 1100544015}
   - component: {fileID: 1100544016}
+  - component: {fileID: 1100544017}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -9694,6 +9695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9eea74688f722b4bac781c66d1cf381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastNodeWithUI: {fileID: 0}
 --- !u!114 &1100544012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9768,6 +9770,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 0}
   money: 500
+--- !u!114 &1100544017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100544008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b703b250b54ede54bb6b837a963eb566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHoveringUI: 0
 --- !u!1001 &1101593378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12953,7 +12968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlobTurret:
     prefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
-    cost: 500
+    cost: 100
   DuckTurret:
     prefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
     cost: 200
