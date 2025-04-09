@@ -9,7 +9,6 @@ public class WaveTimer : MonoBehaviour{
     private ShopManager shopManager; // Reference to the ShopManager script
     private bool isWaveActive = false; // Flag to check if the wave is active, false means the wave is not active, true means the wave is active
     private int lastLives = -1; 
-    private bool playerLostLivesThisWave = false;
 
 
 
@@ -38,7 +37,6 @@ public class WaveTimer : MonoBehaviour{
     void Update() {
         int currentLives = PlayerStats.Lives;
         if (lastLives != -1 && currentLives < lastLives) {
-        playerLostLivesThisWave = true; // Mark that the player lost lives
         Debug.Log("Lives decreased during this wave.");
     }
         lastLives = currentLives;
@@ -90,7 +88,6 @@ public class WaveTimer : MonoBehaviour{
 //StartNewWave is called when the player clicks the "Continue" button, to start the next wave
 //--------------------------------------------------------------------
     public void StartNewWave(){
-        playerLostLivesThisWave = false;
         // Check if the button is already disabled
         if (!continueButton.interactable || IsShopOpen()) return;   // Exit if the button is already disabled
         

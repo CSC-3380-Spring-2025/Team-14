@@ -1774,6 +1774,7 @@ GameObject:
   - component: {fileID: 132896804}
   - component: {fileID: 132896806}
   - component: {fileID: 132896805}
+  - component: {fileID: 132896807}
   m_Layer: 5
   m_Name: GameOverText
   m_TagString: Untagged
@@ -1899,6 +1900,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132896803}
   m_CullTransparentMesh: 1
+--- !u!225 &132896807
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132896803}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &140074024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203221663797288238, guid: 29e825c802d37ab4d9ce992740eb262c, type: 3}
@@ -5118,6 +5131,7 @@ GameObject:
   - component: {fileID: 592139597}
   - component: {fileID: 592139596}
   - component: {fileID: 592139595}
+  - component: {fileID: 592139598}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -5161,6 +5175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c81fffe3e99c0c418cf3b23cd5c6924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundsText: {fileID: 1762481041}
 --- !u!114 &592139596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5199,6 +5214,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592139593}
   m_CullTransparentMesh: 1
+--- !u!95 &592139598
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592139593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 235e4d0a15b50274cbcc2fc225196455, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &600347710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203221663797288238, guid: 29e825c802d37ab4d9ce992740eb262c, type: 3}
@@ -15662,6 +15699,7 @@ GameObject:
   - component: {fileID: 1741187474}
   - component: {fileID: 1741187473}
   - component: {fileID: 1741187472}
+  - component: {fileID: 1741187475}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -15702,7 +15740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -15732,7 +15770,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1741187473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592139595}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: Retry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1741187473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15771,6 +15821,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741187470}
   m_CullTransparentMesh: 1
+--- !u!225 &1741187475
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741187470}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &1745770123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6526377888248702446, guid: 84e70af27fc72bd458eaa3a332058e4c, type: 3}
@@ -15973,6 +16035,7 @@ GameObject:
   - component: {fileID: 1762481040}
   - component: {fileID: 1762481042}
   - component: {fileID: 1762481041}
+  - component: {fileID: 1762481043}
   m_Layer: 5
   m_Name: 'WaveNumber '
   m_TagString: Untagged
@@ -15989,7 +16052,7 @@ RectTransform:
   m_GameObject: {fileID: 1762481039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0537176, y: 1.0537176, z: 1.0537176}
+  m_LocalScale: {x: 1.0537176, y: 1.053718, z: 1.053718}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 592139594}
@@ -16098,6 +16161,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762481039}
   m_CullTransparentMesh: 1
+--- !u!225 &1762481043
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762481039}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &1778515124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6526377888248702446, guid: 84e70af27fc72bd458eaa3a332058e4c, type: 3}
@@ -16258,6 +16333,7 @@ GameObject:
   - component: {fileID: 1798230541}
   - component: {fileID: 1798230543}
   - component: {fileID: 1798230542}
+  - component: {fileID: 1798230544}
   m_Layer: 5
   m_Name: RoundSurivived
   m_TagString: Untagged
@@ -16274,7 +16350,7 @@ RectTransform:
   m_GameObject: {fileID: 1798230540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5616416, y: 1.5616416, z: 1.5616416}
+  m_LocalScale: {x: 1.5616416, y: 1.561642, z: 1.561642}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 592139594}
@@ -16383,6 +16459,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798230540}
   m_CullTransparentMesh: 1
+--- !u!225 &1798230544
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798230540}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1812935979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16533,6 +16621,7 @@ GameObject:
   - component: {fileID: 1821230499}
   - component: {fileID: 1821230498}
   - component: {fileID: 1821230497}
+  - component: {fileID: 1821230500}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -16573,7 +16662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -16603,7 +16692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1821230498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592139595}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1821230498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16642,6 +16743,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821230495}
   m_CullTransparentMesh: 1
+--- !u!225 &1821230500
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821230495}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1827711246
 PrefabInstance:
   m_ObjectHideFlags: 0
