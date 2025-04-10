@@ -78,7 +78,8 @@ public class WaveTimer : MonoBehaviour{
         Debug.Log("Wave defeated! Enabling Continue Button.");
         isWaveActive = false; // Wave is no longer active
         continueButton.interactable = true; // Enable the button
-  
+        OnRoundEnd(currentWave): //rewards the user with money
+        
     }
 //--------------------------------------------------------------------
 
@@ -135,6 +136,17 @@ public bool IsWaveActive() {
         waveText.text = $"Wave: {currentWave}";
     }
 //--------------------------------------------------------------------
+ // Method to give rewards to user after completing a wave. Rewards scale with it 
+    void OnRoundEnd(int currentWave)
+{
+    int baseReward = 50;            // Starting amount
+    float scalingFactor = 1.15f;    // How much it scales per round
 
+    // Calculate reward: exponential growth
+    int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(scalingFactor, currentRound));
+
+    economy.AddMoney(reward);
+    Debug.Log($"Round {currentWave} complete! Earned ${reward}.");
+}
 
 }//End of WaveTimer class
