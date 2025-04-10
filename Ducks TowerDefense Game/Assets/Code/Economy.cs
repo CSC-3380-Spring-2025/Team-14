@@ -1,24 +1,75 @@
+using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
+[DefaultExecutionOrder(-100)]
 public class Economy : MonoBehaviour
 {
-    public Text moneyText;
-    public int money = 500;
+    public static Economy Instance { get; private set; }
 
-    void Start()
+    [Header("Economy Settings")]
+    [SerializeField] private int initialMoney = 100;
+    private int _money;
+
+    public event Action<int> OnMoneyChanged; 
+
+    public int Money
     {
-        UpdateMoneyText();
+        get => _money;
+        private set
+        {
+            _money = value;
+            OnMoneyChanged?.Invoke(_money);
+            UpdateMoneyText();
+            SaveMoney();
+        }
     }
 
-    public void AddMoney(int amount)
+    [Header("UI Configuration")]
+    public TextMeshProUGUI moneyText;
+
+    private void Awake()
     {
-        money += amount;
-        UpdateMoneyText();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        LoadMoney();
     }
 
     private void UpdateMoneyText()
     {
-        moneyText.text = money.ToString();
+        if (moneyText != null)
+        {
+            moneyText.text = $"Coins: {_money:N0}";
+        }
+    }
+
+    public void AddMoney(int amount)
+    {
+        Money += amount;
+    }
+
+    public bool CanAfford(int amount) => Money >= amount;
+
+    private void SaveMoney()
+    {
+        PlayerPrefs.SetInt("PlayerMoney", Money);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadMoney()
+    {
+        Money = PlayerPrefs.GetInt("PlayerMoney", initialMoney);
+    }
+
+    public void RefreshUI(TextMeshProUGUI newMoneyText = null)
+    {
+        if (newMoneyText != null) moneyText = newMoneyText;
+        UpdateMoneyText();
     }
 }

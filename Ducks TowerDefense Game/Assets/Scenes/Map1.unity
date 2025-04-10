@@ -10184,7 +10184,6 @@ GameObject:
   - component: {fileID: 1100544012}
   - component: {fileID: 1100544014}
   - component: {fileID: 1100544015}
-  - component: {fileID: 1100544016}
   - component: {fileID: 1100544017}
   - component: {fileID: 1100544018}
   m_Layer: 0
@@ -10265,6 +10264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveText: {fileID: 1236519982}
   continueButton: {fileID: 1649424396}
+  baseReward: 50
+  rewardScalingFactor: 1.15
 --- !u!114 &1100544014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10296,20 +10297,6 @@ MonoBehaviour:
   livesText: {fileID: 1665783060}
   startMoney: 500
   startLives: 2
---- !u!114 &1100544016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100544008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a753e59632948ac4ba0471fbe12893c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 0}
-  money: 500
 --- !u!114 &1100544017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14506,7 +14493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597474741}
   m_Layer: 0
-  m_Name: Texts
+  m_Name: GameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

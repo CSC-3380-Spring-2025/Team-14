@@ -12,12 +12,8 @@ public class Bullet : MonoBehaviour
     //For AOE effect
     public float explosionRadius = 0f;
     public GameObject effect;
-    private Economy economy;
     private bool hasHitTarget = false; // Prevent multiple hits
 
-    void Start(){
-        economy = Object.FindFirstObjectByType<Economy>();
-    }
 
     public void Seek(Transform _target){
         target = _target;
