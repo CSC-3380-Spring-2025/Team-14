@@ -23,6 +23,9 @@ public class Turret : MonoBehaviour{
     public float fireRate = 2f; //Rate of fire (How Fast turret fire)
     private float fireCountDown = 0f; //Countdown to fire
 
+    [Header("Attack Damage")]
+    public int bulletDamage = 50;
+
 
     //laser attributes
     [Header("Use Laser")]
@@ -180,6 +183,7 @@ public class Turret : MonoBehaviour{
         Bullet bullet = bulletGO.GetComponent<Bullet>(); // Get the bullet component
 
         if (bullet != null) bullet.Seek(target); // Assign the target to the bullet
+        bullet.damage = bulletDamage;
     }
 //--------------------------------------------------------------------
 

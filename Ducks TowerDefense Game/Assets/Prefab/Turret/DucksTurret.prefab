@@ -365,6 +365,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 3221347700115619459}
   range: 3
   fireRate: 2
+  bulletDamage: 50
   useLaser: 0
   lineRenderer: {fileID: 0}
   DamageOverTime: 30
