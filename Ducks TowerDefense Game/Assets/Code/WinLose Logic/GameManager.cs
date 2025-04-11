@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour{
         GameWin = true;
         GameWinUI.SetActive(true); // Show the Win UI
 
-        // Animator animator = GameWinUI.GetComponent<Animator>();
-        // if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        Animator animator = GameWinUI.GetComponent<Animator>();
+        if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
-        // Debug.Log("You Win!");
+        Debug.Log("You Win!");
 
 
         // Pause the game
