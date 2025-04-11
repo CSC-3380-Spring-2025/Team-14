@@ -10209,6 +10209,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 6440495065815521116, guid: cef25e67169422847b89bdff835cc69b, type: 3}
   - {fileID: 6440495065815521116, guid: c1da371d832ac1843b3d28fb11dbcb22, type: 3}
+  - {fileID: 6440495065815521116, guid: 4ba51e143ed0b2148840145827700ab5, type: 3}
   spawnPoint: {fileID: 1725648615}
 --- !u!4 &1100544010
 Transform:

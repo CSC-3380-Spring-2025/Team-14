@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+//Map currency and map lives script
+// This script manages the player's stats, including money and lives, and updates the UI accordingly.
 public class PlayerStats : MonoBehaviour {
     [Header("UI References")]
     public Text moneyText; // Reference to the money UI text

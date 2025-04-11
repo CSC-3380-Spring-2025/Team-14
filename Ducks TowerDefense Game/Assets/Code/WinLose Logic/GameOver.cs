@@ -6,8 +6,7 @@ public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI roundsText; // Reference to the TextMeshProUGUI component for displaying rounds
 
-    void OnEnable()
-    {
+    void OnEnable(){
         roundsText.text = PlayerStats.Rounds.ToString(); // Update the text with the number of rounds
     }
 

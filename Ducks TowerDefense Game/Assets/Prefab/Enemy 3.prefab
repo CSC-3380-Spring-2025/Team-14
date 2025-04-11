@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6002331069568195632}
   - component: {fileID: -2854649869031435372}
   m_Layer: 0
-  m_Name: Enemy 2
+  m_Name: Enemy 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8772984, g: 1, b: 0.06132078, a: 1}
+  m_Color: {r: 0.062745094, g: 1, b: 0.9430582, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,9 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914548c875d56c042a28e951afe78315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 1.5
-  startHealth: 250
-  value: 100
+  startSpeed: 6
+  startHealth: 100
+  value: 75
   healthBar: {fileID: 287628625345971527}
 --- !u!61 &-2854649869031435372
 BoxCollider2D:
