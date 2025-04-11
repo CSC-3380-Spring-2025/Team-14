@@ -972,19 +972,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1057870759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657033184}
-        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
-        m_MethodName: selectMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1057870759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,8 +1481,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1657033180}
   - {fileID: 1722765532}
+  - {fileID: 1657033180}
   - {fileID: 1543745886}
   - {fileID: 754208401}
   - {fileID: 302125720}
@@ -1870,6 +1858,7 @@ GameObject:
   - component: {fileID: 1639483652}
   - component: {fileID: 1639483651}
   - component: {fileID: 1639483650}
+  - component: {fileID: 1639483653}
   m_Layer: 5
   m_Name: Map2
   m_TagString: Untagged
@@ -1929,7 +1918,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     m_PressedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     m_SelectedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-    m_DisabledSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    m_DisabledSprite: {fileID: 21300046, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1940,19 +1929,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1639483651}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657033184}
-        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
-        m_MethodName: selectMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1639483651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,6 +1968,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639483648}
   m_CullTransparentMesh: 1
+--- !u!95 &1639483653
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639483648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6274afc20419e7f45a620962fd04a189, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1657033179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,6 +2113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSelected: 
   clickableButton: {fileID: 302125721}
+  mapButton:
+  - {fileID: 1057870758}
+  - {fileID: 1639483650}
+  - {fileID: 1855381847}
 --- !u!1 &1722765531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2129,7 @@ GameObject:
   - component: {fileID: 1722765534}
   - component: {fileID: 1722765533}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2529,7 +2532,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     m_PressedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     m_SelectedSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-    m_DisabledSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    m_DisabledSprite: {fileID: 21300046, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2540,19 +2543,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1855381848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657033184}
-        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
-        m_MethodName: selectMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1855381848
 MonoBehaviour:
   m_ObjectHideFlags: 0
