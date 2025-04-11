@@ -100,19 +100,14 @@ public class WaveTimer : MonoBehaviour
         UpdateWaveText();
     }
 
-    private void AwardWaveCompletionReward()
-    {
-        int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
+    private void AwardWaveCompletionReward(){
+        if (Economy.Instance == null){
+            Debug.LogWarning("Economy not found - reward not given");
+            return;
+        }
         
-        if (Economy.Instance != null)
-        {
-            Economy.Instance.AddMoney(reward);
-            Debug.Log($"Round {currentWave} complete! Earned ${reward}.");
-        }
-        else
-        {
-            Debug.LogError("Economy instance not found!");
-        }
+        int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
+        Economy.Instance.AddMoney(reward);
     }
 
     public bool IsWaveActive() => isWaveActive;

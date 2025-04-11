@@ -10186,6 +10186,7 @@ GameObject:
   - component: {fileID: 1100544015}
   - component: {fileID: 1100544017}
   - component: {fileID: 1100544018}
+  - component: {fileID: 1100544019}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -10323,6 +10324,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 592139593}
+--- !u!114 &1100544019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100544008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5e94608f49a8e499477aa6d85945f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1101593378
 PrefabInstance:
   m_ObjectHideFlags: 0
