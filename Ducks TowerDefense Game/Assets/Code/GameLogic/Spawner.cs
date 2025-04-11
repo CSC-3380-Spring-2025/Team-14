@@ -5,6 +5,7 @@ public class Spawner : MonoBehaviour{
     public GameObject[] enemyPrefabs; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
     private int waveNumber = 0; // Current wave number
+    private int addPreviousEnemy = 0; // Number of enemies remaining in the current wave
 
     
 
@@ -31,10 +32,12 @@ public class Spawner : MonoBehaviour{
     IEnumerator SpawnWave(){
         Debug.Log("Spawning wave...");
         // Spawn enemies in the wave
-        for (int i = 0; i < waveNumber; i++){
-            Debug.Log($"Spawning enemy {i + 1} of {waveNumber}");
+        int addEnemy = Random.Range(0, 3);
+        addPreviousEnemy = addEnemy + waveNumber + addPreviousEnemy; // Calculate the number of enemies to spawn
+        for (int i = 0; i < addPreviousEnemy; i++){
+            Debug.Log($"Spawning enemy {i + 1} of {addPreviousEnemy}");
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 //--------------------------------------------------------------------

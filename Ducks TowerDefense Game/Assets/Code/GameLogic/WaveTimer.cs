@@ -13,6 +13,7 @@ public class WaveTimer : MonoBehaviour
     [SerializeField] private float rewardScalingFactor = 1.15f;
 
     private int currentWave = 0;
+    public GameManager gameManager; // Reference to the GameManager
     private Spawner spawner;
     private ShopManager shopManager;
     private bool isWaveActive = false;
@@ -74,6 +75,13 @@ public class WaveTimer : MonoBehaviour
         isWaveActive = false;
         continueButton.interactable = true;
         AwardWaveCompletionReward();
+
+        // Check if the current wave is the last wave
+        if (currentWave >= 1)
+        {
+            Debug.Log("All waves defeated! Player wins the game.");
+            gameManager.WinGame(); // Call the WinLevel method in GameManager
+        }
     }
 
     public void StartNewWave()
@@ -87,17 +95,16 @@ public class WaveTimer : MonoBehaviour
         PlayerStats.Rounds++;
         Debug.Log($"Current wave: {currentWave}");
 
-        if (spawner != null)
-        {
+        if (spawner != null){
             Debug.Log($"Calling StartWave for wave {currentWave}");
             spawner.StartWave(currentWave);
         }
-        else
-        {
-            Debug.LogError("Spawner reference is missing!");
-        }
+        else Debug.LogError("Spawner reference is missing!");
 
         UpdateWaveText();
+
+        
+        
     }
 
     private void AwardWaveCompletionReward(){

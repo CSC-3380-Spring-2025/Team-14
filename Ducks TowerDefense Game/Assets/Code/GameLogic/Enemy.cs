@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour{
     private  WaveTimer waveTimer; // Reference to the WaveTimer script
 
     public float startHealth = 100; // Initial health of the enemy
-    public float health; // Health of the enemy
+    private float health; // Health of the enemy
 
     public int value = 50;
 
