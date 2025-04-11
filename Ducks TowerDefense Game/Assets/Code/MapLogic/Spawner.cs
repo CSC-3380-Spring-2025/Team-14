@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Spawner : MonoBehaviour{
-    public Transform enemy; // The enemy prefab to spawn
+    public GameObject[] enemyPrefabs; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
     private int waveNumber = 0; // Current wave number
 
@@ -46,7 +46,9 @@ public class Spawner : MonoBehaviour{
 // SpawnEnemy is called to spawn a single enemy
 //--------------------------------------------------------------------
     void SpawnEnemy(){
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation); // Spawn the enemy at the spawn point
+        int index = Random.Range(0, enemyPrefabs.Length);
+        GameObject prefabToSpawn = enemyPrefabs[index];
+        Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation); // Spawn the enemy at the spawn point
     }
 //--------------------------------------------------------------------
 }//end of class
