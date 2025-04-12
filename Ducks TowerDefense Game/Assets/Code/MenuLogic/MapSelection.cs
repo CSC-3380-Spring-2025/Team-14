@@ -59,4 +59,12 @@ public class MapSelection : MonoBehaviour
 
         PlayerPrefs.Save();
     }
+
+    //Do Not Delete, Loads Main Menu -_-
+    public void goToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
 }
