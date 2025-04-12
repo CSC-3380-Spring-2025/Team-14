@@ -64,6 +64,7 @@ public class MapSelection : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+
     }
 
 }
