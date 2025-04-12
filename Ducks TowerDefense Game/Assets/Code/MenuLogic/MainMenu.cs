@@ -34,6 +34,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("SlotMachine", LoadSceneMode.Single);
     }
 
+    public void Options() {
+
+    }
+
     public void QuitGame() {
         Application.Quit();
     }
