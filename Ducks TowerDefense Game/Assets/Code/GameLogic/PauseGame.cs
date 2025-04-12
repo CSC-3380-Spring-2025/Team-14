@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
@@ -81,5 +82,10 @@ public class PauseGame : MonoBehaviour
         
         // Resume the game
         Time.timeScale = 1;
+    }
+
+    public void quitMap()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
