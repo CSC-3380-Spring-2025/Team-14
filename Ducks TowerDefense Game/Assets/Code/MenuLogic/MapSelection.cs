@@ -32,8 +32,41 @@ public class MapSelection : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // Reset map lock to default when "R" is pressed
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Resetting map locks to default...");
+            PlayerPrefs.SetInt("LevelProgress", 1); // Reset progress to default (Map 1 unlocked)
+            PlayerPrefs.Save();
+
+            // Update map buttons to reflect the reset state
+            for (int i = 0; i < mapButton.Length; i++)
+            {
+                mapButton[i].interactable = (i == 0); // Only Map 1 is unlocked
+            }
+
+            clickableButton.interactable = false; // Disable the PlayMap button
+
+            // Reset the game state using GameManager
+            GameManager gameManager = FindFirstObjectByType<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.ContinueGameState(); // Reset the game state
+            }
+        }
+    }
+
     public void PlayMap()
     {
+        // Reset the game state before starting the map
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.ContinueGameState(); // Reset the game state
+        }
+
         if (!string.IsNullOrEmpty(mapSelected))
         {
             SceneManager.LoadScene(mapSelected);
@@ -61,6 +94,7 @@ public class MapSelection : MonoBehaviour
     }
 
     //Do Not Delete, Loads Main Menu -_-
+    //ok :) My bad :3
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

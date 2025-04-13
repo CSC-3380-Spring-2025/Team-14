@@ -11,13 +11,22 @@ public class GameWin : MonoBehaviour
         roundsText.text = PlayerStats.Rounds.ToString(); // Update the text with the number of rounds
     }
 
+    //Reference in Unity, the onClick event of Continue button in GameWin UI
     public void ContinueGame()
     {
+        // Reset the game state in GameManager
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.ContinueGameState(); // Call a method in GameManager to reset the game state
+        }
+
         // Simply unpause the game and close the win UI
         Time.timeScale = 1; // Resume the game
         gameObject.SetActive(false); // Hide the GameWin UI
     }
 
+    //Reference in Unity, the onClick event of NextMap button in GameWin UI
     public void NextMap()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -35,6 +44,7 @@ public class GameWin : MonoBehaviour
         }
     }
 
+    //Reference in Unity, the onClick event of Menu button in GameWin UI
     public void Menu()
     {
         SceneManager.LoadScene("Map Selection"); // Load the Map Selection menu
