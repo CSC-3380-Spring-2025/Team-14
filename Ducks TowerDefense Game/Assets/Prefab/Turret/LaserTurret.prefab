@@ -441,6 +441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeUI: {fileID: 4352913109996688893}
   upgradeButton: {fileID: 7694712347474676662}
+  sellButton: {fileID: 8144819523582920881}
+  purchaseCost: 500
   range: 3
   fireRate: 2
   bulletDamage: 50
