@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// This script handles the map selection and progress tracking in the game.
 public class MapSelection : MonoBehaviour
 {
     public string mapSelected;
