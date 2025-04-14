@@ -11,6 +11,8 @@ public class Turret : MonoBehaviour{
     private Enemy targetEnemy; 
     public GameObject upgradeUI;
     public Button upgradeButton;
+    public Button sellButton;
+    public int purchaseCost = 0;
     private int level = 1;
     private float fireRateBase;
     private float targetingRangeBase;
@@ -64,6 +66,7 @@ public class Turret : MonoBehaviour{
         fireRateBase = fireRate;
         targetingRangeBase = range; 
         upgradeButton.onClick.AddListener(Upgrade);
+        sellButton.onClick.AddListener(SellTurret);
         Debug.Log("New FireRate: " + fireRate);
         Debug.Log("New Range: " + range);
         Debug.Log("New Cost: " + CalculateCost());
@@ -211,6 +214,15 @@ public class Turret : MonoBehaviour{
         CloseUpgradeUI();
 
 
+    }
+    
+    public void SellTurret(){
+    int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
+    PlayerStats.Money += sellAmount;
+
+    Debug.Log($"Turret sold for {sellAmount}");
+
+    Destroy(gameObject);
     }
     private int CalculateCost(){
         return Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
