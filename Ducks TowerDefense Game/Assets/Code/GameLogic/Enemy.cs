@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour{
 
     }
 //--------------------------------------------------------------------
-//this is so that the enemy can regen hp overtime (boss)
+
 //--------------------------------------------------------------------
     void RegenerateHealth() {
     if (health <= 0) return; 
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour{
         if (health > maxHealth)
             health = maxHealth;
 
-    
+        // Optional: update health bar
         if (healthBar != null)
             healthBar.fillAmount = health / maxHealth;
     }
