@@ -6,6 +6,7 @@ public class Shop : MonoBehaviour{
     public TurretBlueprint DuckTurret;
     public TurretBlueprint LaserBeamerTurret;
     public TurretBlueprint SnipeTurret;
+    public TurretBlueprint GatlingTurret;
     PlaceTurret placeTurret;
     void Start(){
         placeTurret = PlaceTurret.instance;
@@ -26,9 +27,13 @@ public class Shop : MonoBehaviour{
 
     }
     public void purchaseSnipeTurret(){
-        Debug.Log("Turret Selected 3");
+        Debug.Log("Turret Selected 4");
         placeTurret.selectTurretToPlace(SnipeTurret);
 
+    }
+    public void purchaseGatlingTurret(){
+        Debug.Log("Turret Selected 5");
+        placeTurret.selectTurretToPlace(GatlingTurret);
     }
     // Update is called once per frame
     void Update()
