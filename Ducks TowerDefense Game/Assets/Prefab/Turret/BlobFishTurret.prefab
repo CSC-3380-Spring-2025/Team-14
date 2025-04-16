@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 1995113150912199171}
   - component: {fileID: -6792827348415527276}
   - component: {fileID: -7464277593575648103}
+  - component: {fileID: 2570440943740812741}
   m_Layer: 0
   m_Name: BlobFishTurret
   m_TagString: Untagged
@@ -350,6 +351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeUI: {fileID: 7439745040409672874}
   upgradeButton: {fileID: 532442901330300448}
+  sellButton: {fileID: 2530330632391673780}
+  purchaseCost: 100
   range: 3
   fireRate: 2
   bulletDamage: 50
@@ -420,6 +423,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.93, y: 4.24}
   m_EdgeRadius: 0
+--- !u!114 &2570440943740812741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070109408102815394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdf86e16e87a2a468e381f2f3a7fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sellUI: {fileID: 7439745040409672874}
 --- !u!1 &7253743598480158496
 GameObject:
   m_ObjectHideFlags: 0

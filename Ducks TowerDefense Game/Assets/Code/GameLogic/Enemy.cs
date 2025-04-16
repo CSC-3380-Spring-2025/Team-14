@@ -22,6 +22,11 @@ public class Enemy : MonoBehaviour{
     private bool isDestroyed = false; // Flag to prevent multiple destruction
     public bool IsDestroyed => isDestroyed; // Public getter for the flag
 
+    [Header("Regen hp")]
+    public float regenRate = 2f;
+    public float regenInterval = 1f;
+    public float maxHealth = 100f;
+    public float regenTimer = 0f;
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     void Start(){
@@ -78,6 +83,7 @@ public class Enemy : MonoBehaviour{
 // Update is called once per frame, updating target to each waypoint
 //--------------------------------------------------------------------
     void Update(){
+        RegenerateHealth();
         //if the target is null, return
         if(target == null) return;
 
@@ -99,9 +105,25 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
+//--------------------------------------------------------------------
+    void RegenerateHealth() {
+    if (health <= 0) return; 
 
+    regenTimer += Time.deltaTime;
 
+    if (regenTimer >= regenInterval) {
+        regenTimer = 0f;
+        health += regenRate;
 
+        if (health > maxHealth)
+            health = maxHealth;
+
+        // Optional: update health bar
+        if (healthBar != null)
+            healthBar.fillAmount = health / maxHealth;
+    }
+}
+//--------------------------------------------------------------------
 
 // GetNextWayPoint is called to find the next waypoint in the path
 //--------------------------------------------------------------------
