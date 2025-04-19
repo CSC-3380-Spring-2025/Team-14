@@ -1,34 +1,63 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour{
-    public float startSpeed = 3f;//Speed
-    private float speed;
 
+    private Enemy enemy; // Reference to the Enemy component
+
+
+    // ======== CORE STATS (All Enemies) ========
+    [Header("Basic Attributes")]
+    public float startSpeed = 3f;//Speed
+    public float startHealth = 100; // Initial health of the enemy
+    public int value = 50; // Money value of the enemy when defeated
+    public Image healthBar; // Reference to the health bar UI element
+    private float speed; // Current speed of the enemy
+    private float health; // Health of the enemy
+
+
+    // ======== WAYPOINTS ========
     private Transform target;//next target of wavepoint
     private int wavepointIndex  = 0;//incrementing to make sure we have the correct number of waypoint
     public static int enemiesRemaining = 0; // Static variable to track the number of enemies remaining
     private  WaveTimer waveTimer; // Reference to the WaveTimer script
 
-    public float startHealth = 100; // Initial health of the enemy
-    private float health; // Health of the enemy
 
-    public int value = 50;
+   
+    // ======== BOSS TYPE SWITCHES ========
+    [Header("Boss Type Configuration")]
+    public bool isRegenBoss = false;
+    public bool isResurrectionBoss = false;
 
-    private Enemy enemy;
 
-    public Image healthBar; // Reference to the health bar UI element
 
-    private bool isDestroyed = false; // Flag to prevent multiple destruction
-    public bool IsDestroyed => isDestroyed; // Public getter for the flag
+    // ======== REGEN BOSS SPECIFIC ========
+    [Header("Regeneration Boss Settings")]
+    public float regenRate = 50f; // Amount of health to regenerate per interval
+    public float regenInterval = 3.5f; // Time interval for health regeneration
+    public float regenTimer = 0f; // Timer for health regeneration
 
-    [Header("Regen hp")]
-    public float regenRate = 2f;
-    public float regenInterval = 1f;
-    public float maxHealth = 100f;
-    public float regenTimer = 0f;
+
+
+    // ======== RESURRECTION BOSS SPECIFIC ========
+    [Header("Resurrection Boss Settings")]
+    public float resurrectHealthPercent = 1.0f; // Percentage of health to restore upon resurrection (1.0 = 100%)
+    public float resurrectDelay = 3f;
+    public int maxResurrections = 1;
+    public float invulnerabilityDuration = 1f;
+    private bool isInvulnerable;
+    private int resurrectionCount = 0;
+    private bool isDead = false; // Flag to check if the enemy is dead for resurrection logic
+    public bool IsDead => isDead; // Method to check if the enemy is dead for other scripts
+
+
+    private bool isDestroyed = false; // Flag to check if the enemy is destroyed for the Endpath method
+    public bool IsDestroyed => isDestroyed; // Property to check if the enemy is destroyed for other scripts
+
+
 // Start is called once before the first execution of Update after the MonoBehaviour is created
-//--------------------------------------------------------------------
     void Start(){
         speed = startSpeed;
         health = startHealth; // Initialize health to the starting value
@@ -49,7 +78,7 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     public void TakeDamage( float amount ){
-        if (isDestroyed) return; // Prevent further damage if already destroyed
+        if (isDestroyed || isDead || isInvulnerable) return; // Prevent further damage if already destroyed
 
         health -= amount;
 
@@ -67,26 +96,87 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void Die(){
-        if (isDestroyed) return; // Ensure Die() is only called once
+        if (isDestroyed || isDead) return; // Ensure Die() is only called once
 
+        // Resurrection Boss Logic
+        if (isResurrectionBoss && resurrectionCount < maxResurrections){
+            StartCoroutine(Resurrect());
+            return;
+        }
+
+        // Standard Death Logic
         isDestroyed = true; // Mark the enemy as destroyed
         PlayerStats.Money += value; // Add money to the player's stats
         enemiesRemaining--;
 
-    if (enemiesRemaining <= 0 && waveTimer != null) {
-        waveTimer.OnWaveDefeated();
-    }
+        if (enemiesRemaining <= 0 && waveTimer != null) {
+            waveTimer.OnWaveDefeated();
+        }
         Destroy(gameObject); // Destroy the enemy
     }   
 //--------------------------------------------------------------------
 
+    IEnumerator Resurrect() {
+        // Mark as dead and increment count
+        isDead = true;
+        resurrectionCount++;
+        
+        // Store references to components
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>(); 
+        Collider2D collider2D = GetComponent<Collider2D>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        
+        // Disable visuals and physics
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
+        if (collider2D != null) collider2D.enabled = false;
+        if (rb != null) rb.simulated = false; // Important for 2D physics
+        
+        // Optional: Play death particles
+        //if (deathParticles != null) deathParticles.Play();
+        
+        // Wait for resurrection delay
+        yield return new WaitForSeconds(resurrectDelay);
+        
+        // Resurrection
+        isDead = false;
+        health = startHealth * resurrectHealthPercent;
+        
+        // Re-enable components
+        if (spriteRenderer != null) spriteRenderer.enabled = true;
+        if (collider2D != null) collider2D.enabled = true;
+        if (rb != null) rb.simulated = true;
+        
+        // Update health UI
+        if (healthBar != null) {
+            healthBar.fillAmount = health / startHealth;
+            healthBar.gameObject.SetActive(true);
+        }
+        
+        // Optional: Play resurrection particles
+        //if (resurrectParticles != null) resurrectParticles.Play();
+
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        isInvulnerable = false;
+    }
+
 // Update is called once per frame, updating target to each waypoint
 //--------------------------------------------------------------------
     void Update(){
-        RegenerateHealth();
-        //if the target is null, return
+        if (isDead) return; // Skip if currently "dead" (resurrecting)
+
+        // Regen Boss Logic
+        if(isRegenBoss) {
+            RegenerateHealth();
+             // If the enemy is a boss, regenerate health and return
+                    // This prevents the enemy from moving and allows for health regeneration
+        }
+
+        // Ff the target is null, return
+        // Target is the next waypoint
         if(target == null) return;
 
+        //if the target is not null, then we are going to move towards the target
         //dir is the direction of the target - the current position of the enemy
         //transform.translate is the movement of the enemy in the direction of the target
         Vector3 dir = target.position - transform.position; //find the next wave length, so we can move
@@ -100,8 +190,6 @@ public class Enemy : MonoBehaviour{
             //if the character is lagging, you might need to change 0.2f to something else like 0.4f
             GetNextWayPoint();//new target will be the next waypoint
         }
-        enemy.speed = enemy.startSpeed;
-
     }
 //--------------------------------------------------------------------
 
@@ -111,16 +199,19 @@ public class Enemy : MonoBehaviour{
 
     regenTimer += Time.deltaTime;
 
+    // Check if the regeneration timer has reached the interval
+    // If so, regenerate health and reset the timer
+    // Also ensure health does not exceed the starting health
     if (regenTimer >= regenInterval) {
         regenTimer = 0f;
         health += regenRate;
 
-        if (health > maxHealth)
-            health = maxHealth;
+        if (health > startHealth) 
+            health = startHealth;
 
         // Optional: update health bar
         if (healthBar != null)
-            healthBar.fillAmount = health / maxHealth;
+            healthBar.fillAmount = health / startHealth; // Use startHealth here as well
     }
 }
 //--------------------------------------------------------------------
