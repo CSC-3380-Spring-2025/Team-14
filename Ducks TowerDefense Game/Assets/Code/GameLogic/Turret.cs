@@ -81,12 +81,14 @@ public class Turret : MonoBehaviour{
 //--------------------------------------------------------------------
     void UpdateTarget(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag); //find all the enemies and store it into this array
-
-        float shortestDistance = Mathf.Infinity; //Set the shortest distance to infinity
         GameObject nearestEnemy = null; //Set the nearest enemy to null
+        float shortestDistance = Mathf.Infinity; //Set the shortest distance to infinity
 
         // Find the nearest enemy within the range of the turret
         foreach(GameObject enemy in enemies){
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            if (enemyScript == null || enemyScript.IsDead) continue;
+
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position); //find the distance between the turret and the enemy
             //if the distance to the enemy is less then the shortest distance, set the shortest distance to the distance to the enemy and set the nearest enemy to the enemy
             if(distanceToEnemy < shortestDistance){
@@ -121,31 +123,31 @@ public class Turret : MonoBehaviour{
 // Update is called once per frame
 //--------------------------------------------------------------------
     void Update(){
-        if(target == null) {//if there is no target, exit the method
-                if ( useLaser){
+        //if there is no target, exit the method
+        if(target == null) {
+            if (useLaser){
                 if(lineRenderer.enabled)
                     lineRenderer.enabled = false; 
             }
-            return;
-            
+            return;            
         }
 
-        LockOnTarget();
-       
+        LockOnTarget(); // Lock the turret to the target
 
-
-         // Fire the turret
+        // if the turret is using a laser, fire the laser
         if (useLaser){
             Laser();
             return;
-        } else {
-            // Fire the turret
-        if(fireCountDown <= 0f){
-            Shoot();
-            fireCountDown = 1f / fireRate;
-        }
+        } 
 
-        fireCountDown -= Time.deltaTime; // Decrease the fire countdown
+        // If the turret is not using a laser, fire bullets
+        else {
+            // Fire the turret
+            if(fireCountDown <= 0f){
+                Shoot();
+                fireCountDown = 1f / fireRate;
+            }
+            fireCountDown -= Time.deltaTime; // Decrease the fire countdown
         }
     }
 //--------------------------------------------------------------------
