@@ -28720,7 +28720,11 @@ MonoBehaviour:
   - {fileID: 6440495065815521116, guid: cef25e67169422847b89bdff835cc69b, type: 3}
   - {fileID: 6440495065815521116, guid: c1da371d832ac1843b3d28fb11dbcb22, type: 3}
   - {fileID: 6440495065815521116, guid: 4ba51e143ed0b2148840145827700ab5, type: 3}
+  - {fileID: 6440495065815521116, guid: 8220c255279afad4eb71884dc524c617, type: 3}
+  - {fileID: 6440495065815521116, guid: 72d5a7bdb4a8a9c4280aad1ee03e1cda, type: 3}
+  - {fileID: 6440495065815521116, guid: 22f46939674063b458e09babe6266204, type: 3}
   spawnPoint: {fileID: 6028584576362435858}
+  baseEnemies: 2
 --- !u!4 &1100544010
 Transform:
   m_ObjectHideFlags: 0
@@ -56976,6 +56980,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 879768621}
   - {fileID: 1100544010}
+  - {fileID: 879768621}
   - {fileID: 1597474741}
