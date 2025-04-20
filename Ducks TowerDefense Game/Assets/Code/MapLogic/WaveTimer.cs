@@ -8,7 +8,8 @@ public class WaveTimer : MonoBehaviour{
     private Spawner spawner; // Reference to the Spawner script
     private ShopManager shopManager; // Reference to the ShopManager script
     private bool isWaveActive = false; // Flag to check if the wave is active, false means the wave is not active, true means the wave is active
-
+    
+    public Economy economy;
 
 
 //Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -72,7 +73,7 @@ public class WaveTimer : MonoBehaviour{
         Debug.Log("Wave defeated! Enabling Continue Button.");
         isWaveActive = false; // Wave is no longer active
         continueButton.interactable = true; // Enable the button
-        OnRoundEnd(currentWave): //rewards the user with money
+        OnRoundEnd(currentWave); //rewards the user with money
         
     }
 //--------------------------------------------------------------------
@@ -136,7 +137,7 @@ public bool IsWaveActive() {
     float scalingFactor = 1.15f;    // How much it scales per round
 
     // Calculate reward: exponential growth
-    int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(scalingFactor, currentRound));
+    int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(scalingFactor, currentWave));
 
     economy.AddMoney(reward);
     Debug.Log($"Round {currentWave} complete! Earned ${reward}.");
