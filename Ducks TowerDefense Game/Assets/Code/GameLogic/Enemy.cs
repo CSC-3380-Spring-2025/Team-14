@@ -194,25 +194,25 @@ public class Enemy : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void RegenerateHealth() {
-    if (health <= 0) return; 
+        if (health <= 0) return; 
 
-    regenTimer += Time.deltaTime;
+        regenTimer += Time.deltaTime;
 
-    // Check if the regeneration timer has reached the interval
-    // If so, regenerate health and reset the timer
-    // Also ensure health does not exceed the starting health
-    if (regenTimer >= regenInterval) {
-        regenTimer = 0f;
-        health += regenRate;
+        // Check if the regeneration timer has reached the interval
+        // If so, regenerate health and reset the timer
+        // Also ensure health does not exceed the starting health
+        if (regenTimer >= regenInterval) {
+            regenTimer = 0f;
+            health += regenRate;
 
-        if (health > startHealth) 
-            health = startHealth;
+            if (health > startHealth) 
+                health = startHealth;
 
-        // Optional: update health bar
-        if (healthBar != null)
-            healthBar.fillAmount = health / startHealth; // Use startHealth here as well
+            // Optional: update health bar
+            if (healthBar != null)
+                healthBar.fillAmount = health / startHealth; // Use startHealth here as well
+        }
     }
-}
 //--------------------------------------------------------------------
 
 // GetNextWayPoint is called to find the next waypoint in the path

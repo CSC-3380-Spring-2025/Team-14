@@ -166,18 +166,18 @@ public class Turret : MonoBehaviour{
 //--------------------------------------------------------------------
 
 //--------------------------------------------------------------------
- void Laser() {
-    if (targetEnemy == null || targetEnemy.IsDestroyed) return; // Ensure the target is valid and not destroyed
+    void Laser() {
+        if (targetEnemy == null || targetEnemy.IsDestroyed) return; // Ensure the target is valid and not destroyed
 
-    targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime); // Apply damage over time
-    targetEnemy.Slow(slowAmount); // Apply slow effect
+        targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime); // Apply damage over time
+        targetEnemy.Slow(slowAmount); // Apply slow effect
 
-    if (!lineRenderer.enabled)
-        lineRenderer.enabled = true;
+        if (!lineRenderer.enabled)
+            lineRenderer.enabled = true;
 
-    lineRenderer.SetPosition(0, firePoint.position);
-    lineRenderer.SetPosition(1, target.position);
-}
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+    }
 //--------------------------------------------------------------------
 // Shoot is called to instantiate a bullet, set its position, and seek the target
 //--------------------------------------------------------------------
@@ -219,12 +219,12 @@ public class Turret : MonoBehaviour{
     }
     
     public void SellTurret(){
-    int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
-    PlayerStats.Money += sellAmount;
+        int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
+        PlayerStats.Money += sellAmount;
 
-    Debug.Log($"Turret sold for {sellAmount}");
+        Debug.Log($"Turret sold for {sellAmount}");
 
-    Destroy(gameObject);
+        Destroy(gameObject);
     }
     private int CalculateCost(){
         return Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
