@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6002331069568195632}
   - component: {fileID: -2854649869031435372}
   m_Layer: 0
-  m_Name: Enemy 4
+  m_Name: Enemy 6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.800191, g: 0.082858644, b: 0.9245283, a: 1}
+  m_Color: {r: 0.2981131, g: 0.2981131, b: 0.2981131, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,17 +178,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 3
-  startHealth: 500
+  startHealth: 50
   value: 300
   healthBar: {fileID: 287628625345971527}
-  isRegenBoss: 1
+  isRegenBoss: 0
   isResurrectionBoss: 0
-  regenRate: 50
-  regenInterval: 3.5
+  isEmperorBoss: 1
+  regenRate: 5
+  regenInterval: 1
   regenTimer: 0
-  resurrectHealthPercent: 0.5
+  resurrectHealthPercent: 1
   resurrectDelay: 3
   maxResurrections: 1
+  invulnerabilityDuration: 1
 --- !u!61 &-2854649869031435372
 BoxCollider2D:
   m_ObjectHideFlags: 0

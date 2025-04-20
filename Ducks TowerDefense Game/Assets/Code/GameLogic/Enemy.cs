@@ -28,12 +28,13 @@ public class Enemy : MonoBehaviour{
    
     // ======== BOSS TYPE SWITCHES ========
     [Header("Boss Type Configuration")]
-    public bool isRegenBoss = false;
-    public bool isResurrectionBoss = false;
+    public bool isRegenBoss = false; // Flag to check if the enemy is a Regeneration Boss
+    public bool isResurrectionBoss = false; // Flag to check if the enemy is a Resurrection Boss
+    public bool isEmperorBoss = false; // Flag to check if the enemy is an Emperor Boss - Emperor Boss is easy, Basic Enemy, increase health, and in spawner script create a loop to spawn enemy before emperor
 
 
 
-    // ======== REGEN BOSS SPECIFIC ========
+    // ======== REGENERATION BOSS SPECIFIC ========
     [Header("Regeneration Boss Settings")]
     public float regenRate = 50f; // Amount of health to regenerate per interval
     public float regenInterval = 3.5f; // Time interval for health regeneration
@@ -51,7 +52,7 @@ public class Enemy : MonoBehaviour{
     private int resurrectionCount = 0;
     private bool isDead = false; // Flag to check if the enemy is dead for resurrection logic
     public bool IsDead => isDead; // Method to check if the enemy is dead for other scripts
-
+    
 
     private bool isDestroyed = false; // Flag to check if the enemy is destroyed for the Endpath method
     public bool IsDestroyed => isDestroyed; // Property to check if the enemy is destroyed for other scripts
@@ -168,11 +169,9 @@ public class Enemy : MonoBehaviour{
         // Regen Boss Logic
         if(isRegenBoss) {
             RegenerateHealth();
-             // If the enemy is a boss, regenerate health and return
-                    // This prevents the enemy from moving and allows for health regeneration
         }
 
-        // Ff the target is null, return
+        // Target is null if the enemy is destroyed or dead
         // Target is the next waypoint
         if(target == null) return;
 

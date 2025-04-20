@@ -4,25 +4,28 @@ using System.Collections;
 public class Spawner : MonoBehaviour{
     public GameObject[] enemyPrefabs; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
-    private int waveNumber = 0; // Current wave number
-    private int addPreviousEnemy = 0; // Number of enemies remaining in the current wave
+   
+    public int baseEnemies = 2;
 
-    
+    private int waveNumber = 0; // Current wave number
+    private int enemiesInCurrentWave = 0;
 
 
     
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     public void StartWave(int wave){
-        Debug.Log($"Starting wave {wave}");
         waveNumber = wave; // Update the wave number
+        enemiesInCurrentWave = CalculateEnemiesForWave(waveNumber);
         Enemy.enemiesRemaining = 0; // Reset the enemy counter
+        Debug.Log($"Starting wave {waveNumber} with {enemiesInCurrentWave} enemies");
         StartCoroutine(SpawnWave()); // Start spawning
     }
 //--------------------------------------------------------------------
 
 
-
+    private int CalculateEnemiesForWave(int wave) => baseEnemies + Mathf.FloorToInt(wave  * (1 + wave * 0.1f));
+    
 
 
 // SpawnWave is called to spawn a wave of enemies
@@ -31,13 +34,40 @@ public class Spawner : MonoBehaviour{
 //--------------------------------------------------------------------
     IEnumerator SpawnWave(){
         Debug.Log("Spawning wave...");
-        // Spawn enemies in the wave
-        int addEnemy = Random.Range(0, 3);
-        addPreviousEnemy = addEnemy + waveNumber + addPreviousEnemy; // Calculate the number of enemies to spawn
-        for (int i = 0; i < addPreviousEnemy; i++){
-            Debug.Log($"Spawning enemy {i + 1} of {addPreviousEnemy}");
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.3f);
+        bool regenBoss = (waveNumber % 2 == 0) && waveNumber > 0; // Check if it's a regen boss wave
+        bool resurBoss = (waveNumber % 3 == 0) && waveNumber > 0; // Check if it's a resurrection boss wave
+        bool isEmperorBoss = (waveNumber % 4 == 0) && waveNumber > 0; // Check if it's an emperor boss wave
+
+        // == SPAWN BOSS ==
+        if(regenBoss && enemyPrefabs.Length > 3){
+            SpawnEnemy(enemyPrefabs[3]); // Spawn boss
+            yield return new WaitForSeconds(1f); // Extra delay for boss
+            enemiesInCurrentWave--; // Boss counts as one enemy
+        }
+        if(resurBoss && enemyPrefabs.Length > 4){
+            SpawnEnemy(enemyPrefabs[4]); // Spawn boss
+            yield return new WaitForSeconds(1f); // Extra delay for boss
+            enemiesInCurrentWave--; // Boss counts as one enemy
+        }
+        if(isEmperorBoss && enemyPrefabs.Length > 5){
+            for (int i = 0; i < 5; i++){
+                SpawnEnemy(enemyPrefabs[1]); // Spawn boss minions
+                yield return new WaitForSeconds(0.5f); // Extra delay for boss minions
+            }
+            SpawnEnemy(enemyPrefabs[5]); // Spawn boss
+            yield return new WaitForSeconds(1f); // Extra delay for boss
+            enemiesInCurrentWave--; // Boss counts as one enemy
+        }
+        // == END SPAWN BOSS ==
+
+        // Spawn regular enemies
+        for (int i = 0; i < enemiesInCurrentWave; i++){
+            int randomEnemy = Random.Range(0, 3); // Only regular enemies (0-2)
+            SpawnEnemy(enemyPrefabs[randomEnemy]);
+            
+            // Variable spawn delay that decreases as wave progresses
+            float delay = Mathf.Max(0.1f, 0.5f - (waveNumber * 0.02f));
+            yield return new WaitForSeconds(delay);
         }
     }
 //--------------------------------------------------------------------
@@ -48,10 +78,11 @@ public class Spawner : MonoBehaviour{
 
 // SpawnEnemy is called to spawn a single enemy
 //--------------------------------------------------------------------
-    void SpawnEnemy(){
-        int index = Random.Range(0, enemyPrefabs.Length);
-        GameObject prefabToSpawn = enemyPrefabs[index];
-        Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation); // Spawn the enemy at the spawn point
+    void SpawnEnemy(GameObject enemyPrefab){
+        if(enemyPrefab == null) return; // Check if the enemy prefab is assigned
+
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Enemy.enemiesRemaining++; // Increment enemy counter
     }
 //--------------------------------------------------------------------
 }//end of class
