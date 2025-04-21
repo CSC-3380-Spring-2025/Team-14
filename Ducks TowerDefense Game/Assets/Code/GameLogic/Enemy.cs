@@ -58,6 +58,8 @@ public class Enemy : MonoBehaviour{
     private bool isDestroyed = false; // Flag to check if the enemy is destroyed for the Endpath method
     public bool IsDestroyed => isDestroyed; // Property to check if the enemy is destroyed for other scripts
 
+    private bool isFrozen = false;
+
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
@@ -160,6 +162,21 @@ public class Enemy : MonoBehaviour{
         isInvulnerable = true;
         yield return new WaitForSeconds(invulnerabilityDuration);
         isInvulnerable = false;
+    }
+
+    public void Freeze(float duration){
+        if (isFrozen) return;
+        StartCoroutine(FreezeCoroutine(duration));
+    }
+    private IEnumerator FreezeCoroutine(float duration){
+        isFrozen = true;
+        float originalSpeed = speed;
+        speed = 0f;
+
+        yield return new WaitForSeconds(duration);
+
+        speed = originalSpeed;
+        isFrozen = false;
     }
 
 // Update is called once per frame, updating target to each waypoint
