@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 //Ep 4, lock the turret to enemy around 15 min
 //Ep 5, creating a bullet and setting its position, around 6 min
@@ -39,7 +40,6 @@ public class Turret : MonoBehaviour{
     
 
 
-
     //Basically setup a header on unity
     [Header("Unity SetUp Fields")]//Bascially setup a header on unity
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
@@ -51,7 +51,11 @@ public class Turret : MonoBehaviour{
 
     private WaveTimer waveTimer; // Reference to the WaveTimer script
 
-
+    [Header("Freeze Turret")]
+    public bool canFreeze = false;
+    public float freezeDuration = 2f;
+    private HashSet<Enemy> frozenEnemies = new HashSet<Enemy>();
+    
 
 
 
@@ -183,13 +187,29 @@ public class Turret : MonoBehaviour{
 //--------------------------------------------------------------------
     void Shoot() {
         if (target == null) return; // Ensure there is a valid target
-
+       if (canFreeze) {
+        if (frozenEnemies.Contains(targetEnemy)) {
+            target = null;
+            targetEnemy = null;
+            return;
+        }
+         if (lineRenderer != null) {
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+        lineRenderer.enabled = true;
+    }
+        targetEnemy.Freeze(freezeDuration);
+        frozenEnemies.Add(targetEnemy);
+        target = null;
+        targetEnemy = null;
+    }
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Instantiate bullet
         Bullet bullet = bulletGO.GetComponent<Bullet>(); // Get the bullet component
 
         if (bullet != null) bullet.Seek(target); // Assign the target to the bullet
         bullet.damage = bulletDamage;
     }
+    
 //--------------------------------------------------------------------
 
     public void OpenUpgradeUI(){
