@@ -56,12 +56,22 @@ public class Turret : MonoBehaviour{
     public float freezeDuration = 2f;
     private HashSet<Enemy> frozenEnemies = new HashSet<Enemy>();
     
+    [Header("Nuke")]
+    public bool isNuke = false;
+    public float nukeDamage = 99999f;
+
 
 
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     void Start(){
+        if (isNuke)
+    {
+        KillAllEnemies();
+        Destroy(gameObject);
+        return;
+    }
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every 0.5 seconds
 
         // Automatically find the WaveTimer in the scene
@@ -257,4 +267,16 @@ public class Turret : MonoBehaviour{
     private float CalculateRange(){
         return  targetingRangeBase * Mathf.Pow(level, .4f);
     }
+    private void KillAllEnemies()
+{
+    GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+    foreach (GameObject enemy in enemies)
+    {
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        if (enemyScript != null && !enemyScript.IsDestroyed)
+        {
+            enemyScript.TakeDamage(nukeDamage);
+        }
+    }
+}
 }//end of class

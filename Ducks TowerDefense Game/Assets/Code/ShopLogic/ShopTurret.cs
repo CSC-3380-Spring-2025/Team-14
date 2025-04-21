@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour{
     public TurretBlueprint SnipeTurret;
     public TurretBlueprint GatlingTurret;
     public TurretBlueprint FreezeTurret;
+    public TurretBlueprint NukeTurret;
     PlaceTurret placeTurret;
     void Start(){
         placeTurret = PlaceTurret.instance;
@@ -39,6 +40,10 @@ public class Shop : MonoBehaviour{
     public void purchaseFreezeTurret(){
         Debug.Log("Turret Selected 6");
         placeTurret.selectTurretToPlace(FreezeTurret);
+    }
+    public void purchaseNukeTurret(){
+        Debug.Log("Nuke Selected");
+        placeTurret.selectTurretToPlace(NukeTurret);
     }
     // Update is called once per frame
     void Update()
