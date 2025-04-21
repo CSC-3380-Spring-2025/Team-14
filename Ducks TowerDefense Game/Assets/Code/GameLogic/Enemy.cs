@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.AI;
 
+// This script is responsible for enemy behavior, including movement, health management, and special abilities.
 public class Enemy : MonoBehaviour{
 
     private Enemy enemy; // Reference to the Enemy component
