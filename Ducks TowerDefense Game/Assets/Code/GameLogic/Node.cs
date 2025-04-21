@@ -44,9 +44,10 @@ public class Node : MonoBehaviour{
         //reference PlaceTurret
         //stores placeTurret.BuildTurret() into turretBuilding and instantiate it
         placeTurret.PlaceTurretOn(this);
+         if (turret != null) {
         _turret = turret.GetComponent<Turret>();
         _turret.OpenUpgradeUI();
-        
+         }
     }
 
 
