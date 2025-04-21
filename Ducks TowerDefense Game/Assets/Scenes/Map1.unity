@@ -3157,7 +3157,7 @@ GameObject:
   - component: {fileID: 101406870}
   - component: {fileID: 101406869}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: FreezeTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3229,7 +3229,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470149017}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: Purchase
+        m_MethodName: purchaseFreezeTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3259,8 +3259,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8926395016754159838, guid: 22bdd736e4060014b98ee4ecc29a6229, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12833,7 +12833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38290,6 +38290,9 @@ MonoBehaviour:
   GatlingTurret:
     prefab: {fileID: 2508852577710790426, guid: 19fa233747f57804bbbe539586179cab, type: 3}
     cost: 400
+  FreezeTurret:
+    prefab: {fileID: 5573328866541297056, guid: 85c9072e5ba8279489141eb5c99c2356, type: 3}
+    cost: 300
 --- !u!1001 &1470846396
 PrefabInstance:
   m_ObjectHideFlags: 0
