@@ -3,6 +3,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 //Ep 4, lock the turret to enemy around 15 min
 //Ep 5, creating a bullet and setting its position, around 6 min
@@ -18,6 +19,7 @@ public class Turret : MonoBehaviour{
     private float fireRateBase;
     private float targetingRangeBase;
     private int baseCost = 100;
+    
     
 
     //Attributes of the turret
@@ -70,6 +72,10 @@ public class Turret : MonoBehaviour{
     {
         KillAllEnemies();
         Destroy(gameObject);
+        if (waveTimer != null && waveTimer.IsWaveActive())
+    {
+        waveTimer.OnWaveDefeated();
+    }
         return;
     }
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every 0.5 seconds
@@ -206,13 +212,14 @@ public class Turret : MonoBehaviour{
          if (lineRenderer != null) {
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-        lineRenderer.enabled = true;
+        StartCoroutine(ShowFreezeLaser());
     }
         targetEnemy.Freeze(freezeDuration);
         frozenEnemies.Add(targetEnemy);
         target = null;
         targetEnemy = null;
     }
+    
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Instantiate bullet
         Bullet bullet = bulletGO.GetComponent<Bullet>(); // Get the bullet component
 
@@ -279,4 +286,11 @@ public class Turret : MonoBehaviour{
         }
     }
 }
+    private IEnumerator ShowFreezeLaser()
+    {
+        lineRenderer.enabled = true; 
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(.5f);
+        lineRenderer.enabled = false;
+    }
 }//end of class
