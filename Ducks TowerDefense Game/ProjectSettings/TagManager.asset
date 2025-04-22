@@ -45,8 +45,5 @@ TagManager:
   - name: Coin Currency
     uniqueID: 1249190907
     locked: 0
-  - name: UI
-    uniqueID: 4273254901
-    locked: 0
   m_RenderingLayers:
   - Default
