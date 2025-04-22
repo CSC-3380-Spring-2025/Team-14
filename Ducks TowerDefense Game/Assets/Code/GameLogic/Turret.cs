@@ -70,21 +70,24 @@ public class Turret : MonoBehaviour{
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     void Start(){
-        if (isNuke)
-    {
-        KillAllEnemies();
-        Destroy(gameObject);
-        if (waveTimer != null && waveTimer.IsWaveActive())
-    {
-        waveTimer.OnWaveDefeated();
-    }
-        return;
-    }
+       
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every 0.5 seconds
 
         // Automatically find the WaveTimer in the scene
         waveTimer = GameObject.Find("GameLogic").GetComponent<WaveTimer>();
         if (waveTimer == null) Debug.LogError("WaveTimer not found!");
+        if (waveTimer == null) Debug.LogError("WaveTimer not found!");
+
+        if (isNuke)
+    {
+        KillAllEnemies();
+        if (waveTimer != null && waveTimer.IsWaveActive())
+        {
+            waveTimer.OnWaveDefeated();
+        }
+        Destroy(gameObject);
+        return;
+    }
         fireRateBase = fireRate;
         targetingRangeBase = range; 
         upgradeButton.onClick.AddListener(Upgrade);
