@@ -1,44 +1,35 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI moneyText;
-    
-    void Update()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        // Reset money when D is pressed
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Economy.Instance.AddMoney(-Economy.Instance.Money); // Set to 0
-            Economy.Instance.AddMoney(100); // Reset to default
-        }
+        
     }
 
-    //When you come back to the main menu from another scene, this ensures your money display (moneyText) shows the current amount
-    //OnEnable() runs every time the GameObject becomes active (including when returning to the menu scene)
-    void OnEnable()
-    {
-        if (Economy.Instance != null)
-        {
-            Economy.Instance.RefreshUI(moneyText);
-        }
-    }
-
-    public void PlayGame() {
+    //Currently will load the first map and immediately play it
+    //Goal of this is to load a map selector and estart the game
+    public void playGame() {
         SceneManager.LoadScene("Map Selection");
     }
 
-    public void PlayMiniGameSlots() {
-        SceneManager.LoadScene("SlotMachine", LoadSceneMode.Single);
+    public void playMiniGameSlots() {
+        SceneManager.LoadScene("slotmachinegame");
     }
 
-    public void Options() {
+    //Quits the game
+    public void quitGame() {
+        //Debug code one line down, remove in final
+        Debug.Log("QUIT!");
 
-    }
-
-    public void QuitGame() {
         Application.Quit();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
