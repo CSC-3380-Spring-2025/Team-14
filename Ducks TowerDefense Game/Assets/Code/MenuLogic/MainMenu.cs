@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI moneyText;
-    
+    public GameObject ShopUI;
+
+    void Start()
+    {
+        ShopUI.SetActive(false); // Hide the shop UI at the start
+    }
     void Update()
     {
         // Reset money when D is pressed
@@ -40,5 +45,13 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
+    }
+    public void OpenShop() {
+        ShopUI.SetActive(true); // Show the shop UI
+        Time.timeScale = 0; // Pause the game
+    }
+    public void CloseShop() {
+        ShopUI.SetActive(false); // Hide the shop UI
+        Time.timeScale = 1; // Resume the game
     }
 }

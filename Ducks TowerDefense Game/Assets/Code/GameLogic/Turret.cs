@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour{
     
     
 
-    //Attributes of the turret
+    // ======== CORE STATS ========
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
     public float fireRate = 2f; //Rate of fire (How Fast turret fire)
@@ -32,18 +32,8 @@ public class Turret : MonoBehaviour{
     public int bulletDamage = 50;
 
 
-    //laser attributes
-    [Header("Use Laser")]
-    public bool useLaser = false; 
-    public LineRenderer lineRenderer;
-    public int DamageOverTime = 30; // each sec the laser does 30 dmg 
-    public float slowAmount = .5f;
-
-    
-
-
-    //Basically setup a header on unity
-    [Header("Unity SetUp Fields")]//Bascially setup a header on unity
+    // ======== LOCK TO ENEMY ========
+    [Header("Enemy Tag")] // Correctly placed above public fields
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
     public float rotationSpeed = 30f; // Speed at which the turret rotates
     public GameObject bulletPrefab; //Set an asset on unity to the bullet prefab, basically setting up the bullet
@@ -53,11 +43,23 @@ public class Turret : MonoBehaviour{
 
     private WaveTimer waveTimer; // Reference to the WaveTimer script
 
+
+    
+    // ======== LASER STATS ========
+    [Header("Use Laser")]
+    public bool useLaser = false; 
+    public LineRenderer lineRenderer;
+    public int DamageOverTime = 30; // each sec the laser does 30 dmg 
+    public float slowAmount = .5f;
+
+
+    // ======== FREEZE TURRET ========
     [Header("Freeze Turret")]
     public bool canFreeze = false;
     public float freezeDuration = 2f;
     private HashSet<Enemy> frozenEnemies = new HashSet<Enemy>();
     
+    // ======== NUKE TURRET ========
     [Header("Nuke")]
     public bool isNuke = false;
     public float nukeDamage = 99999f;
