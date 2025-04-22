@@ -113,6 +113,8 @@ public class WaveTimer : MonoBehaviour
         }
         
         int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
+        // int reward = 0;
+        Debug.Log(reward);
         Economy.Instance.AddMoney(reward);
     }
 

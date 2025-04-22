@@ -18,6 +18,7 @@ public class Economy : MonoBehaviour
         get => _money;
         private set
         {
+            // Debug.Log("value is " + value);
             _money = value;
             OnMoneyChanged?.Invoke(_money);
             UpdateMoneyText();

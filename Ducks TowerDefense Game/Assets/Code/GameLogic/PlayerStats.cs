@@ -66,6 +66,7 @@ public class PlayerStats : MonoBehaviour {
             Debug.LogError("MoneyText is not assigned in the inspector.");
             return;
         }
+        Debug.Log("current money is " + currentMoney);
         moneyText.text = $"{currentMoney}";
     }
 
