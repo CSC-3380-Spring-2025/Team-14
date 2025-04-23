@@ -28,6 +28,7 @@ public class PauseGame : MonoBehaviour
     }
 
     private void Update(){
+        if (PausePanel == null) return;
         if(Input.GetKeyDown("escape")){
             if (ifPause){
                 GameResume();

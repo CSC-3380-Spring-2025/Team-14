@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 57175646}
   - component: {fileID: 57175645}
   m_Layer: 5
-  m_Name: Nuke
+  m_Name: NukeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 243868291}
   - component: {fileID: 243868290}
   m_Layer: 5
-  m_Name: TimeStop
+  m_Name: FreezeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,7 +681,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 243868291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2116758484}
+        m_TargetAssemblyTypeName: MenuShop, Assembly-CSharp
+        m_MethodName: PurchaseFreezeTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &243868291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1078,7 @@ RectTransform:
   - {fileID: 896302777}
   - {fileID: 1484394858}
   - {fileID: 2090695091}
+  - {fileID: 2116758483}
   - {fileID: 1451483457}
   - {fileID: 1715657116}
   m_Father: {fileID: 0}
@@ -1631,7 +1644,7 @@ GameObject:
   - component: {fileID: 538097112}
   - component: {fileID: 538097111}
   m_Layer: 5
-  m_Name: Time Stop
+  m_Name: FreezeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,7 +2659,7 @@ GameObject:
   - component: {fileID: 913631983}
   - component: {fileID: 913631982}
   m_Layer: 5
-  m_Name: Gattling Gun
+  m_Name: GattlingGunImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3208,7 +3221,7 @@ GameObject:
   - component: {fileID: 1378501020}
   - component: {fileID: 1378501019}
   m_Layer: 5
-  m_Name: Nuke
+  m_Name: NukeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3277,7 +3290,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1378501020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2116758484}
+        m_TargetAssemblyTypeName: MenuShop, Assembly-CSharp
+        m_MethodName: PurchaseNukeTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1378501020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3576,7 +3601,7 @@ GameObject:
   - component: {fileID: 1484394860}
   - component: {fileID: 1484394859}
   m_Layer: 5
-  m_Name: Money
+  m_Name: MoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4120,6 +4145,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1594952136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594952137}
+  - component: {fileID: 1594952139}
+  - component: {fileID: 1594952138}
+  m_Layer: 5
+  m_Name: ShopMoneyText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1594952137
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594952136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116758483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.9985, y: 194.79}
+  m_SizeDelta: {x: 488.61, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1594952138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594952136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1594952139
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594952136}
+  m_CullTransparentMesh: 1
 --- !u!1 &1671427921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4288,8 +4449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c7ce5e6e21e64ca9486e563f837ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyText: {fileID: 0}
-  ShopUI: {fileID: 0}
+  moneyText: {fileID: 1484394859}
+  ShopUI: {fileID: 2116758480}
 --- !u!1 &1799107216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4810,7 +4971,7 @@ GameObject:
   - component: {fileID: 2007772051}
   - component: {fileID: 2007772050}
   m_Layer: 5
-  m_Name: Gattling
+  m_Name: GattlingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4879,7 +5040,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007772051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2116758484}
+        m_TargetAssemblyTypeName: MenuShop, Assembly-CSharp
+        m_MethodName: PurchaseGatlingTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2007772051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5088,7 +5261,6 @@ RectTransform:
   - {fileID: 249845737}
   - {fileID: 587036842}
   - {fileID: 1829141170}
-  - {fileID: 2116758483}
   m_Father: {fileID: 313880232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -5121,8 +5293,9 @@ GameObject:
   - component: {fileID: 2116758483}
   - component: {fileID: 2116758482}
   - component: {fileID: 2116758481}
+  - component: {fileID: 2116758484}
   m_Layer: 5
-  m_Name: ShopPanel
+  m_Name: ShopMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5173,9 +5346,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116758480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.67479, y: 0.67479, z: 0.67479}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1378502777}
@@ -5183,13 +5356,43 @@ RectTransform:
   - {fileID: 286044483}
   - {fileID: 1683993709}
   - {fileID: 1144179072}
-  m_Father: {fileID: 2090695091}
+  - {fileID: 1594952137}
+  m_Father: {fileID: 313880232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 384.5, y: 218.67563}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2116758484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116758480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607c0d45c9929094d82c98d41d12b97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 1484394859}
+  shopMoneyText: {fileID: 1594952138}
+  GatlingTurret:
+    prefab: {fileID: 2508852577710790426, guid: 19fa233747f57804bbbe539586179cab, type: 3}
+    cost: 100
+    isUnlocked: 0
+  FreezeTurret:
+    prefab: {fileID: 5573328866541297056, guid: 85c9072e5ba8279489141eb5c99c2356, type: 3}
+    cost: 100
+    isUnlocked: 0
+  NukeTurret:
+    prefab: {fileID: 3865231381586200267, guid: 525e89411d761b94bb177f44837eab9b, type: 3}
+    cost: 100
+    isUnlocked: 0
+  gatlingButton: {fileID: 2007772050}
+  freezeButton: {fileID: 243868290}
+  nukeButton: {fileID: 1378501019}
 --- !u!1 &2128224547
 GameObject:
   m_ObjectHideFlags: 0

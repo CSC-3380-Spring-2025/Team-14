@@ -21,6 +21,9 @@ public class WaveTimer : MonoBehaviour
 
     void Start()
     {
+        if (continueButton != null) continueButton.onClick.AddListener(StartNewWave);
+        
+        DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene reload
         Debug.Log("WaveTimer initialized.");
         UpdateWaveText();
 
@@ -30,8 +33,6 @@ public class WaveTimer : MonoBehaviour
         
         shopManager = FindFirstObjectByType<ShopManager>();
         if(shopManager == null) Debug.LogError("ShopManager not found!");
-
-        continueButton.onClick.AddListener(StartNewWave);
     }
 
     void Update()
@@ -47,13 +48,25 @@ public class WaveTimer : MonoBehaviour
         // Update button state based on shop status
         UpdateButtonState();
     }
+    private void OnEnable()
+    {
+        if (continueButton != null)
+        {
+            continueButton.gameObject.SetActive(false); // Ensure button is hidden on scene restart
+            continueButton.interactable = false;
+        }
+    }
+
 
     private void UpdateButtonState()
     {
+        if (continueButton == null || shopManager == null) return;
+
         if (IsShopOpen())
         {
             continueButton.interactable = false;
             continueButton.gameObject.SetActive(false);
+            return;
         }
         else if (shopManager.HasShopPanelLeftScreen())
         {
@@ -69,7 +82,7 @@ public class WaveTimer : MonoBehaviour
 
     public void OnWaveDefeated()
     {
-        if (!isWaveActive || continueButton.interactable) return;
+        if (!isWaveActive || continueButton == null || continueButton.interactable) return;
         
         Debug.Log("Wave defeated! Enabling Continue Button.");
         isWaveActive = false;
@@ -85,7 +98,7 @@ public class WaveTimer : MonoBehaviour
 
     public void StartNewWave()
     {
-        if (!continueButton.interactable || IsShopOpen()) return;
+        if (!continueButton.interactable || IsShopOpen() || isWaveActive) return;
         
         Debug.Log("Starting new wave...");
         isWaveActive = true;
@@ -107,10 +120,8 @@ public class WaveTimer : MonoBehaviour
     }
 
     private void AwardWaveCompletionReward(){
-        if (Economy.Instance == null){
-            Debug.LogWarning("Economy not found - reward not given");
-            return;
-        }
+        if (Economy.Instance == null) return;
+        
         
         int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
         // int reward = 0;

@@ -27,6 +27,8 @@ public class ShopManager : MonoBehaviour
     }
 
     private void Update(){
+        if (shopPanel == null || shopPanel.Equals(null)) return;
+
         // Smoothly move the shop panel
         if (isShopOpen){
             shopPanel.anchoredPosition = Vector2.MoveTowards(shopPanel.anchoredPosition, onScreenPosition, slideSpeed * Time.unscaledDeltaTime );
@@ -72,7 +74,7 @@ public class ShopManager : MonoBehaviour
 
      // Updates the start button's visibility and interactability based on the shop panel's position
     private void UpdateStartButtonState(){
-        if (shopPanel == null || startButton == null) return;
+        if (shopPanel == null || shopPanel.Equals(null) || startButton == null || startButton.Equals(null)) return;
 
         // Check if the shop panel has fully left the screen
         if (HasShopPanelLeftScreen()) {
@@ -87,6 +89,7 @@ public class ShopManager : MonoBehaviour
         }
     }
      public bool HasShopPanelLeftScreen(){
+        if (shopPanel == null || shopPanel.Equals(null)) return true;
         // Compare the current position of the shop panel to its off-screen position
         float distance = Vector2.Distance(shopPanel.anchoredPosition, offScreenPosition);
         return distance < 1f; // Allow a small threshold for floating-point inaccuracies
@@ -95,4 +98,9 @@ public class ShopManager : MonoBehaviour
     public bool IsShopOpen() {
         return isShopOpen;
     }
+    private void OnDestroy(){
+        shopPanel = null;
+        startButton = null;
+    }
+
 }
