@@ -2261,10 +2261,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 8926395016754159838, guid: 22bdd736e4060014b98ee4ecc29a6229, type: 3}
+    m_PressedSprite: {fileID: 8926395016754159838, guid: 22bdd736e4060014b98ee4ecc29a6229, type: 3}
+    m_SelectedSprite: {fileID: 8926395016754159838, guid: 22bdd736e4060014b98ee4ecc29a6229, type: 3}
+    m_DisabledSprite: {fileID: 8926395016754159838, guid: 22bdd736e4060014b98ee4ecc29a6229, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -13913,10 +13913,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
+    m_PressedSprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
+    m_SelectedSprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
+    m_DisabledSprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -21753,10 +21753,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 8784049907600474107, guid: 999f73d222fb6a3498491f2acfeb9848, type: 3}
+    m_PressedSprite: {fileID: 8784049907600474107, guid: 999f73d222fb6a3498491f2acfeb9848, type: 3}
+    m_SelectedSprite: {fileID: 8784049907600474107, guid: 999f73d222fb6a3498491f2acfeb9848, type: 3}
+    m_DisabledSprite: {fileID: 8784049907600474107, guid: 999f73d222fb6a3498491f2acfeb9848, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -22483,6 +22483,7 @@ GameObject:
   - component: {fileID: 1100544017}
   - component: {fileID: 1100544018}
   - component: {fileID: 1100544019}
+  - component: {fileID: 1100544020}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -22639,6 +22640,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd5e94608f49a8e499477aa6d85945f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1100544020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100544008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb0bfb02ff318845a5398a1c08bf64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1107464966
@@ -30131,24 +30144,34 @@ MonoBehaviour:
   BlobTurret:
     prefab: {fileID: 6070109408102815394, guid: 3d050b74f9665bb45bb8e7c8dae50a66, type: 3}
     cost: 100
+    isUnlocked: 0
   DuckTurret:
     prefab: {fileID: 6622409495012206463, guid: a2b8b46bda0dcb9409153a007998a316, type: 3}
     cost: 200
+    isUnlocked: 0
   LaserBeamerTurret:
     prefab: {fileID: 4227290576397885336, guid: db538b37da254994a86d0b28c3313834, type: 3}
-    cost: 500
+    cost: 300
+    isUnlocked: 0
   SnipeTurret:
     prefab: {fileID: 1909787044488887820, guid: 0326b5ebad97841468382dbe9745f2d9, type: 3}
-    cost: 300
+    cost: 150
+    isUnlocked: 0
   GatlingTurret:
     prefab: {fileID: 2508852577710790426, guid: 19fa233747f57804bbbe539586179cab, type: 3}
-    cost: 400
+    cost: 100
+    isUnlocked: 0
   FreezeTurret:
     prefab: {fileID: 5573328866541297056, guid: 85c9072e5ba8279489141eb5c99c2356, type: 3}
-    cost: 300
+    cost: 100
+    isUnlocked: 0
   NukeTurret:
     prefab: {fileID: 3865231381586200267, guid: 525e89411d761b94bb177f44837eab9b, type: 3}
-    cost: 300
+    cost: 100
+    isUnlocked: 0
+  gatlingButton: {fileID: 1071455414}
+  freezeButton: {fileID: 101406869}
+  nukeButton: {fileID: 1862275221}
 --- !u!1 &1475079847
 GameObject:
   m_ObjectHideFlags: 0
@@ -30739,10 +30762,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 6027183947399354682, guid: 9a20e5320770f34439e2e9dd4fa6c3dd, type: 3}
+    m_PressedSprite: {fileID: 6027183947399354682, guid: 9a20e5320770f34439e2e9dd4fa6c3dd, type: 3}
+    m_SelectedSprite: {fileID: 6027183947399354682, guid: 9a20e5320770f34439e2e9dd4fa6c3dd, type: 3}
+    m_DisabledSprite: {fileID: 6027183947399354682, guid: 9a20e5320770f34439e2e9dd4fa6c3dd, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -37342,10 +37365,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
+    m_PressedSprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
+    m_SelectedSprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
+    m_DisabledSprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -37952,10 +37975,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 1600170374405696034, guid: ebf32e826e97f9b429b0364b6f89211b, type: 3}
+    m_PressedSprite: {fileID: 1600170374405696034, guid: ebf32e826e97f9b429b0364b6f89211b, type: 3}
+    m_SelectedSprite: {fileID: 1600170374405696034, guid: ebf32e826e97f9b429b0364b6f89211b, type: 3}
+    m_DisabledSprite: {fileID: 1600170374405696034, guid: ebf32e826e97f9b429b0364b6f89211b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -43105,10 +43128,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: -2079156313722691911, guid: b5a855aca59a44540938642a43efe0ec, type: 3}
+    m_PressedSprite: {fileID: -2079156313722691911, guid: b5a855aca59a44540938642a43efe0ec, type: 3}
+    m_SelectedSprite: {fileID: -2079156313722691911, guid: b5a855aca59a44540938642a43efe0ec, type: 3}
+    m_DisabledSprite: {fileID: -2079156313722691911, guid: b5a855aca59a44540938642a43efe0ec, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
