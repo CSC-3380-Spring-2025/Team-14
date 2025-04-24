@@ -1,9 +1,24 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: a7c0e29ff67bedd44920a7a46b5d46b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
+=======
+guid: 994fe759e41c8b64e80f6bcec518638a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 285671
+  packageName: 2D TopDown GrassLand - The Jungle
+  packageVersion: 1.0.0
+  assetPath: Assets/2D TopDown The Jungle/Artwork/Sliced/Tile/Tile 02.png
+  uploadId: 676268
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+>>>>>>> Stashed changes
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +35,19 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+<<<<<<< Updated upstream
+=======
+    flipGreenChannel: 0
+>>>>>>> Stashed changes
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+<<<<<<< Updated upstream
   ignoreMasterTextureLimit: 0
+=======
+  ignoreMipmapLimit: 0
+>>>>>>> Stashed changes
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,9 +86,16 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+<<<<<<< Updated upstream
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
+=======
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+>>>>>>> Stashed changes
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -75,9 +105,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< Updated upstream
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+=======
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+>>>>>>> Stashed changes
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -87,9 +124,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< Updated upstream
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+=======
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+>>>>>>> Stashed changes
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -99,9 +143,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< Updated upstream
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+=======
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+>>>>>>> Stashed changes
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -111,6 +162,49 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< Updated upstream
+=======
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+>>>>>>> Stashed changes
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -125,8 +219,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -146,8 +246,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -167,8 +273,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -188,8 +300,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -209,8 +327,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -230,8 +354,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -251,8 +381,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -272,8 +408,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -293,8 +435,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -314,8 +462,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -335,8 +489,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -356,8 +516,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -377,8 +543,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -398,8 +570,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -419,8 +597,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
+<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -435,6 +619,7 @@ TextureImporter:
       name: Tile 02_15
       rect:
         serializedVersion: 2
+<<<<<<< Updated upstream
         x: 192
         y: 0
         width: 64
@@ -442,6 +627,16 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+        x: 206
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+>>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -453,6 +648,10 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+<<<<<<< Updated upstream
+=======
+    customData: 
+>>>>>>> Stashed changes
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -462,6 +661,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< Updated upstream
+=======
+    spriteCustomMetadata:
+      entries: []
+>>>>>>> Stashed changes
     nameFileIdTable:
       Tile 02_0: -1322662241
       Tile 02_1: 621947891
@@ -479,9 +683,14 @@ TextureImporter:
       Tile 02_7: 692997303
       Tile 02_8: 239856174
       Tile 02_9: 1180344435
+<<<<<<< Updated upstream
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
+=======
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+>>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 
