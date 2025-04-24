@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: a7c0e29ff67bedd44920a7a46b5d46b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
-=======
-guid: 994fe759e41c8b64e80f6bcec518638a
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285671
-  packageName: 2D TopDown GrassLand - The Jungle
-  packageVersion: 1.0.0
-  assetPath: Assets/2D TopDown The Jungle/Artwork/Sliced/Tile/Tile 02.png
-  uploadId: 676268
-TextureImporter:
-  internalIDToNameTable: []
-  externalObjects: {}
   serializedVersion: 13
->>>>>>> Stashed changes
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -35,19 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-<<<<<<< Updated upstream
-=======
     flipGreenChannel: 0
->>>>>>> Stashed changes
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-<<<<<<< Updated upstream
-  ignoreMasterTextureLimit: 0
-=======
   ignoreMipmapLimit: 0
->>>>>>> Stashed changes
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -61,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -85,17 +63,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
-<<<<<<< Updated upstream
-  cookieLightType: 0
-  platformSettings:
-  - serializedVersion: 3
-=======
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
->>>>>>> Stashed changes
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -105,65 +77,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< Updated upstream
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-=======
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
->>>>>>> Stashed changes
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-<<<<<<< Updated upstream
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-=======
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
->>>>>>> Stashed changes
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-<<<<<<< Updated upstream
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-=======
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
->>>>>>> Stashed changes
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-<<<<<<< Updated upstream
-=======
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -194,6 +107,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -204,7 +130,6 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
->>>>>>> Stashed changes
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -219,20 +144,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9844da79d007d3a41ad94cdaa77a4681
-      internalID: -1322662241
+      spriteID: 8bfa5a6ebc2e6bd41a9c97085f542bad
+      internalID: -254554965
       vertices: []
       indices: 
       edges: []
@@ -246,20 +166,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57b61fec1199d284d899aa31af6e897f
-      internalID: 621947891
+      spriteID: 6be860db43dfded47af3e552dc9ec7fa
+      internalID: -1569776212
       vertices: []
       indices: 
       edges: []
@@ -273,20 +188,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 655df8b7761f21340be1672bcc3874fd
-      internalID: -1478250339
+      spriteID: 64d7f2939844b8e45a312ec9eb480674
+      internalID: -551619624
       vertices: []
       indices: 
       edges: []
@@ -300,20 +210,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfd49c1c64d72c648970dcaebd6be402
-      internalID: -990855415
+      spriteID: 8e0b50f8d8b3b68458712eeb327c97f3
+      internalID: -552322153
       vertices: []
       indices: 
       edges: []
@@ -327,20 +232,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c3c5c354ea8aa74b926f77713d8facf
-      internalID: 2137782442
+      spriteID: 957cef1e62cc478429b1a2363c4aeb16
+      internalID: 166739602
       vertices: []
       indices: 
       edges: []
@@ -354,20 +254,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bb6f7ece20e96b4dba380360da5d1a4
-      internalID: -822745501
+      spriteID: b9beadb58db9a8246be243379e7ec5b0
+      internalID: 748829024
       vertices: []
       indices: 
       edges: []
@@ -381,20 +276,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adcae7fc343e9a84f963a9d59a657474
-      internalID: -1357109837
+      spriteID: ccb8aeb609042284ca8e04e4d36084f4
+      internalID: -1248871155
       vertices: []
       indices: 
       edges: []
@@ -408,20 +298,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3016ca4827c2961419de0b0a773f58b5
-      internalID: 692997303
+      spriteID: c45f1e57e9f4ae6428207a15890144ec
+      internalID: 1200907104
       vertices: []
       indices: 
       edges: []
@@ -435,20 +320,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41435bb5ede3b604292c18edea17e422
-      internalID: 239856174
+      spriteID: 9aba97b39a3389748a816b91b302b8ca
+      internalID: 337718511
       vertices: []
       indices: 
       edges: []
@@ -462,20 +342,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25e1de804edcbce4aafebe8ef5d9f2b2
-      internalID: 1180344435
+      spriteID: 4600870ee186f48499904055b4dc0ea5
+      internalID: -2033385068
       vertices: []
       indices: 
       edges: []
@@ -489,20 +364,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4212c345fb929ce44b24db1c006b8637
-      internalID: 313384735
+      spriteID: 4e30f0d2b094c944dab9f9ba82f938ef
+      internalID: -1885452530
       vertices: []
       indices: 
       edges: []
@@ -516,20 +386,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b197ac058568da34993008857b57d037
-      internalID: 498281325
+      spriteID: 9cfd3e57f2ee3ea49ac07ebee3f2d635
+      internalID: 1722407809
       vertices: []
       indices: 
       edges: []
@@ -543,20 +408,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f9b39840388dfd4b8e1a17287a10ec3
-      internalID: 1131143647
+      spriteID: 8bbd0de088b390f43a5703992fd46108
+      internalID: 1916885733
       vertices: []
       indices: 
       edges: []
@@ -570,20 +430,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e137fb90aa9ac644e8b7b0c159dc04c6
-      internalID: -86991201
+      spriteID: b083342fb944a8c4c9daf50056464c12
+      internalID: -840816547
       vertices: []
       indices: 
       edges: []
@@ -597,20 +452,15 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-<<<<<<< Updated upstream
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c61ee7b0dd1431418fe04a14b324170
-      internalID: 1993768566
+      spriteID: 0a5b1f3c8944e974e9e5d060959bc0f6
+      internalID: 1277063767
       vertices: []
       indices: 
       edges: []
@@ -619,7 +469,6 @@ TextureImporter:
       name: Tile 02_15
       rect:
         serializedVersion: 2
-<<<<<<< Updated upstream
         x: 192
         y: 0
         width: 64
@@ -627,70 +476,49 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-=======
-        x: 206
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
->>>>>>> Stashed changes
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fba165a982c3f744ebef72e81ddebe84
-      internalID: 2085824188
+      spriteID: 841b3cb5904f2424584d3f410d0f13e2
+      internalID: -1544507432
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-<<<<<<< Updated upstream
-=======
     customData: 
->>>>>>> Stashed changes
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 284e4085b5252c44e8054e731cf30cf1
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-<<<<<<< Updated upstream
-=======
     spriteCustomMetadata:
       entries: []
->>>>>>> Stashed changes
     nameFileIdTable:
-      Tile 02_0: -1322662241
-      Tile 02_1: 621947891
-      Tile 02_10: 313384735
-      Tile 02_11: 498281325
-      Tile 02_12: 1131143647
-      Tile 02_13: -86991201
-      Tile 02_14: 1993768566
-      Tile 02_15: 2085824188
-      Tile 02_2: -1478250339
-      Tile 02_3: -990855415
-      Tile 02_4: 2137782442
-      Tile 02_5: -822745501
-      Tile 02_6: -1357109837
-      Tile 02_7: 692997303
-      Tile 02_8: 239856174
-      Tile 02_9: 1180344435
-<<<<<<< Updated upstream
-  spritePackingTag: 
-  pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
-=======
+      Tile 02_0: -254554965
+      Tile 02_1: -1569776212
+      Tile 02_10: -1885452530
+      Tile 02_11: 1722407809
+      Tile 02_12: 1916885733
+      Tile 02_13: -840816547
+      Tile 02_14: 1277063767
+      Tile 02_15: -1544507432
+      Tile 02_2: -551619624
+      Tile 02_3: -552322153
+      Tile 02_4: 166739602
+      Tile 02_5: 748829024
+      Tile 02_6: -1248871155
+      Tile 02_7: 1200907104
+      Tile 02_8: 337718511
+      Tile 02_9: -2033385068
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
->>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 
