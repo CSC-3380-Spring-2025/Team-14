@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 5149709842497409986}
   - component: {fileID: 3253371304745194773}
   m_Layer: 0
-  m_Name: DucksTurret
+  m_Name: WizardDucksTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,7 +774,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -452661036807534579, guid: 423e4354fb1fba0459a9fbe023ec04ad, type: 3}
+  m_Sprite: {fileID: -4988608654581410581, guid: 8e1ed1e7f9d6bd343969ac574dd4d734, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -804,14 +804,18 @@ MonoBehaviour:
   range: 3
   fireRate: 2
   bulletDamage: 50
-  useLaser: 0
-  lineRenderer: {fileID: 0}
-  DamageOverTime: 30
-  slowAmount: 0.5
   enemyTag: Enemy
   rotationSpeed: 30
   bulletPrefab: {fileID: 5121244023081282971, guid: e6c47c80f0c70ed48a1ce0a60dc9ae5f, type: 3}
   firePoint: {fileID: 3642782417534939102}
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  DamageOverTime: 30
+  slowAmount: 0.5
+  canFreeze: 0
+  freezeDuration: 2
+  isNuke: 0
+  nukeDamage: 99999
 --- !u!61 &5149709842497409986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -850,7 +854,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 43.27, y: 52.874084}
+    oldSize: {x: 10.94, y: 11.38}
     newSize: {x: 43.27, y: 52.874084}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

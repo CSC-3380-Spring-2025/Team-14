@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: -7464277593575648103}
   - component: {fileID: 2570440943740812741}
   m_Layer: 0
-  m_Name: BlobFishTurret
+  m_Name: BasicDuck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2079156313722691911, guid: b5a855aca59a44540938642a43efe0ec, type: 3}
+  m_Sprite: {fileID: -8456425263998624796, guid: 58ee853409f87f948914ea1fe0a1444a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -356,14 +356,18 @@ MonoBehaviour:
   range: 3
   fireRate: 2
   bulletDamage: 50
-  useLaser: 0
-  lineRenderer: {fileID: 0}
-  DamageOverTime: 30
-  slowAmount: 0.5
   enemyTag: Enemy
   rotationSpeed: 30
   bulletPrefab: {fileID: 5943205327532796063, guid: 46d3d0f5611816f4ea2766869140d91f, type: 3}
   firePoint: {fileID: 333164458038416701}
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  DamageOverTime: 30
+  slowAmount: 0.5
+  canFreeze: 0
+  freezeDuration: 2
+  isNuke: 0
+  nukeDamage: 99999
 --- !u!114 &-6792827348415527276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +419,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.93, y: 4.24}
+    oldSize: {x: 10.61, y: 10.21}
     newSize: {x: 4.93, y: 4.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

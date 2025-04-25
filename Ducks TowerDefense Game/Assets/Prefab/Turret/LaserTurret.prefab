@@ -416,7 +416,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4477538088716036563, guid: fd0e7bba15a039a4f9171992c1f1034b, type: 3}
+  m_Sprite: {fileID: 7327971978010841459, guid: dc7cba196495e4349ac3fb3a330e1dbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -446,14 +446,18 @@ MonoBehaviour:
   range: 3
   fireRate: 2
   bulletDamage: 50
-  useLaser: 1
-  lineRenderer: {fileID: 7484889413375650898}
-  DamageOverTime: 30
-  slowAmount: 0.5
   enemyTag: Enemy
   rotationSpeed: 30
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 5514023792395513426}
+  useLaser: 1
+  lineRenderer: {fileID: 7484889413375650898}
+  DamageOverTime: 30
+  slowAmount: 0.5
+  canFreeze: 0
+  freezeDuration: 2
+  isNuke: 0
+  nukeDamage: 99999
 --- !u!120 &7484889413375650898
 LineRenderer:
   serializedVersion: 2
@@ -612,7 +616,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.65, y: 2}
+    oldSize: {x: 11.06, y: 10.64}
     newSize: {x: 3.33, y: 3.43}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

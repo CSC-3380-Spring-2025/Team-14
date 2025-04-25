@@ -286,8 +286,8 @@ Transform:
   m_GameObject: {fileID: 1909787044488887820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.6731, y: 0.4039, z: 1}
+  m_LocalPosition: {x: -0.1077, y: 0.2468, z: -1}
+  m_LocalScale: {x: 0.3294397, y: 0.28172067, z: 0.69750106}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4943352069582366823}
@@ -338,7 +338,7 @@ SpriteRenderer:
   m_SortingLayerID: -21712395
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6027183947399354682, guid: 9a20e5320770f34439e2e9dd4fa6c3dd, type: 3}
+  m_Sprite: {fileID: -3616551280250075446, guid: cb23d08c6c0c8b043848a1df356b103f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -368,14 +368,18 @@ MonoBehaviour:
   range: 5
   fireRate: 1
   bulletDamage: 100
-  useLaser: 0
-  lineRenderer: {fileID: 0}
-  DamageOverTime: 30
-  slowAmount: 0
   enemyTag: Enemy
   rotationSpeed: 30
   bulletPrefab: {fileID: 5943205327532796063, guid: 46d3d0f5611816f4ea2766869140d91f, type: 3}
   firePoint: {fileID: 4943352069582366823}
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  DamageOverTime: 30
+  slowAmount: 0
+  canFreeze: 0
+  freezeDuration: 2
+  isNuke: 0
+  nukeDamage: 99999
 --- !u!114 &-8095145799337856242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +431,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 2.3}
+    oldSize: {x: 10.69, y: 12.33}
     newSize: {x: 1.6, y: 2.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
