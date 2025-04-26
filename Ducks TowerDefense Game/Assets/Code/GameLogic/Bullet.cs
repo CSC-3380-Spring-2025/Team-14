@@ -34,10 +34,9 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(direction.normalized * distanceOfFrame, Space.World);
-        transform.LookAt(target);
         
         // Rotate the bullet to face the target in 2D
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate the angle
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + -90f; // Calculate the angle
         transform.rotation = Quaternion.Euler(0, 0, angle); // Apply rotation around the Z-axis
         //Debug.DrawLine(transform.position, target.position, Color.red, 0.1f);
         //Debug.Log("Bullet Position: " + transform.position);//Check to see if bullet is moving
@@ -81,10 +80,5 @@ public class Bullet : MonoBehaviour
         if (e != null && !e.IsDestroyed) { // Check if the enemy is not already destroyed
             e.TakeDamage(damage);
         }
-    }
-
-    void OnDrawGizmosSelected(){
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

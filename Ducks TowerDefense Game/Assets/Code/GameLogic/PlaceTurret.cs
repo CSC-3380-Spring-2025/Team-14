@@ -49,6 +49,8 @@ public class PlaceTurret : MonoBehaviour{
             return;
         }
         PlayerStats.Money -= turretBuilding.cost;
+        // Apply position AND rotation offset from the Node
+        Quaternion rotation = Quaternion.Euler(node.rotationOffSet); // Fix typo in variable name
         GameObject turret = (GameObject)Instantiate(turretBuilding.prefab, node.GetPlacePosition(), transform.rotation);
         node.turret = turret;
 
