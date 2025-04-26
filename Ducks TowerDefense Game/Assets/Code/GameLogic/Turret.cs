@@ -11,14 +11,17 @@ public class Turret : MonoBehaviour{
 
     private Transform target; //turret targeting the target, it is hidden because private, but if public you will see active change as enemy come into range
     private Enemy targetEnemy; 
-    public GameObject upgradeUI;
-    public Button upgradeButton;
-    public Button sellButton;
-    public int purchaseCost = 0;
     private int level = 1;
     private float fireRateBase;
     private float targetingRangeBase;
     private int baseCost = 100;
+
+    // ======== UI ========
+    [Header("UI")]
+    public GameObject upgradeUI;
+    public Button upgradeButton;
+    public Button sellButton;
+    public int purchaseCost = 0;
     
     
 
@@ -27,8 +30,8 @@ public class Turret : MonoBehaviour{
     public float range = 3f; //Range of the turret
     public float fireRate = 2f; //Rate of fire (How Fast turret fire)
     private float fireCountDown = 0f; //Countdown to fire
-
-    [Header("Attack Damage")]
+    public GameObject bulletPrefab; //Set an asset on unity to the bullet prefab, basically setting up the bullet
+    public Transform firePoint; //Set an asset on unity to the firepoint, basically setting up the firepoint
     public int bulletDamage = 50;
 
 
@@ -36,8 +39,6 @@ public class Turret : MonoBehaviour{
     [Header("Enemy Tag")] // Correctly placed above public fields
     public string enemyTag = "Enemy"; //Set an asset on unity to the enemy tab, basically setting up the target to the enemy
     public float rotationSpeed = 30f; // Speed at which the turret rotates
-    public GameObject bulletPrefab; //Set an asset on unity to the bullet prefab, basically setting up the bullet
-    public Transform firePoint; //Set an asset on unity to the firepoint, basically setting up the firepoint
     
 
 
@@ -179,14 +180,16 @@ public class Turret : MonoBehaviour{
 
 //--------------------------------------------------------------------
     void LockOnTarget(){
-        
+        if (target == null) return;
 
-        // Lock the turret to the target
-        Vector3 direction = target.position - transform.position; // Calculate the direction to the target
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Calculate the angle in radians and convert to degrees
-        Quaternion targetRotation = Quaternion.Euler(0, 0, angle); // Create a target rotation using the calculated angle
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);// Smoothly rotate the turret towards the target
+        Vector3 direction = target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
+        // Add 90 degrees if sprite's head points up (Y-axis)
+        angle -= 90f; // Subtract 90 degrees to align sprite's "up" with target
+        
+        Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 //--------------------------------------------------------------------
 
@@ -208,28 +211,28 @@ public class Turret : MonoBehaviour{
 //--------------------------------------------------------------------
     void Shoot() {
         if (target == null) return; // Ensure there is a valid target
-       if (canFreeze) {
-        if (frozenEnemies.Contains(targetEnemy)) {
+        if (canFreeze) {
+            if (frozenEnemies.Contains(targetEnemy)) {
+                target = null;
+                targetEnemy = null;
+                return;
+            }
+            if (lineRenderer != null) {
+                lineRenderer.SetPosition(0, firePoint.position);
+                lineRenderer.SetPosition(1, target.position);
+                StartCoroutine(ShowFreezeLaser());
+            }
+            targetEnemy.Freeze(freezeDuration);
+            frozenEnemies.Add(targetEnemy);
             target = null;
             targetEnemy = null;
-            return;
         }
-         if (lineRenderer != null) {
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
-        StartCoroutine(ShowFreezeLaser());
-    }
-        targetEnemy.Freeze(freezeDuration);
-        frozenEnemies.Add(targetEnemy);
-        target = null;
-        targetEnemy = null;
-    }
     
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Instantiate bullet
         Bullet bullet = bulletGO.GetComponent<Bullet>(); // Get the bullet component
 
         if (bullet != null) bullet.Seek(target); // Assign the target to the bullet
-        bullet.damage = bulletDamage;
+        bullet.damage = bulletDamage; // Set the bullet damage
     }
     
 //--------------------------------------------------------------------
