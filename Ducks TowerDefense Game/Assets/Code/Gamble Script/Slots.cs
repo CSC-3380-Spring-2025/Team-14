@@ -80,6 +80,7 @@ public class Slots : MonoBehaviour
         yield return StopReelsWithDelay();
 
         CheckWinCondition();
+        Economy.Instance.RefreshUI(moneyText);
         isSpinning = false;
         spinButton.interactable = true;
     }
@@ -132,6 +133,7 @@ public class Slots : MonoBehaviour
         int winnings = betAmount * multiplier;
 
         Economy.Instance.AddMoney(winnings);
+        Economy.Instance.RefreshUI(moneyText);
         resultText.text = $"Jackpot! You win {winnings} coins!";
     }
 

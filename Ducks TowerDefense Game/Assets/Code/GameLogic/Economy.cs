@@ -1,39 +1,17 @@
-using System;
 using TMPro;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1000)]
 public class Economy : MonoBehaviour
 {
     public static Economy Instance { get; private set; }
 
-    [Header("Economy Settings")]
     [SerializeField] private int initialMoney = 100;
     private int _money;
-
-    public event Action<int> OnMoneyChanged; 
-
-    public int Money
-    {
-        get => _money;
-        private set
-        {
-            // Debug.Log("value is " + value);
-            _money = value;
-            OnMoneyChanged?.Invoke(_money);
-            UpdateMoneyText();
-            SaveMoney();
-        }
-    }
-
-    [Header("UI Configuration")]
     public TextMeshProUGUI moneyText;
-
-    private static bool _initialized = false;
 
     private void Awake()
     {
-        if (_initialized && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
@@ -41,46 +19,37 @@ public class Economy : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        _initialized = true;
-        
-        if (!PlayerPrefs.HasKey("PlayerMoney"))
-        {
-            PlayerPrefs.SetInt("PlayerMoney", initialMoney);
-        }
-        LoadMoney();
-        
-        Debug.Log($"Economy initialized in {gameObject.scene.name}");
+        _money = PlayerPrefs.GetInt("PlayerMoney", initialMoney);
+        UpdateMoneyText();
     }
 
-    private void UpdateMoneyText()
-    {
-        if (moneyText != null)
-        {
-            moneyText.text = $"Coins: {_money:N0}";
-        }
-    }
+    public int Money => _money;
 
     public void AddMoney(int amount)
     {
-        Money += amount;
+        _money += amount;
+        UpdateMoneyText();
+        PlayerPrefs.SetInt("PlayerMoney", _money);
     }
 
-    public bool CanAfford(int amount) => Money >= amount;
+    public bool CanAfford(int amount) => _money >= amount;
 
-    private void SaveMoney()
+    public void SpendMoney(int amount)
     {
-        PlayerPrefs.SetInt("PlayerMoney", Money);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadMoney()
-    {
-        Money = PlayerPrefs.GetInt("PlayerMoney", initialMoney);
+        if (!CanAfford(amount)) return;
+        _money -= amount;
+        UpdateMoneyText();
+        PlayerPrefs.SetInt("PlayerMoney", _money);
     }
 
     public void RefreshUI(TextMeshProUGUI newMoneyText = null)
     {
         if (newMoneyText != null) moneyText = newMoneyText;
         UpdateMoneyText();
+    }
+
+    private void UpdateMoneyText()
+    {
+        if (moneyText != null) moneyText.text = $"Coins: {_money:N0}";
     }
 }

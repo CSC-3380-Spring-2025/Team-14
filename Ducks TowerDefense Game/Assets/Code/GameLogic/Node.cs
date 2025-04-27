@@ -6,7 +6,7 @@ public class Node : MonoBehaviour{
 
     public Color hoverColor;
     public Vector3 positionOffSet;//Set the position of turret in the GameObject(square)
-    public Vector3 roatationOffSet;//set the rotation og turret in the GameObject(square)
+    public Vector3 rotationOffSet;//set the rotation og turret in the GameObject(square)
     public GameObject turret;
     public Turret _turret; 
     private SpriteRenderer  rend;
