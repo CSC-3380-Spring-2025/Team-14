@@ -207,8 +207,24 @@ public class Enemy : MonoBehaviour{
             //if the character is lagging, you might need to change 0.2f to something else like 0.4f
             GetNextWayPoint();//new target will be the next waypoint
         }
+
+        // Add head rotation logic
+        // Add head rotation logic
+        if (target != null) {
+            RotateTowardsTarget();
+        }
+
     }
 //--------------------------------------------------------------------
+    void RotateTowardsTarget() {
+        Vector3 direction = target.position - transform.position;
+        direction.Normalize();
+        
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // Adjust angle to match sprite orientation
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+
 
 //--------------------------------------------------------------------
     void RegenerateHealth() {
