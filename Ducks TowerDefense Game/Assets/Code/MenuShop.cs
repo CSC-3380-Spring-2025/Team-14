@@ -28,6 +28,10 @@ public class MenuShop : MonoBehaviour
         FreezeTurret.isUnlocked = PlayerPrefs.GetInt("FreezeUnlocked", 0) == 1;
         NukeTurret.isUnlocked = PlayerPrefs.GetInt("NukeUnlocked", 0) == 1;
         
+        // checks if the items have already been purchased
+        gatlingButton.interactable = !GatlingTurret.isUnlocked;
+        freezeButton.interactable = !FreezeTurret.isUnlocked;
+        nukeButton.interactable = !NukeTurret.isUnlocked;
 
         economy.RefreshUI(moneyText);
         shopMoneyText.text = $"Coins: {economy.Money:N0}";
