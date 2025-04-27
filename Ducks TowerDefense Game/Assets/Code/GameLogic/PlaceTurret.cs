@@ -55,6 +55,7 @@ public class PlaceTurret : MonoBehaviour{
         node.turret = turret;
 
         Debug.Log ("Money left after building: " + PlayerStats.Money);
+        turretBuilding = null;
     }
 
     //You can choice which turret to build
