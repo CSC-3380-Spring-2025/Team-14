@@ -23,8 +23,8 @@ public class Turret : MonoBehaviour{
     public Button sellButton;
     public int purchaseCost = 0;
     
-    
-
+    [Header("UI Panel")]
+    public GameObject upgradeOptionsPanel;
     // ======== CORE STATS ========
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
@@ -91,11 +91,9 @@ public class Turret : MonoBehaviour{
     }
         fireRateBase = fireRate;
         targetingRangeBase = range; 
-        upgradeButton.onClick.AddListener(Upgrade);
+        upgradeButton.onClick.AddListener(OpenUpgradeOptions);
         sellButton.onClick.AddListener(SellTurret);
-        Debug.Log("New FireRate: " + fireRate);
-        Debug.Log("New Range: " + range);
-        Debug.Log("New Cost: " + CalculateCost());
+        
     }
 //--------------------------------------------------------------------
 
@@ -245,24 +243,7 @@ public class Turret : MonoBehaviour{
         upgradeUI.SetActive(false);
         UIManager.main.SetHoveringState(false);
     }
-    public void Upgrade(){
-        if(CalculateCost()> PlayerStats.Money)return;
-
-        PlayerStats.Money -=CalculateCost();
-
-        level++;
-        fireRate = CalculateFireRate();
-        range = CalculateRange();
-
-        Debug.Log("New FireRate: " + fireRate);
-        Debug.Log("New Range: " + range);
-        Debug.Log("New Cost: " + CalculateCost());
-
-        CloseUpgradeUI();
-
-
-    }
-    
+  
     public void SellTurret(){
         int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
         PlayerStats.Money += sellAmount;
@@ -301,4 +282,43 @@ public class Turret : MonoBehaviour{
         yield return new WaitForSeconds(.5f);
         lineRenderer.enabled = false;
     }
+
+    public void OpenUpgradeOptions()
+{
+    if (upgradeOptionsPanel != null)
+        upgradeOptionsPanel.SetActive(true); 
+}
+
+public void CloseUpgradeOptions()
+{
+    if (upgradeOptionsPanel != null)
+        upgradeOptionsPanel.SetActive(false); 
+}
+public void UpgradeFireRateAndRange()
+{
+    if (CalculateCost() > PlayerStats.Money) return;
+
+    PlayerStats.Money -= CalculateCost();
+    level++;
+    fireRate = CalculateFireRate();
+    range = CalculateRange();
+
+    Debug.Log("Upgraded Fire Rate and Range!");
+    Debug.Log("New Fire Rate: " + fireRate);
+    Debug.Log("New Range: " + range);
+
+    CloseUpgradeOptions();
+}
+public void UpgradeDamage()
+{
+    if (CalculateCost() > PlayerStats.Money) return;
+
+    PlayerStats.Money -= CalculateCost();
+    level++;
+
+    bulletDamage = Mathf.RoundToInt(50 * Mathf.Pow(level, 0.6f)); 
+    Debug.Log("Upgraded Bullet Damage! New Damage: " + bulletDamage);
+
+    CloseUpgradeOptions(); 
+}
 }//end of class
