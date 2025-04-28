@@ -264,17 +264,17 @@ public class Turret : MonoBehaviour{
         return  targetingRangeBase * Mathf.Pow(level, .4f);
     }
     private void KillAllEnemies()
-{
-    GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-    foreach (GameObject enemy in enemies)
     {
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-        if (enemyScript != null && !enemyScript.IsDestroyed)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        foreach (GameObject enemy in enemies)
         {
-            enemyScript.TakeDamage(nukeDamage);
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            if (enemyScript != null && !enemyScript.IsDestroyed)
+            {
+                enemyScript.TakeDamage(nukeDamage);
+            }
         }
     }
-}
     private IEnumerator ShowFreezeLaser()
     {
         lineRenderer.enabled = true; 
@@ -283,13 +283,13 @@ public class Turret : MonoBehaviour{
         lineRenderer.enabled = false;
     }
 
-    public void OpenUpgradeOptions()
-{
-    if (upgradeOptionsPanel != null)
-        upgradeOptionsPanel.SetActive(true); 
-}
+    public void OpenUpgradeOptions() //Onclick
+    {
+        if (upgradeOptionsPanel != null)
+            upgradeOptionsPanel.SetActive(true); 
+    }
 
-public void CloseUpgradeOptions()
+public void CloseUpgradeOptions() //onClick
 {
     if (upgradeOptionsPanel != null)
         upgradeOptionsPanel.SetActive(false); 

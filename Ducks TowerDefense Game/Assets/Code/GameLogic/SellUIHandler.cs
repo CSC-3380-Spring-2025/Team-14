@@ -20,17 +20,17 @@ public class SellUIHandler : MonoBehaviour
             Debug.LogWarning("SellUI reference is missing!");
     }
 
-    private void OnMouseEnter()
-    {
-        Debug.Log("MOUSE ENTERED!");
-        if (sellUI != null)
-            sellUI.SetActive(true);
-    }
+    // private void OnMouseEnter()
+    // {
+    //     Debug.Log("MOUSE ENTERED!");
+    //     if (sellUI != null)
+    //         sellUI.SetActive(true);
+    // }
 
-    private void OnMouseExit()
-    {
-        Debug.Log("MOUSE EXITED!");
-        if (sellUI != null)
-            sellUI.SetActive(false);
-    }
+    // private void OnMouseExit()
+    // {
+    //     Debug.Log("MOUSE EXITED!");
+    //     if (sellUI != null)
+    //         sellUI.SetActive(false);
+    // }
 }

@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1242187556347939975, guid: e1a4833e112595945a3cf32c4daf97a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 0}
   sellButton: {fileID: 0}
   purchaseCost: 0
+  upgradeOptionsPanel: {fileID: 0}
   range: 3
   fireRate: 2
   bulletPrefab: {fileID: 0}
