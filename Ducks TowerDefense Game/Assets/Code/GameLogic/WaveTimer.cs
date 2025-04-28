@@ -90,7 +90,7 @@ public class WaveTimer : MonoBehaviour
         AwardWaveCompletionReward();
 
         // Check if the current wave is the last wave
-        if (currentWave % 5 == 0 && currentWave > 0){
+        if (currentWave % 10 == 0 && currentWave > 0){
             Debug.Log("All waves defeated! Player wins the game.");
             gameManager.WinGame(); // Call the WinLevel method in GameManager
         }
