@@ -22760,8 +22760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 291667551}
   livesText: {fileID: 1665783060}
-  startMoney: 500
-  startLives: 2
+  startMoney: 999999
+  startLives: 3
 --- !u!114 &1100544017
 MonoBehaviour:
   m_ObjectHideFlags: 0

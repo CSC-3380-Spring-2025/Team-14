@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             Economy.Instance.AddMoney(-Economy.Instance.Money); // Set to 0
-            Economy.Instance.AddMoney(100); // Reset to default
+            Economy.Instance.AddMoney(999999); // Reset to default
         }
     }
 
