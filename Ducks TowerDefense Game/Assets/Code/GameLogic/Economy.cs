@@ -5,7 +5,7 @@ public class Economy : MonoBehaviour
 {
     public static Economy Instance { get; private set; }
 
-    [SerializeField] private int initialMoney = 100;
+    [SerializeField] private int initialMoney = 999999;
     private int _money;
     public TextMeshProUGUI moneyText;
 

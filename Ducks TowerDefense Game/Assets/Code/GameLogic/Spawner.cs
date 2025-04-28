@@ -34,9 +34,9 @@ public class Spawner : MonoBehaviour{
 //--------------------------------------------------------------------
     IEnumerator SpawnWave(){
         Debug.Log("Spawning wave...");
-        bool regenBoss = (waveNumber % 2 == 0) && waveNumber > 0; // Check if it's a regen boss wave
-        bool resurBoss = (waveNumber % 3 == 0) && waveNumber > 0; // Check if it's a resurrection boss wave
-        bool isEmperorBoss = (waveNumber % 4 == 0) && waveNumber > 0; // Check if it's an emperor boss wave
+        bool regenBoss = (waveNumber % 3 == 0) && waveNumber > 0; // Check if it's a regen boss wave
+        bool resurBoss = (waveNumber % 6 == 0) && waveNumber > 0; // Check if it's a resurrection boss wave
+        bool isEmperorBoss = (waveNumber % 9 == 0) && waveNumber > 0; // Check if it's an emperor boss wave
 
         // == SPAWN BOSS ==
         if(regenBoss && enemyPrefabs.Length > 3){
