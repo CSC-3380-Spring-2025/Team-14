@@ -5,39 +5,64 @@ using TMPro;
 public class WaveTimer : MonoBehaviour
 {
     [Header("UI References")]
-    public Text waveText;  // UI Text to show wave info
-    public Button continueButton; // UI Button to start the next wave
+    public Text waveText;
+    public Button continueButton;
 
     [Header("Wave Settings")]
     [SerializeField] private int baseReward = 50;
     [SerializeField] private float rewardScalingFactor = 1.15f;
+    public GameManager gameManager;
 
-    private int currentWave = 0;
-    public GameManager gameManager; // Reference to the GameManager
     private Spawner spawner;
     private ShopManager shopManager;
     private bool isWaveActive = false;
-    private int lastLives = -1; 
+    private int currentWave = 0;
+    private int lastLives = -1;
+
+    [Header("Path Indicator")]
+    public GameObject pathIndicatorPrefab;
+    public Vector2 indicatorUIPosition = new Vector2(13.5f, -4.5f); // Set this in Inspector
+    private GameObject pathIndicatorInstance;
+    private bool firstWave = true;
 
     void Start()
     {
-        if (continueButton != null) continueButton.onClick.AddListener(StartNewWave);
-        
-        DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene reload
-        Debug.Log("WaveTimer initialized.");
+        if (continueButton != null)
+            continueButton.onClick.AddListener(StartNewWave);
+
+        DontDestroyOnLoad(gameObject);
         UpdateWaveText();
 
-        // Initialize references
         spawner = FindFirstObjectByType<Spawner>();
-        if(spawner == null) Debug.LogError("Spawner not found!");
-        
+        if (spawner == null) Debug.LogError("Spawner not found!");
+
         shopManager = FindFirstObjectByType<ShopManager>();
-        if(shopManager == null) Debug.LogError("ShopManager not found!");
+        if (shopManager == null) Debug.LogError("ShopManager not found!");
+
+        // Show the UI path indicator before the first wave
+        if (firstWave && pathIndicatorPrefab != null)
+        {
+            GameObject canvas = GameObject.Find("Canvas"); // Make sure your Canvas is named "Canvas"
+            if (canvas != null)
+            {
+                pathIndicatorInstance = Instantiate(pathIndicatorPrefab, canvas.transform);
+
+                RectTransform rt = pathIndicatorInstance.GetComponent<RectTransform>();
+                if (rt != null)
+                {
+                    rt.anchoredPosition = indicatorUIPosition;
+                    rt.localRotation = Quaternion.Euler(0f, 0f, 270f); // Rotate the arrow
+                }
+            }
+            else
+            {
+                Debug.LogError("Canvas not found in the scene!");
+            }
+        }
     }
 
     void Update()
     {
-        // Track lives changes
         int currentLives = PlayerStats.Lives;
         if (lastLives != -1 && currentLives < lastLives)
         {
@@ -45,18 +70,17 @@ public class WaveTimer : MonoBehaviour
         }
         lastLives = currentLives;
 
-        // Update button state based on shop status
         UpdateButtonState();
     }
+
     private void OnEnable()
     {
         if (continueButton != null)
         {
-            continueButton.gameObject.SetActive(false); // Ensure button is hidden on scene restart
+            continueButton.gameObject.SetActive(false);
             continueButton.interactable = false;
         }
     }
-
 
     private void UpdateButtonState()
     {
@@ -66,7 +90,6 @@ public class WaveTimer : MonoBehaviour
         {
             continueButton.interactable = false;
             continueButton.gameObject.SetActive(false);
-            return;
         }
         else if (shopManager.HasShopPanelLeftScreen())
         {
@@ -83,56 +106,50 @@ public class WaveTimer : MonoBehaviour
     public void OnWaveDefeated()
     {
         if (!isWaveActive || continueButton == null || continueButton.interactable) return;
-        
-        Debug.Log("Wave defeated! Enabling Continue Button.");
+
         isWaveActive = false;
         continueButton.interactable = true;
         AwardWaveCompletionReward();
 
-        // Check if the current wave is the last wave
-        if (currentWave % 10 == 0 && currentWave > 0){
-            Debug.Log("All waves defeated! Player wins the game.");
-            gameManager.WinGame(); // Call the WinLevel method in GameManager
+        if (currentWave % 10 == 0 && currentWave > 0)
+        {
+            gameManager.WinGame();
         }
     }
 
     public void StartNewWave()
     {
         if (!continueButton.interactable || IsShopOpen() || isWaveActive) return;
-        
-        Debug.Log("Starting new wave...");
+
         isWaveActive = true;
         continueButton.interactable = false;
         currentWave++;
         PlayerStats.Rounds++;
-        Debug.Log($"Current wave: {currentWave}");
 
-        if (spawner != null){
-            Debug.Log($"Calling StartWave for wave {currentWave}");
+        // Fade out or destroy indicator
+        if (firstWave && pathIndicatorInstance != null)
+        {
+            Destroy(pathIndicatorInstance);
+            firstWave = false;
+        }
+
+        if (spawner != null)
+        {
             spawner.StartWave(currentWave);
         }
-        else Debug.LogError("Spawner reference is missing!");
 
         UpdateWaveText();
-
-        
-        
     }
 
-    private void AwardWaveCompletionReward(){
+    private void AwardWaveCompletionReward()
+    {
         if (Economy.Instance == null) return;
-        
-        
+
         int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
-        // int reward = 0;
-        Debug.Log(reward);
         Economy.Instance.AddMoney(reward);
     }
 
     public bool IsWaveActive() => isWaveActive;
-
     private bool IsShopOpen() => shopManager != null && shopManager.IsShopOpen();
-
     private void UpdateWaveText() => waveText.text = $"Wave: {currentWave}";
-
 }
