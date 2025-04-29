@@ -27848,7 +27848,7 @@ MonoBehaviour:
   - {fileID: 6440495065815521116, guid: 8220c255279afad4eb71884dc524c617, type: 3}
   - {fileID: 6440495065815521116, guid: 72d5a7bdb4a8a9c4280aad1ee03e1cda, type: 3}
   - {fileID: 6440495065815521116, guid: bfbccef8051bf7443ab91fc9c95af038, type: 3}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 94976936}
   baseEnemies: 2
 --- !u!4 &1100544010
 Transform:
