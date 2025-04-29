@@ -15,7 +15,7 @@ public class WaveTimer : MonoBehaviour
 
     private Spawner spawner;
     private ShopManager shopManager;
-    private bool isWaveActive = false;
+    public bool isWaveActive = false;
     private int currentWave = 0;
     private int lastLives = -1;
 

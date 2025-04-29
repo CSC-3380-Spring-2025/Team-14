@@ -32,6 +32,7 @@ public class PlaceTurret : MonoBehaviour{
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Reset turret selection when changing maps
+        if (scene.name == "Map Selection") return;
         turretBuilding = null;
         LastNodeWithUI = null;
         Debug.Log("PlaceTurret cleared for new scene: " + scene.name);
