@@ -11360,7 +11360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $100
+  m_Text: $1000
 --- !u!222 &561576589
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23194,6 +23194,7 @@ MonoBehaviour:
   continueButton: {fileID: 1649424396}
   baseReward: 50
   rewardScalingFactor: 1.15
+  isWaveActive: 0
   pathIndicatorPrefab: {fileID: 6337421185287695455, guid: 736cb603d47a4b24ca869de9eeb71db7, type: 3}
   indicatorUIPosition: {x: 100, y: -150}
 --- !u!114 &1100544014
@@ -23225,8 +23226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 291667551}
   livesText: {fileID: 1665783060}
-  startMoney: 999999
-  startLives: 3
 --- !u!114 &1100544017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25034,7 +25033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $100
+  m_Text: $600
 --- !u!222 &1200870432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30712,19 +30711,19 @@ MonoBehaviour:
     isUnlocked: 0
   SnipeTurret:
     prefab: {fileID: 1909787044488887820, guid: 0326b5ebad97841468382dbe9745f2d9, type: 3}
-    cost: 150
+    cost: 400
     isUnlocked: 0
   GatlingTurret:
     prefab: {fileID: 2508852577710790426, guid: 19fa233747f57804bbbe539586179cab, type: 3}
-    cost: 100
+    cost: 600
     isUnlocked: 0
   FreezeTurret:
     prefab: {fileID: 5573328866541297056, guid: 85c9072e5ba8279489141eb5c99c2356, type: 3}
-    cost: 100
+    cost: 1000
     isUnlocked: 0
   NukeTurret:
     prefab: {fileID: 3865231381586200267, guid: 525e89411d761b94bb177f44837eab9b, type: 3}
-    cost: 100
+    cost: 1500
     isUnlocked: 0
   gatlingButton: {fileID: 1071455414}
   freezeButton: {fileID: 101406869}
@@ -32985,7 +32984,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $150
+  m_Text: $400
 --- !u!222 &1560251366
 CanvasRenderer:
   m_ObjectHideFlags: 0
