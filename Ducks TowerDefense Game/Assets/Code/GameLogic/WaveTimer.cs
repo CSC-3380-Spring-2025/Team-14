@@ -27,16 +27,20 @@ public class WaveTimer : MonoBehaviour
 
     void Start()
     {
-        if (continueButton != null) continueButton.onClick.AddListener(StartNewWave);
-
-        DontDestroyOnLoad(gameObject);
-        UpdateWaveText();
+        gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager == null) Debug.LogError("GameManager not found!");
 
         spawner = FindFirstObjectByType<Spawner>();
         if (spawner == null) Debug.LogError("Spawner not found!");
 
         shopManager = FindFirstObjectByType<ShopManager>();
         if (shopManager == null) Debug.LogError("ShopManager not found!");
+
+        if (continueButton != null) continueButton.onClick.AddListener(StartNewWave);
+
+
+        DontDestroyOnLoad(gameObject);
+        UpdateWaveText();
 
         // Show the UI path indicator before the first wave
         if (firstWave && pathIndicatorPrefab != null && pathIndicatorInstance == null)
@@ -100,6 +104,7 @@ public class WaveTimer : MonoBehaviour
 
     public void OnWaveDefeated()
     {
+        if (gameManager == null) return;
         if (!isWaveActive || continueButton == null || continueButton.interactable) return;
 
         isWaveActive = false;

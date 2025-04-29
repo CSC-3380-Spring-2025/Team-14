@@ -10,11 +10,24 @@ public class Spawner : MonoBehaviour{
     private int waveNumber = 0; // Current wave number
     private int enemiesInCurrentWave = 0;
 
+    private WaveTimer waveTimer; // Reference to the WaveTimer script
 
+    void Start(){
+        waveTimer = FindFirstObjectByType<WaveTimer>();
+        if (waveTimer == null) Debug.LogError("WaveTimer not found!");
+    }
+    // Add similar wave completion logic for redundancy
+    void Update()
+    {
+        if (waveTimer.IsWaveActive() && GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
+            waveTimer.OnWaveDefeated();
+        }
+    }
     
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
     public void StartWave(int wave){
+        StopAllCoroutines(); // Stop any previous wave spawning
         waveNumber = wave; // Update the wave number
         enemiesInCurrentWave = CalculateEnemiesForWave(waveNumber);
         Enemy.enemiesRemaining = 0; // Reset the enemy counter

@@ -75,8 +75,7 @@ public class Turret : MonoBehaviour{
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every 0.5 seconds
 
         // Automatically find the WaveTimer in the scene
-        waveTimer = GameObject.Find("GameLogic").GetComponent<WaveTimer>();
-        if (waveTimer == null) Debug.LogError("WaveTimer not found!");
+        waveTimer = FindFirstObjectByType<WaveTimer>();
         if (waveTimer == null) Debug.LogError("WaveTimer not found!");
 
         if (isNuke)
@@ -113,6 +112,7 @@ public class Turret : MonoBehaviour{
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript == null || enemyScript.IsDead) continue;
 
+            
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position); //find the distance between the turret and the enemy
             //if the distance to the enemy is less then the shortest distance, set the shortest distance to the distance to the enemy and set the nearest enemy to the enemy
             if(distanceToEnemy < shortestDistance){
@@ -130,6 +130,7 @@ public class Turret : MonoBehaviour{
         }
         else{ 
             target = null;
+            targetEnemy = null;
         }
 
 
