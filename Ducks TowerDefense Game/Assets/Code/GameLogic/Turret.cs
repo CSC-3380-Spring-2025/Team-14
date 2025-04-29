@@ -287,12 +287,14 @@ public class Turret : MonoBehaviour{
     {
         if (upgradeOptionsPanel != null)
             upgradeOptionsPanel.SetActive(true); 
+        
     }
 
 public void CloseUpgradeOptions() //onClick
 {
     if (upgradeOptionsPanel != null)
         upgradeOptionsPanel.SetActive(false); 
+        upgradeUI.SetActive(false);
 }
 public void UpgradeFireRateAndRange()
 {

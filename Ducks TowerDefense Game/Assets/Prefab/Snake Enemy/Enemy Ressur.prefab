@@ -87,9 +87,9 @@ GameObject:
   - component: {fileID: 2511925635494373886}
   - component: {fileID: 6002331069568195632}
   - component: {fileID: -2854649869031435372}
-  - component: {fileID: 7604544110881407762}
+  - component: {fileID: 5369794104556397765}
   m_Layer: 0
-  m_Name: Enemy 2
+  m_Name: Enemy Ressur
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6285715069570283667, guid: 812f5293a73c57c44bbe2d738034d0c7, type: 3}
+  m_Sprite: {fileID: -7441172116275941362, guid: dbcbfcb0822e53f479dc06cdda51feb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,15 +178,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914548c875d56c042a28e951afe78315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 2
-  startHealth: 200
+  startSpeed: 3
+  startHealth: 100
   value: 300
   healthBar: {fileID: 287628625345971527}
   isRegenBoss: 0
-  isResurrectionBoss: 0
+  isResurrectionBoss: 1
   isEmperorBoss: 0
-  regenRate: 50
-  regenInterval: 3.5
+  regenRate: 5
+  regenInterval: 1
   regenTimer: 0
   resurrectHealthPercent: 1
   resurrectDelay: 3
@@ -238,7 +238,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &7604544110881407762
+--- !u!95 &5369794104556397765
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ Animator:
   m_GameObject: {fileID: 6440495065815521116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b78c592965e67da4a9bb314c3a94608b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a4d08960ce98e7438f79faf7eeecd14, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
