@@ -31,9 +31,19 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         GameEnded = true;
+
+        // hide all enemy visuals
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) 
+        {
+            enemy.SetActive(false);
+
+
+        }
         if(GameOverUI != null){
             GameOverUI.SetActive(true); // Show the Game Over UI
         // Ensure the Game Over UI animation uses unscaled time
+        GameOverUI.SetActive(true);
+        GameOverUI.transform.SetAsLastSibling();
         Animator animator = GameOverUI.GetComponent<Animator>();
         if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         } 
