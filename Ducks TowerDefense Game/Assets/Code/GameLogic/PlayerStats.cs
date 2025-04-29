@@ -11,8 +11,8 @@ public class PlayerStats : MonoBehaviour {
 
     // Player stats
     [Header("Player Stats")]
-    public int startMoney = 999999; // Initial money
-    public int startLives = 3;  // Initial lives
+    public static int startMoney = 999999; // Initial money
+    public static int startLives = 3;  // Initial lives
 
     private static int money;
     public static int Money {
@@ -76,5 +76,11 @@ public class PlayerStats : MonoBehaviour {
             return;
         }
         livesText.text = $"Lives: {currentLives}";
+    }
+
+    public static void ResetAll(){
+        Money = 999999;
+        Lives = 3;
+        Rounds = 0;
     }
 }

@@ -32,7 +32,9 @@ public class GameOver : MonoBehaviour
 
     //Reference in Unity, the onClick event of Retry button in GameOver UI
     public void Retry(){
-        gameManager.ResetGame(); // Calls ResetGame() in GameManager
+        Time.timeScale = 1f; // Unpause before retrying, Prevents Frozen UI in Next Scene
+        gameManager.ResetGame(false);
+        gameObject.SetActive(false);
         //gameManager.ContinueGameState(); // Resumes gameplay
     }
 
@@ -40,7 +42,7 @@ public class GameOver : MonoBehaviour
     public void Menu(){
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
         //Full game reset if returning to menu
-        if (gameManager != null) gameManager.ResetGame(); // Clear gameplay state
+        gameManager.ResetGame(); // Clear gameplay state
     
         SceneManager.LoadScene("Map Selection"); // Load the Main Menu scene
     }
