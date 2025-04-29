@@ -13,6 +13,20 @@ public class PauseGame : MonoBehaviour
     private Vector2 onScreenPosition;
     private bool ifPause = false;
 
+    private GameManager gameManager; // Reference to the GameManager script
+    void Awake(){
+        // Find GameManager in the scene
+        gameManager = Object.FindFirstObjectByType<GameManager>();
+        if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
+    }
+    private void OnEnable(){
+        // Add listener to the Pause button
+        if (PauseButton != null) PauseButton.onClick.AddListener(GamePause);
+    }
+    private void OnDisable(){
+        // Clean up button listeners
+        if (PauseButton != null) PauseButton.onClick.RemoveListener(GamePause);
+    }
     private void Start(){
         // Check if UI references are assigned
         if (PausePanel == null || PauseButton == null){
@@ -29,13 +43,9 @@ public class PauseGame : MonoBehaviour
 
     private void Update(){
         if (PausePanel == null) return;
-        if(Input.GetKeyDown("escape")){
-            if (ifPause){
-                GameResume();
-            }
-            else{
-                GamePause();
-            }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if (ifPause) GameResume();
+            else GamePause();
         }
         // Smoothly move the pause panel
         if (ifPause){
@@ -48,6 +58,7 @@ public class PauseGame : MonoBehaviour
 
     // Calculate the on-screen and off-screen positions dynamically
     private void CalculatePositions(){
+        if (PausePanel == null) return;
         // Get the height of the pause panel in local coordinates
         float panelHeight = PausePanel.rect.height;
 
@@ -87,6 +98,9 @@ public class PauseGame : MonoBehaviour
 
     public void quitMap()
     {
+        Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
+        //Full game reset if returning to menu
+        if (gameManager != null) gameManager.ResetGame(); // Clear gameplay state
         SceneManager.LoadScene("MainMenu");
     }
 }

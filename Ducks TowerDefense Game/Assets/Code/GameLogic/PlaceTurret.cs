@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlaceTurret : MonoBehaviour{
 
@@ -10,6 +11,7 @@ public class PlaceTurret : MonoBehaviour{
     *Public allow access without the class, and static because we want it be access only by PlaceTurret.cs 
     *This variable is a PlaceTurret inside a PlaceTurret. Basically stores a reference to itself
     */
+    private TurretBlueprint turretBuilding;
     public static PlaceTurret instance;
     public Node LastNodeWithUI;
     void Awake(){
@@ -22,13 +24,27 @@ public class PlaceTurret : MonoBehaviour{
                         //It going to call the awake method and store PlaceTurret in the instance variable
                         //This allows the instance variable to be access anywhere in PlaceTurret.cs Script
         DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene reload
-        Debug.Log("PlaceTurret Singleton initialized.");
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Debug.Log("PlaceTurret initialized for scene: " + SceneManager.GetActiveScene().name);
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Reset turret selection when changing maps
+        turretBuilding = null;
+        LastNodeWithUI = null;
+        Debug.Log("PlaceTurret cleared for new scene: " + scene.name);
+    }
 
+    // Unity built-in method that is called when the object is destroyed
+    void OnDestroy(){
+        // Clean up event handler
+        if (instance == this) instance = null;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     
-    private TurretBlueprint turretBuilding;
 
     public bool CanPlace { get { return turretBuilding != null; } }
 

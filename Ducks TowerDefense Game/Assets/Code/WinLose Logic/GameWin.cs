@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement; // Import the SceneManagement namespace
 public class GameWin : MonoBehaviour
 {
     public TextMeshProUGUI roundsText; // Reference to the TextMeshProUGUI component for displaying rounds
+    private GameManager gameManager; // Reference to the GameManager script
+
+    // Unity built-in method that is called when the object is instantiated
+    void Awake(){
+        // Find GameManager in the scene
+        gameManager = Object.FindFirstObjectByType<GameManager>();
+        if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
+    }
 
     void OnEnable()
     {
@@ -27,8 +35,9 @@ public class GameWin : MonoBehaviour
     }
 
     //Reference in Unity, the onClick event of NextMap button in GameWin UI
-    public void NextMap()
-    {
+    public void NextMap(){
+        if (gameManager != null) gameManager.ResetGame(); // Call a method in GameManager to reset the game state
+        
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int totalScenes = SceneManager.sceneCountInBuildSettings;
 
@@ -45,8 +54,10 @@ public class GameWin : MonoBehaviour
     }
 
     //Reference in Unity, the onClick event of Menu button in GameWin UI
-    public void Menu()
-    {
+    public void Menu(){
+        Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
+        //Full game reset if returning to menu
+        if (gameManager != null) gameManager.ResetGame(); // Clear gameplay state
         SceneManager.LoadScene("Map Selection"); // Load the Map Selection menu
     }
 }

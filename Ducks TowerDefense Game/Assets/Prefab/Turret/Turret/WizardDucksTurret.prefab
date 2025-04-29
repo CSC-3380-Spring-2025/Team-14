@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 3253371304745194773}
   m_Layer: 0
   m_Name: WizardDucksTurret
-  m_TagString: Untagged
+  m_TagString: Duck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
