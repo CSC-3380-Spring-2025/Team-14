@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.025, y: -1357.1}
-  m_SizeDelta: {x: 5797, y: 2037}
+  m_AnchoredPosition: {x: -13.025, y: -1184.4}
+  m_SizeDelta: {x: 5797, y: 2384.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7671508970968924196
 CanvasRenderer:
@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.024779, y: 1345.005}
-  m_SizeDelta: {x: 5797, y: 2037}
+  m_AnchoredPosition: {x: -13.024779, y: 1182.3}
+  m_SizeDelta: {x: 5797, y: 2364.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7714183693048557270
 CanvasRenderer:
@@ -1039,6 +1039,7 @@ GameObject:
   - component: {fileID: 4055033261788636172}
   - component: {fileID: 7423355833373733568}
   - component: {fileID: 5451160712528808693}
+  - component: {fileID: 5925220394962727609}
   m_Layer: 5
   m_Name: Upgrade/SellUI
   m_TagString: Untagged
@@ -1130,6 +1131,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5925220394962727609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4352913109996688893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094517d1c8862d4458b5d1410a767e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5945628360354192787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1439,7 @@ RectTransform:
   m_GameObject: {fileID: 8116367854482374591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8720622774519859368}
@@ -1435,7 +1448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.024902344, y: 5972}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125486083238853627
