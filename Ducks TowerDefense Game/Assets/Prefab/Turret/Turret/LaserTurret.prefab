@@ -844,7 +844,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 4352913109996688893}
   upgradeButton: {fileID: 7694712347474676662}
   sellButton: {fileID: 8144819523582920881}
-  purchaseCost: 500
+  purchaseCost: 300
   upgradeOptionsPanel: {fileID: 8116367854482374591}
   range: 3
   fireRate: 2
@@ -1650,7 +1650,7 @@ Transform:
   m_GameObject: {fileID: 8754007004199682895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

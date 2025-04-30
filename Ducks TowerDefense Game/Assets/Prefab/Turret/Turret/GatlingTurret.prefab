@@ -962,7 +962,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 2192221470023155929}
   upgradeButton: {fileID: 6974586302386455835}
   sellButton: {fileID: 1715893868978811327}
-  purchaseCost: 400
+  purchaseCost: 600
   upgradeOptionsPanel: {fileID: 7509486420582940943}
   range: 3
   fireRate: 4

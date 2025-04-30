@@ -135,7 +135,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 0}
   upgradeButton: {fileID: 0}
   sellButton: {fileID: 0}
-  purchaseCost: 0
+  purchaseCost: 1500
   upgradeOptionsPanel: {fileID: 0}
   range: 3
   fireRate: 2

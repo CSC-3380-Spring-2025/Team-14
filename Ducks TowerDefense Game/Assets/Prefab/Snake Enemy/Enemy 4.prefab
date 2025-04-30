@@ -185,7 +185,7 @@ MonoBehaviour:
   isRegenBoss: 1
   isResurrectionBoss: 0
   isEmperorBoss: 0
-  regenRate: 50
+  regenRate: 100
   regenInterval: 3.5
   regenTimer: 0
   resurrectHealthPercent: 1
