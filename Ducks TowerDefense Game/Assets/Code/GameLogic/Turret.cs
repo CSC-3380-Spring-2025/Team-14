@@ -69,8 +69,8 @@ public class Turret : MonoBehaviour{
     public bool isNuke = false;
     public float nukeDamage = 99999f;
 
-
-
+    // ======== Range Indicator ========
+    public GameObject rangeInd;
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
 //--------------------------------------------------------------------
@@ -96,6 +96,13 @@ public class Turret : MonoBehaviour{
         targetingRangeBase = range; 
         upgradeButton.onClick.AddListener(OpenUpgradeOptions);
         sellButton.onClick.AddListener(SellTurret);
+        if (rangeInd != null)
+    {
+        float worldSize = range * 2f;
+        float spriteSize = rangeInd.GetComponent<SpriteRenderer>().bounds.size.x / rangeInd.transform.localScale.x;
+        float scale = worldSize / spriteSize;
+        rangeInd.transform.localScale = Vector3.one * scale;
+    }
         
     }
 //--------------------------------------------------------------------
@@ -329,5 +336,18 @@ public class Turret : MonoBehaviour{
         Debug.Log("Upgraded Bullet Damage! New Damage: " + bulletDamage);
 
         CloseUpgradeOptions(); 
+    }
+    public void ShowRange(float seconds){
+        if (rangeInd != null){
+            rangeInd.SetActive(true);
+            StartCoroutine(HideRange(seconds));
+        }
+    }
+
+    private IEnumerator HideRange(float delay){
+        yield return new WaitForSeconds(delay);
+        if(rangeInd != null){
+            rangeInd.SetActive(false);
+        }
     }
 }//end of class
