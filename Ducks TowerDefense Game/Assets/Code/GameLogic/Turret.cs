@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 //Ep 4, lock the turret to enemy around 15 min
 //Ep 5, creating a bullet and setting its position, around 6 min
@@ -23,8 +24,11 @@ public class Turret : MonoBehaviour{
     public Button sellButton;
     public int purchaseCost = 0;
     
+    
     [Header("UI Panel")]
     public GameObject upgradeOptionsPanel;
+    public TextMeshProUGUI costText;
+    public TextMeshProUGUI notEnoughMoneyText;
     // ======== CORE STATS ========
     [Header("Attributes")]//Bascially setup a header on unity
     public float range = 3f; //Range of the turret
@@ -253,74 +257,77 @@ public class Turret : MonoBehaviour{
 
         Destroy(gameObject);
     }
-    private int CalculateCost(){
-        return Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
-    }
+    private int CalculateCost() => Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
+    
 
-    private float CalculateFireRate()
-    {
-        return fireRateBase * Mathf.Pow(level, .6f);
-    }
-    private float CalculateRange(){
-        return  targetingRangeBase * Mathf.Pow(level, .4f);
-    }
-    private void KillAllEnemies()
-    {
+    private float CalculateFireRate() => fireRateBase * Mathf.Pow(level, .6f);
+    
+    private float CalculateRange() => targetingRangeBase * Mathf.Pow(level, .4f);
+    
+    private void KillAllEnemies(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        foreach (GameObject enemy in enemies)
-        {
+        foreach (GameObject enemy in enemies){
             Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null && !enemyScript.IsDestroyed)
-            {
+            if (enemyScript != null && !enemyScript.IsDestroyed){
                 enemyScript.TakeDamage(nukeDamage);
             }
         }
     }
-    private IEnumerator ShowFreezeLaser()
-    {
+    private IEnumerator ShowFreezeLaser(){
         lineRenderer.enabled = true; 
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(.5f);
         lineRenderer.enabled = false;
     }
 
-    public void OpenUpgradeOptions() //Onclick
-    {
-        if (upgradeOptionsPanel != null)
-            upgradeOptionsPanel.SetActive(true); 
+    public void OpenUpgradeOptions(){ //Onclick
+        if (upgradeOptionsPanel == null || costText == null) return;
+        upgradeOptionsPanel.SetActive(true); 
+        costText.text = $"Cost: {CalculateCost()}" ; // Update the cost text
     }
 
-public void CloseUpgradeOptions() //onClick
-{
-    if (upgradeOptionsPanel != null)
-        upgradeOptionsPanel.SetActive(false); 
+    public void CloseUpgradeOptions() { //onClick
+        if (upgradeOptionsPanel != null)
+            upgradeOptionsPanel.SetActive(false); 
+            upgradeUI.SetActive(false);
+    }
+    private IEnumerator ShowNotEnoughMoney()
+    {
+        notEnoughMoneyText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f); // Longer display time
+        notEnoughMoneyText.gameObject.SetActive(false); // Only hide text
         upgradeUI.SetActive(false);
-}
-public void UpgradeFireRateAndRange()
-{
-    if (CalculateCost() > PlayerStats.Money) return;
+    }
+    public void UpgradeFireRateAndRange(){
+        if (CalculateCost() > PlayerStats.Money){
+            StartCoroutine(ShowNotEnoughMoney()); // Show not enough money message
+            return; 
+        }
 
-    PlayerStats.Money -= CalculateCost();
-    level++;
-    fireRate = CalculateFireRate();
-    range = CalculateRange();
+        PlayerStats.Money -= CalculateCost();
+        level++;
+        fireRate = CalculateFireRate();
+        range = CalculateRange();
 
-    Debug.Log("Upgraded Fire Rate and Range!");
-    Debug.Log("New Fire Rate: " + fireRate);
-    Debug.Log("New Range: " + range);
+        Debug.Log("Upgraded Fire Rate and Range!");
+        Debug.Log("New Fire Rate: " + fireRate);
+        Debug.Log("New Range: " + range);
 
-    CloseUpgradeOptions();
-}
-public void UpgradeDamage()
-{
-    if (CalculateCost() > PlayerStats.Money) return;
+        CloseUpgradeOptions();
+    }
+    public void UpgradeDamage()
+    {
+        if (CalculateCost() > PlayerStats.Money){
+            StartCoroutine(ShowNotEnoughMoney()); // Show not enough money message
+            return; 
+        }
 
-    PlayerStats.Money -= CalculateCost();
-    level++;
+        PlayerStats.Money -= CalculateCost();
+        level++;
 
-    bulletDamage = Mathf.RoundToInt(50 * Mathf.Pow(level, 0.6f)); 
-    Debug.Log("Upgraded Bullet Damage! New Damage: " + bulletDamage);
+        bulletDamage = Mathf.RoundToInt(50 * Mathf.Pow(level, 0.6f)); 
+        Debug.Log("Upgraded Bullet Damage! New Damage: " + bulletDamage);
 
-    CloseUpgradeOptions(); 
-}
+        CloseUpgradeOptions(); 
+    }
 }//end of class
