@@ -70,7 +70,11 @@ public class PlaceTurret : MonoBehaviour{
         Quaternion rotation = Quaternion.Euler(node.rotationOffSet); // Fix typo in variable name
         GameObject turret = (GameObject)Instantiate(turretBuilding.prefab, node.GetPlacePosition(), transform.rotation);
         node.turret = turret;
-
+        Turret turretScript = turret.GetComponent<Turret>();
+        if (turretScript != null)
+        {
+        turretScript.ShowRange(2f);
+        }
         Debug.Log ("Money left after building: " + PlayerStats.Money);
         turretBuilding = null;
     }
