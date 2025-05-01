@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour {
 
     // Player stats
     [Header("Player Stats")]
-    public static int startMoney = 999999; // Initial money
+    public static int startMoney = 500; // Initial money
     public static int startLives = 3;  // Initial lives
 
     private static int money;

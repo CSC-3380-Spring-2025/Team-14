@@ -19,17 +19,5 @@ public class UpgradeUIHandler : MonoBehaviour
             Debug.LogWarning("UpgradeUI reference is missing!");
     }
 
-    // private void OnMouseEnter()
-    // {
-    //     Debug.Log("MOUSE ENTERED!");
-    //     if (upgradeUI != null)
-    //         upgradeUI.SetActive(true);
-    // }
-
-    // private void OnMouseExit()
-    // {
-    //     Debug.Log("MOUSE EXITED!");
-    //     if (upgradeUI != null)
-    //         upgradeUI.SetActive(false);
-    // }
+    
 }
