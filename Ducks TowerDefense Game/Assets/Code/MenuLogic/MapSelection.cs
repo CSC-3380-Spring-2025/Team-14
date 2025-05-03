@@ -7,6 +7,15 @@ public class MapSelection : MonoBehaviour
 {
     public string mapSelected;
     public Button clickableButton;
+    
+    //Tracker for original selection
+    public int oldIndex = -1;
+
+    // Map Image Array
+    public GameObject[] mapImages;
+
+    // Difficulty Stars Array (Implementation Needed, plan on using tags)
+    public GameObject[] difficultyStars;
 
     // Map buttons array
     public Button[] mapButton;
@@ -25,10 +34,18 @@ public class MapSelection : MonoBehaviour
 
             // Add a listener to each button to select the map
             int index = i; // Capture the current index for the lambda
+            
             mapButton[i].onClick.AddListener(() =>
             {
+                //Assuming not initial click, deactivates map preview
+                if (oldIndex != -1)
+                {
+                    mapImages[oldIndex].SetActive(false);
+                }
                 mapSelected = "Map" + (index + 1); // Set the selected map
                 clickableButton.interactable = true; // Enable the PlayMap button
+                mapImages[index].SetActive(true); //Activates selected map preview
+                oldIndex = index; //store old index
             });
         }
     }
