@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Duck
   - Enemy
+  - EasyDif
+  - NormalDif
+  - HardDif
   layers:
   - Default
   - TransparentFX

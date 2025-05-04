@@ -10,6 +10,7 @@ public class MapSelection : MonoBehaviour
     
     //Tracker for original selection
     public int oldIndex = -1;
+    public int oldDifIndex = -1;
 
     // Map Image Array
     public GameObject[] mapImages;
@@ -42,10 +43,12 @@ public class MapSelection : MonoBehaviour
                 {
                     mapImages[oldIndex].SetActive(false);
                 }
+
                 mapSelected = "Map" + (index + 1); // Set the selected map
                 clickableButton.interactable = true; // Enable the PlayMap button
                 mapImages[index].SetActive(true); //Activates selected map preview
                 oldIndex = index; //store old index
+                Difficulty(mapButton[index]);
             });
         }
     }
@@ -116,6 +119,57 @@ public class MapSelection : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+
+    }
+
+    public string checkTag(Button objectToCheck)
+    {
+        string objectTag = objectToCheck.tag;
+        return objectTag;
+    }
+
+    public void showDif(Button objectToCheck)
+    {
+        string objectTag = checkTag(objectToCheck);
+
+        if (string.Compare(objectTag, "EasyDif") == 0)
+        {
+            difficultyStars[0].SetActive(true);
+            oldDifIndex = 0;
+        }
+        else if (string.Compare(objectTag, "NormalDif") == 0)
+        {
+            difficultyStars[1].SetActive(true);
+            oldDifIndex = 1;
+        }
+        else if (string.Compare(objectTag, "HardDif") == 0)
+        {
+            difficultyStars[2].SetActive(true);
+            oldDifIndex = 2;
+        }
+        else
+        {
+            oldDifIndex = -1;
+            return;
+        }
+    }
+
+    public void turnOffOldDif(int index)
+    {
+        if (oldDifIndex != -1)
+        {
+            difficultyStars[index].SetActive(false);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void Difficulty(Button objectToUse)
+    {
+        turnOffOldDif(oldDifIndex);
+        showDif(objectToUse);
 
     }
 
