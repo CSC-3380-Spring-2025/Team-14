@@ -13964,6 +13964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 323647416}
+  muteToggle: {fileID: 0}
   audioSource: {fileID: 609396319}
 --- !u!1 &609972048 stripped
 GameObject:
@@ -26552,7 +26553,7 @@ MonoBehaviour:
   - {fileID: 6440495065815521116, guid: 72d5a7bdb4a8a9c4280aad1ee03e1cda, type: 3}
   - {fileID: 6440495065815521116, guid: bfbccef8051bf7443ab91fc9c95af038, type: 3}
   spawnPoint: {fileID: 1891699705}
-  baseEnemies: 2
+  baseEnemies: 3
 --- !u!4 &1100544010
 Transform:
   m_ObjectHideFlags: 0
