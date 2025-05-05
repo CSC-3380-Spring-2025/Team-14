@@ -14,11 +14,11 @@ public class Bullet : MonoBehaviour
     public GameObject effect;
     private bool hasHitTarget = false; // Prevent multiple hits
 
-
+//--------------------------------------------------------------------
     public void Seek(Transform _target){
         target = _target;
     }
-
+//--------------------------------------------------------------------
     void Update(){
         if (target == null){
             Destroy(gameObject);
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         //Debug.DrawLine(transform.position, target.position, Color.red, 0.1f);
         //Debug.Log("Bullet Position: " + transform.position);//Check to see if bullet is moving
     }
-
+//--------------------------------------------------------------------
     void HitTarget() {
         if (hasHitTarget) return; // Prevent multiple hits
         hasHitTarget = true;
@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject);
     }
-
+//--------------------------------------------------------------------
     void Explode() {
         // Changed to Physics2D for 2D games
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour
             }
         }
     }
-
+//--------------------------------------------------------------------
     void Damage(Transform enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
 
@@ -81,4 +81,5 @@ public class Bullet : MonoBehaviour
             e.TakeDamage(damage);
         }
     }
+//--------------------------------------------------------------------
 }

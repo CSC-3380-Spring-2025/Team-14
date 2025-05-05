@@ -19,7 +19,7 @@ public class MenuShop : MonoBehaviour
     public Button nukeButton;
 
     private Economy economy => Economy.Instance;
-
+//--------------------------------------------------------------------
     void Start()
     {
         if (Economy.Instance == null) return;
@@ -36,6 +36,7 @@ public class MenuShop : MonoBehaviour
         economy.RefreshUI(moneyText);
         shopMoneyText.text = $"Coins: {economy.Money:N0}";
     }
+//--------------------------------------------------------------------
     void Update()
     {
         if(Input.GetKeyDown("b"))
@@ -49,7 +50,7 @@ public class MenuShop : MonoBehaviour
             nukeButton.interactable = true;
         }
     }
-
+//--------------------------------------------------------------------
     public void PurchaseGatlingTurret() => PurchaseTurret(GatlingTurret, "GatlingUnlocked");
     public void PurchaseFreezeTurret() => PurchaseTurret(FreezeTurret, "FreezeUnlocked");
     public void PurchaseNukeTurret() => PurchaseTurret(NukeTurret, "NukeUnlocked");
@@ -72,4 +73,5 @@ public class MenuShop : MonoBehaviour
         else if (turret == FreezeTurret) freezeButton.interactable = false;
         else if (turret == NukeTurret) nukeButton.interactable = false;
     }
+//--------------------------------------------------------------------
 }

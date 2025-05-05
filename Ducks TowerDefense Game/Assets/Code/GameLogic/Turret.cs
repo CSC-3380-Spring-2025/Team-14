@@ -251,11 +251,12 @@ public class Turret : MonoBehaviour{
         Debug.Log("Opening upgrade UI");
         upgradeUI.SetActive(true);
     }
+//--------------------------------------------------------------------
     public void CloseUpgradeUI(){
         upgradeUI.SetActive(false);
         UIManager.main.SetHoveringState(false);
     }
-  
+ //-------------------------------------------------------------------- 
     public void SellTurret(){
         int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
         PlayerStats.Money += sellAmount;
@@ -264,13 +265,14 @@ public class Turret : MonoBehaviour{
 
         Destroy(gameObject);
     }
+//--------------------------------------------------------------------
     private int CalculateCost() => Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
     
 
     private float CalculateFireRate() => fireRateBase * Mathf.Pow(level, .6f);
     
     private float CalculateRange() => targetingRangeBase * Mathf.Pow(level, .4f);
-    
+//--------------------------------------------------------------------
     private void KillAllEnemies(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         foreach (GameObject enemy in enemies){
@@ -280,24 +282,26 @@ public class Turret : MonoBehaviour{
             }
         }
     }
+//--------------------------------------------------------------------
     private IEnumerator ShowFreezeLaser(){
         lineRenderer.enabled = true; 
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(.5f);
         lineRenderer.enabled = false;
     }
-
+//--------------------------------------------------------------------
     public void OpenUpgradeOptions(){ //Onclick
         if (upgradeOptionsPanel == null || costText == null) return;
         upgradeOptionsPanel.SetActive(true); 
         costText.text = $"Cost: {CalculateCost()}" ; // Update the cost text
     }
-
+//--------------------------------------------------------------------
     public void CloseUpgradeOptions() { //onClick
         if (upgradeOptionsPanel != null)
             upgradeOptionsPanel.SetActive(false); 
             upgradeUI.SetActive(false);
     }
+//--------------------------------------------------------------------
     private IEnumerator ShowNotEnoughMoney()
     {
         notEnoughMoneyText.gameObject.SetActive(true);
@@ -305,6 +309,7 @@ public class Turret : MonoBehaviour{
         notEnoughMoneyText.gameObject.SetActive(false); // Only hide text
         upgradeUI.SetActive(false);
     }
+//--------------------------------------------------------------------
     public void UpgradeFireRateAndRange(){
         if (CalculateCost() > PlayerStats.Money){
             StartCoroutine(ShowNotEnoughMoney()); // Show not enough money message
@@ -322,6 +327,7 @@ public class Turret : MonoBehaviour{
 
         CloseUpgradeOptions();
     }
+//--------------------------------------------------------------------}
     public void UpgradeDamage()
     {
         if (CalculateCost() > PlayerStats.Money){
@@ -337,17 +343,19 @@ public class Turret : MonoBehaviour{
 
         CloseUpgradeOptions(); 
     }
-    public void ShowRange(float seconds){
+//--------------------------------------------------------------------
+        public void ShowRange(float seconds){
         if (rangeInd != null){
             rangeInd.SetActive(true);
             StartCoroutine(HideRange(seconds));
         }
     }
-
+//--------------------------------------------------------------------
     private IEnumerator HideRange(float delay){
         yield return new WaitForSeconds(delay);
         if(rangeInd != null){
             rangeInd.SetActive(false);
         }
     }
+//--------------------------------------------------------------------
 }//end of class

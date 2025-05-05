@@ -8,7 +8,7 @@ public class Economy : MonoBehaviour
     [SerializeField] private int initialMoney = 999999;
     private int _money;
     public TextMeshProUGUI moneyText;
-
+//--------------------------------------------------------------------
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,7 +22,7 @@ public class Economy : MonoBehaviour
         _money = PlayerPrefs.GetInt("PlayerMoney", initialMoney);
         UpdateMoneyText();
     }
-
+//--------------------------------------------------------------------
     public int Money => _money;
 
     public void AddMoney(int amount)
@@ -31,7 +31,7 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
         PlayerPrefs.SetInt("PlayerMoney", _money);
     }
-
+//--------------------------------------------------------------------
     public bool CanAfford(int amount) => _money >= amount;
 
     public void SpendMoney(int amount)
@@ -41,15 +41,16 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
         PlayerPrefs.SetInt("PlayerMoney", _money);
     }
-
+//--------------------------------------------------------------------
     public void RefreshUI(TextMeshProUGUI newMoneyText = null)
     {
         if (newMoneyText != null) moneyText = newMoneyText;
         UpdateMoneyText();
     }
-
+//--------------------------------------------------------------------
     private void UpdateMoneyText()
     {
         if (moneyText != null) moneyText.text = $"Coins: {_money:N0}";
     }
+//--------------------------------------------------------------------
 }

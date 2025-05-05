@@ -6,7 +6,7 @@ public class AudioSettings : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider volumeSlider;
-
+//--------------------------------------------------------------------
     void Start()
     {
         // Optional: Load saved volume
@@ -17,7 +17,7 @@ public class AudioSettings : MonoBehaviour
             SetVolume(savedVolume);
         }
     }
-
+//--------------------------------------------------------------------
     public void SetVolume(float volume)
     {
         // Convert to decibels
@@ -27,4 +27,5 @@ public class AudioSettings : MonoBehaviour
         // Save volume
         PlayerPrefs.SetFloat("MasterVolume", volume);
     }
+//--------------------------------------------------------------------
 }

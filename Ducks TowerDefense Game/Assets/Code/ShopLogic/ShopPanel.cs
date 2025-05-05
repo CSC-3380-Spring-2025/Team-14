@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour
     private Vector2 offScreenPosition;
     private Vector2 onScreenPosition;
     private bool isShopOpen = false;
-
+//--------------------------------------------------------------------
     private void Start(){
         // Check if UI references are assigned
         if (shopPanel == null || startButton == null){
@@ -25,7 +25,7 @@ public class ShopManager : MonoBehaviour
         // Hide the shop panel at the start
         shopPanel.anchoredPosition = offScreenPosition;
     }
-
+//--------------------------------------------------------------------
     private void Update(){
         if (shopPanel == null || shopPanel.Equals(null)) return;
 
@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour
         }
         UpdateStartButtonState();
     }
-
+//--------------------------------------------------------------------
     // Calculate the on-screen and off-screen positions dynamically
     private void CalculatePositions(){
         // Get the width of the shop panel in local coordinates
@@ -51,7 +51,7 @@ public class ShopManager : MonoBehaviour
         //Reasin This is on the right edge is because I set the anchor in inspector of the shopPanel in Unity to be middle right
         onScreenPosition = new Vector2(0, 0);
     }
-
+//--------------------------------------------------------------------
     // Opens the shop panel
     public void OpenShop(){
         // Check if UI references are assigned
@@ -61,7 +61,7 @@ public class ShopManager : MonoBehaviour
         isShopOpen = true;
         startButton.gameObject.SetActive(false);
     }
-
+//--------------------------------------------------------------------
     // Closes the shop panel
     public void CloseShop(){
         // Check if UI references are assigned
@@ -71,7 +71,7 @@ public class ShopManager : MonoBehaviour
         isShopOpen = false;
         
     }
-
+//--------------------------------------------------------------------
      // Updates the start button's visibility and interactability based on the shop panel's position
     private void UpdateStartButtonState(){
         if (shopPanel == null || shopPanel.Equals(null) || startButton == null || startButton.Equals(null)) return;
@@ -88,19 +88,21 @@ public class ShopManager : MonoBehaviour
             startButton.gameObject.SetActive(false);
         }
     }
+//--------------------------------------------------------------------
      public bool HasShopPanelLeftScreen(){
         if (shopPanel == null || shopPanel.Equals(null)) return true;
         // Compare the current position of the shop panel to its off-screen position
         float distance = Vector2.Distance(shopPanel.anchoredPosition, offScreenPosition);
         return distance < 1f; // Allow a small threshold for floating-point inaccuracies
     }
-
+//--------------------------------------------------------------------
     public bool IsShopOpen() {
         return isShopOpen;
     }
+//--------------------------------------------------------------------
     private void OnDestroy(){
         shopPanel = null;
         startButton = null;
     }
-
+//--------------------------------------------------------------------
 }

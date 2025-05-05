@@ -14,6 +14,7 @@ public class PlaceTurret : MonoBehaviour{
     private TurretBlueprint turretBuilding;
     public static PlaceTurret instance;
     public Node LastNodeWithUI;
+//--------------------------------------------------------------------
     void Awake(){
         if(instance != null){
             Debug.LogError("More than once PlaceTurret in scene");
@@ -28,7 +29,7 @@ public class PlaceTurret : MonoBehaviour{
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log("PlaceTurret initialized for scene: " + SceneManager.GetActiveScene().name);
     }
-
+//--------------------------------------------------------------------
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Reset turret selection when changing maps
@@ -37,16 +38,16 @@ public class PlaceTurret : MonoBehaviour{
         LastNodeWithUI = null;
         Debug.Log("PlaceTurret cleared for new scene: " + scene.name);
     }
-
+//--------------------------------------------------------------------
     // Unity built-in method that is called when the object is destroyed
     void OnDestroy(){
         // Clean up event handler
         if (instance == this) instance = null;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
+//--------------------------------------------------------------------
     
-
+//--------------------------------------------------------------------
     public bool CanPlace { get { return turretBuilding != null; } }
 
 
@@ -58,6 +59,7 @@ public class PlaceTurret : MonoBehaviour{
             }
         }
     }
+//--------------------------------------------------------------------   
     public void PlaceTurretOn(Node node)
     {
         if (PlayerStats.Money < turretBuilding.cost)
@@ -78,11 +80,11 @@ public class PlaceTurret : MonoBehaviour{
         Debug.Log ("Money left after building: " + PlayerStats.Money);
         turretBuilding = null;
     }
-
+//--------------------------------------------------------------------
     //You can choice which turret to build
-
+//--------------------------------------------------------------------
     public void selectTurretToPlace(TurretBlueprint turret) {
         turretBuilding = turret;
     }
-   
+//--------------------------------------------------------------------
 }

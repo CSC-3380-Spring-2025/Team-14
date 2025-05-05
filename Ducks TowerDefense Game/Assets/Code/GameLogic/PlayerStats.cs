@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour {
     public static int startLives = 3;  // Initial lives
 
     private static int money;
+//--------------------------------------------------------------------
     public static int Money {
         get { return money; }
         set {
@@ -23,7 +24,7 @@ public class PlayerStats : MonoBehaviour {
             OnMoneyChanged?.Invoke(money); // Trigger the money changed event
         }
     }
-
+//--------------------------------------------------------------------
     private static int lives;
     public static int Lives {
         get { return lives; }
@@ -36,7 +37,7 @@ public class PlayerStats : MonoBehaviour {
             }
         }
     }
-
+//--------------------------------------------------------------------
     // Events to notify when money or lives change
     public static event System.Action<int> OnMoneyChanged;
     public static event System.Action<int> OnLivesChanged;
@@ -54,13 +55,13 @@ public class PlayerStats : MonoBehaviour {
         UpdateMoneyText(Money);
         UpdateLivesText(Lives);
     }
-
+//--------------------------------------------------------------------
     private void OnDestroy() {
         // Unsubscribe from events to avoid memory leaks
         OnMoneyChanged -= UpdateMoneyText;
         OnLivesChanged -= UpdateLivesText;
     }
-
+//--------------------------------------------------------------------
     private void UpdateMoneyText(int currentMoney) {
         if (moneyText == null) {
             Debug.LogError("MoneyText is not assigned in the inspector.");
@@ -69,7 +70,7 @@ public class PlayerStats : MonoBehaviour {
         Debug.Log("current money is " + currentMoney);
         moneyText.text = $"{currentMoney}";
     }
-
+//--------------------------------------------------------------------
     private void UpdateLivesText(int currentLives) {
         if (livesText == null) {
             Debug.LogError("LivesText is not assigned in the inspector.");
@@ -77,10 +78,11 @@ public class PlayerStats : MonoBehaviour {
         }
         livesText.text = $"Lives: {currentLives}";
     }
-
+//--------------------------------------------------------------------
     public static void ResetAll(){
         Money = 999999;
         Lives = 3;
         Rounds = 0;
     }
+ //--------------------------------------------------------------------   
 }

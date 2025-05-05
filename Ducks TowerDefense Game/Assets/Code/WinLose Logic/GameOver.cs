@@ -17,18 +17,18 @@ public class GameOver : MonoBehaviour
         gameManager = Object.FindFirstObjectByType<GameManager>();
         if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
     }
-
+//--------------------------------------------------------------------
     void OnEnable(){
         roundsText.text = PlayerStats.Rounds.ToString(); // Update the text with the number of rounds
         retryButton.onClick.AddListener(Retry);
         menuButton.onClick.AddListener(Menu);
     }
-
+//--------------------------------------------------------------------
     void OnDisable(){
         retryButton.onClick.RemoveListener(Retry);
         menuButton.onClick.RemoveListener(Menu);
     }
-
+//--------------------------------------------------------------------
 
     //Reference in Unity, the onClick event of Retry button in GameOver UI
     public void Retry(){
@@ -37,7 +37,7 @@ public class GameOver : MonoBehaviour
         gameObject.SetActive(false);
         //gameManager.ContinueGameState(); // Resumes gameplay
     }
-
+//--------------------------------------------------------------------
     //Reference in Unity, the onClick event of Menu button in GameOver UI
     public void Menu(){
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
@@ -46,4 +46,5 @@ public class GameOver : MonoBehaviour
     
         SceneManager.LoadScene("Map Selection"); // Load the Main Menu scene
     }
+//--------------------------------------------------------------------
 }

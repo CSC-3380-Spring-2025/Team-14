@@ -19,7 +19,7 @@ public class MapSelection : MonoBehaviour
 
     // Map buttons array
     public Button[] mapButton;
-
+//--------------------------------------------------------------------
     void Start()
     {
         clickableButton.interactable = false;
@@ -49,7 +49,7 @@ public class MapSelection : MonoBehaviour
             });
         }
     }
-
+//--------------------------------------------------------------------
     void Update()
     {
         // Reset map lock to default when "R" is pressed
@@ -75,7 +75,7 @@ public class MapSelection : MonoBehaviour
             }
         }
     }
-
+//--------------------------------------------------------------------
     public void PlayMap()
     {
         // Reset the game state before starting the map
@@ -94,7 +94,7 @@ public class MapSelection : MonoBehaviour
             Debug.Log("No Map Selected");
         }
     }
-
+//--------------------------------------------------------------------
     public void CompleteMap(string completedMap)
     {
         int progress = PlayerPrefs.GetInt("LevelProgress", 1);
@@ -110,7 +110,7 @@ public class MapSelection : MonoBehaviour
 
         PlayerPrefs.Save();
     }
-
+//--------------------------------------------------------------------
     //Do Not Delete, Loads Main Menu -_-
     //ok :) My bad :3
     public void goToMainMenu()
@@ -118,5 +118,6 @@ public class MapSelection : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
 
     }
+//--------------------------------------------------------------------
 
 }

@@ -99,7 +99,7 @@ public class Spawner : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-
+//--------------------------------------------------------------------
     public void ResetSpawner(){
         Debug.Log("Spawner has been reset.");
         StopAllCoroutines(); // Add this
@@ -107,4 +107,5 @@ public class Spawner : MonoBehaviour{
         enemiesInCurrentWave = 0; // Reset enemies in current wave
         Enemy.enemiesRemaining = 0; // Reset the enemy counter
     }
+//--------------------------------------------------------------------
 }//end of class

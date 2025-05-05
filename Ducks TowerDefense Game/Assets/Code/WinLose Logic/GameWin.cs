@@ -13,12 +13,12 @@ public class GameWin : MonoBehaviour
         gameManager = Object.FindFirstObjectByType<GameManager>();
         if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
     }
-
+//--------------------------------------------------------------------
     void OnEnable()
     {
         roundsText.text = PlayerStats.Rounds.ToString(); // Update the text with the number of rounds
     }
-
+//--------------------------------------------------------------------
     //Reference in Unity, the onClick event of Continue button in GameWin UI
     public void ContinueGame()
     {
@@ -33,7 +33,7 @@ public class GameWin : MonoBehaviour
         Time.timeScale = 1; // Resume the game
         gameObject.SetActive(false); // Hide the GameWin UI
     }
-
+//--------------------------------------------------------------------
     //Reference in Unity, the onClick event of NextMap button in GameWin UI
     public void NextMap(){
         if (gameManager != null) gameManager.ResetGame(); // Call a method in GameManager to reset the game state
@@ -52,7 +52,7 @@ public class GameWin : MonoBehaviour
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
     }
-
+//--------------------------------------------------------------------
     //Reference in Unity, the onClick event of Menu button in GameWin UI
     public void Menu(){
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
@@ -60,4 +60,5 @@ public class GameWin : MonoBehaviour
         if (gameManager != null) gameManager.ResetGame(); // Clear gameplay state
         SceneManager.LoadScene("Map Selection"); // Load the Map Selection menu
     }
+//--------------------------------------------------------------------
 }

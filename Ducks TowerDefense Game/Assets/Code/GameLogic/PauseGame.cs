@@ -14,19 +14,23 @@ public class PauseGame : MonoBehaviour
     private bool ifPause = false;
 
     private GameManager gameManager; // Reference to the GameManager script
+//--------------------------------------------------------------------
     void Awake(){
         // Find GameManager in the scene
         gameManager = Object.FindFirstObjectByType<GameManager>();
         if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
     }
+//--------------------------------------------------------------------
     private void OnEnable(){
         // Add listener to the Pause button
         if (PauseButton != null) PauseButton.onClick.AddListener(GamePause);
     }
+//--------------------------------------------------------------------
     private void OnDisable(){
         // Clean up button listeners
         if (PauseButton != null) PauseButton.onClick.RemoveListener(GamePause);
     }
+//--------------------------------------------------------------------
     private void Start(){
         // Check if UI references are assigned
         if (PausePanel == null || PauseButton == null){
@@ -40,7 +44,7 @@ public class PauseGame : MonoBehaviour
         // Hide the shop panel at the start
         PausePanel.anchoredPosition = offScreenPosition;
     }
-
+//--------------------------------------------------------------------
     private void Update(){
         if (PausePanel == null) return;
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -55,7 +59,7 @@ public class PauseGame : MonoBehaviour
             PausePanel.anchoredPosition = Vector2.MoveTowards(PausePanel.anchoredPosition, offScreenPosition, slideSpeed * Time.unscaledDeltaTime );
         }
     }
-
+//--------------------------------------------------------------------
     // Calculate the on-screen and off-screen positions dynamically
     private void CalculatePositions(){
         if (PausePanel == null) return;
@@ -68,7 +72,7 @@ public class PauseGame : MonoBehaviour
         // Define on-screen position as aligned to the top edge of the screen
         onScreenPosition = new Vector2(0, 0);
     }
-    
+ //--------------------------------------------------------------------   
 
     // Opens the shop panel
     public void GamePause(){
@@ -82,7 +86,7 @@ public class PauseGame : MonoBehaviour
         // Pause the game
         Time.timeScale = 0;
     }
-
+//--------------------------------------------------------------------
     // Closes the shop panel
     public void GameResume(){
         // Check if UI references are assigned
@@ -95,7 +99,7 @@ public class PauseGame : MonoBehaviour
         // Resume the game
         Time.timeScale = 1;
     }
-
+//--------------------------------------------------------------------
     public void quitMap()
     {
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
@@ -103,4 +107,5 @@ public class PauseGame : MonoBehaviour
         if (gameManager != null) gameManager.ResetGame(); // Clear gameplay state
         SceneManager.LoadScene("MainMenu");
     }
+//--------------------------------------------------------------------
 }

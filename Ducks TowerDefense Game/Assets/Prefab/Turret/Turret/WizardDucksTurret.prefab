@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -2573491568724097908}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: UpgradeFireRateAndRange
         m_Mode: 1
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -2573491568724097908}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: UpgradeDamage
         m_Mode: 1
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -2573491568724097908}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: OpenUpgradeOptions
         m_Mode: 1

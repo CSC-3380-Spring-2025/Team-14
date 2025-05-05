@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnsureEconomy : MonoBehaviour
 {
+//--------------------------------------------------------------------
     void Awake()
     {
         if (Economy.Instance == null)
@@ -10,4 +11,5 @@ public class EnsureEconomy : MonoBehaviour
             new GameObject("Economy").AddComponent<Economy>();
         }
     }
+//--------------------------------------------------------------------
 }

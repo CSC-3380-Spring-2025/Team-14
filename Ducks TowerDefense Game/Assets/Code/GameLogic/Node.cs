@@ -12,14 +12,14 @@ public class Node : MonoBehaviour{
     private SpriteRenderer  rend;
     private Color startColor;
     PlaceTurret placeTurret; //reference PlaceTurret Script
-
+//--------------------------------------------------------------------
     void Start(){
         rend = GetComponent<SpriteRenderer>();
         startColor = rend.material.color;
         placeTurret = PlaceTurret.instance;
         
     }
-
+//--------------------------------------------------------------------
     public Vector3 GetPlacePosition()
     {
         return transform.position + positionOffSet;
@@ -48,9 +48,10 @@ public class Node : MonoBehaviour{
         _turret.OpenUpgradeUI();
         
     }
-
+//--------------------------------------------------------------------
 
     // In order for this effect to work, I would need to add a Box Collider Component in the inspector of the game Object (Square)
+//--------------------------------------------------------------------
     void OnMouseEnter(){ //OnMouseEnter - Enter the node
         if(EventSystem.current.IsPointerOverGameObject()) return;
         if(!placeTurret.CanPlace) return;
@@ -61,6 +62,6 @@ public class Node : MonoBehaviour{
     if (rend != null)
         rend.material.color = startColor;  
     }
-
+//--------------------------------------------------------------------
 
 }

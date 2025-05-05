@@ -24,7 +24,7 @@ public class WaveTimer : MonoBehaviour
     public Vector2 indicatorUIPosition = new Vector2(13.5f, -4.5f); // Set this in Inspector
     private GameObject pathIndicatorInstance;
     private bool firstWave = true;
-
+//--------------------------------------------------------------------
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
@@ -61,7 +61,7 @@ public class WaveTimer : MonoBehaviour
             
         }
     }
-
+//--------------------------------------------------------------------
     void Update()
     {
         int currentLives = PlayerStats.Lives;
@@ -71,7 +71,7 @@ public class WaveTimer : MonoBehaviour
 
         UpdateButtonState();
     }
-
+//--------------------------------------------------------------------
     private void OnEnable()
     {
         if (continueButton != null)
@@ -80,7 +80,7 @@ public class WaveTimer : MonoBehaviour
             continueButton.interactable = false;
         }
     }
-
+//--------------------------------------------------------------------
     private void UpdateButtonState()
     {
         if (continueButton == null || shopManager == null) return;
@@ -101,7 +101,7 @@ public class WaveTimer : MonoBehaviour
             continueButton.gameObject.SetActive(false);
         }
     }
-
+//--------------------------------------------------------------------
     public void OnWaveDefeated()
     {
         if (gameManager == null) return;
@@ -114,7 +114,7 @@ public class WaveTimer : MonoBehaviour
         if (currentWave % 10 == 0 && currentWave > 0) gameManager.WinGame();
         
     }
-
+//--------------------------------------------------------------------
     public void StartNewWave()
     {
         if (!continueButton.interactable || IsShopOpen() || isWaveActive) return;
@@ -134,7 +134,7 @@ public class WaveTimer : MonoBehaviour
 
         UpdateWaveText();
     }
-
+//--------------------------------------------------------------------
     private void AwardWaveCompletionReward()
     {
         if (Economy.Instance == null) return;
@@ -142,7 +142,7 @@ public class WaveTimer : MonoBehaviour
         int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
         Economy.Instance.AddMoney(reward);
     }
-
+//--------------------------------------------------------------------
     // Add the ResetWaves method
     public void ResetWaves()
     {
@@ -157,8 +157,9 @@ public class WaveTimer : MonoBehaviour
         firstWave = true; // Reset firstWave to true
         lastLives = 3; // Reset lastLives to 3
     }
-
+//--------------------------------------------------------------------
     public bool IsWaveActive() => isWaveActive;
     private bool IsShopOpen() => shopManager != null && shopManager.IsShopOpen();
     private void UpdateWaveText() => waveText.text = $"Wave: {currentWave}";
+//--------------------------------------------------------------------
 }

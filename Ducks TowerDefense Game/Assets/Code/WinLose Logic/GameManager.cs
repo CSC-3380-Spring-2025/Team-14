@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private UnityEngine.UI.Text moneyText;
     private UnityEngine.UI.Text livesText;
     private UnityEngine.UI.Text roundsText;
-
+//--------------------------------------------------------------------
     private void Start()
     {
         if (spawner == null) spawner = FindFirstObjectByType<Spawner>(); // Find the Spawner script in the scene
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         if (livesText == null) livesText = GameObject.Find("LivesText")?.GetComponent<UnityEngine.UI.Text>();
         if (roundsText == null) roundsText = GameObject.Find("WaveText")?.GetComponent<UnityEngine.UI.Text>();
     }
-
+//--------------------------------------------------------------------
     void Update()
     {
         if (GameEnded) return; // If the game is ended, do not process further
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("e")) EndGame(); // Call EndGame when "E" is pressed
         if (Input.GetKeyDown("w")) WinGame(); // Call WinGame when "W" is pressed
     }
-
+//--------------------------------------------------------------------
     public void ResetGame(bool isFullReset = true){
         // 2. Unpause
         Time.timeScale = 1f; // Reset time scale in case game was paused
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         // Reset UI
         UpdateUI(); // Ensure the UI is updated after resetting the game
     }
-
+//--------------------------------------------------------------------
     void EndGame()
     {
         if(GameEnded) return; // If the game is already ended, do not process further
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         // Pause the game
         Time.timeScale = 0;
     }
-
+//--------------------------------------------------------------------
     public void WinGame()
     {
         if(GameWin) return; // If the game is already won, do not process further
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("LevelProgress", PlayerPrefs.GetInt("LevelProgress") + 1); // Increment the level reached
         PlayerPrefs.Save(); // Save the updated level reached
     }
-
+//--------------------------------------------------------------------
     // Continue the game state after a win
     public void ContinueGameState()
     {
@@ -145,11 +145,12 @@ public class GameManager : MonoBehaviour
         // Resume game time
         Time.timeScale = 1; // Unpause the game
     }
-
+//--------------------------------------------------------------------
     // Method to update the UI elements (e.g., money, lives, rounds)
     private void UpdateUI()
     {
         if (moneyText != null) moneyText.text = "Money: " + PlayerStats.Money.ToString();
         else Debug.LogError("MoneyText UI element not found.");
     }
+//--------------------------------------------------------------------
 }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class UpgradeUIHandler : MonoBehaviour
 {
     public GameObject upgradeUI;
-
+//--------------------------------------------------------------------
     private void Start()
     {
         if (upgradeUI != null)
@@ -18,6 +18,6 @@ public class UpgradeUIHandler : MonoBehaviour
         else
             Debug.LogWarning("UpgradeUI reference is missing!");
     }
-
+//--------------------------------------------------------------------
     
 }

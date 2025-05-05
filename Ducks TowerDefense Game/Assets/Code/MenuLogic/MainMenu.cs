@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI moneyText;
     public GameObject ShopUI;
-
+//--------------------------------------------------------------------
     void Start()
     {
         ShopUI.SetActive(false); // Hide the shop UI at the start
@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
             Economy.Instance.AddMoney(999999); // Reset to default
         }
     }
-
+//--------------------------------------------------------------------
     //When you come back to the main menu from another scene, this ensures your money display (moneyText) shows the current amount
     //OnEnable() runs every time the GameObject becomes active (including when returning to the menu scene)
     void OnEnable()
@@ -30,28 +30,31 @@ public class MainMenu : MonoBehaviour
             Economy.Instance.RefreshUI(moneyText);
         }
     }
-
+//--------------------------------------------------------------------
     public void PlayGame() {
         SceneManager.LoadScene("Map Selection");
     }
-
+//--------------------------------------------------------------------
     public void PlayMiniGameSlots() {
         SceneManager.LoadScene("SlotMachine", LoadSceneMode.Single);
     }
-
+//--------------------------------------------------------------------
     public void Options() {
 
     }
-
+//--------------------------------------------------------------------
     public void QuitGame() {
         Application.Quit();
     }
+//--------------------------------------------------------------------
     public void OpenShop() {
         ShopUI.SetActive(true); // Show the shop UI
         Time.timeScale = 0; // Pause the game
     }
+//--------------------------------------------------------------------
     public void CloseShop() {
         ShopUI.SetActive(false); // Hide the shop UI
         Time.timeScale = 1; // Resume the game
     }
+//--------------------------------------------------------------------
 }
