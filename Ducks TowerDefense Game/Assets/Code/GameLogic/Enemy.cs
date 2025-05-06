@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-//--------------------------------------------------------------------
+//Deals damage to enemy and updates the hp bar. If enemy is at 0 then the enemy dies --------------------------------------------------------------------
     public void TakeDamage( float amount ){
         if (isDestroyed || isDead || isInvulnerable) return; // Prevent further damage if already destroyed
 
@@ -92,13 +92,13 @@ public class Enemy : MonoBehaviour{
             Die();
         }
     }
-//--------------------------------------------------------------------
+//Slows the enemy by the given %--------------------------------------------------------------------
 
     public void Slow (float Pct){
         speed = startSpeed * (1f - Pct);
     }
 
-//--------------------------------------------------------------------
+//Deals with the death of the enemy or resurrection. Also gives money to the player --------------------------------------------------------------------
     void Die(){
         if (isDestroyed || isDead) return; // Ensure Die() is only called once
 
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour{
         }
         Destroy(gameObject); // Destroy the enemy
     }   
-//--------------------------------------------------------------------
+//This is the resurrect snake code. Deals with giving hp back to the boss and making it not able to be hit or move when resurrection --------------------------------------------------------------------
 
     IEnumerator Resurrect() {
         // Mark as dead and increment count
@@ -163,11 +163,12 @@ public class Enemy : MonoBehaviour{
         yield return new WaitForSeconds(invulnerabilityDuration);
         isInvulnerable = false;
     }
-
+//Freezes the enemy for a set duration --------------------------------------------------------------------
     public void Freeze(float duration){
         if (isFrozen) return;
         StartCoroutine(FreezeCoroutine(duration));
     }
+//Coroutine that freezes an enemy for a specified duration. Sets speed to 0 and then gives the enemy regular speed back --------------------------------------------------------------------
     private IEnumerator FreezeCoroutine(float duration){
         isFrozen = true;
         float originalSpeed = speed;
@@ -215,18 +216,18 @@ public class Enemy : MonoBehaviour{
         }
 
     }
-//--------------------------------------------------------------------
+//Rotates the enemy to face the waypoint --------------------------------------------------------------------
     void RotateTowardsTarget() {
         Vector3 direction = target.position - transform.position;
         direction.Normalize();
         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // Adjust angle to match sprite orientation
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);// Apply Z-axis rotation to face the movement direction
     }
 
 
 
-//--------------------------------------------------------------------
+//This regens hp for the Regeneration boss at set seconds --------------------------------------------------------------------
     void RegenerateHealth() {
         if (health <= 0) return; 
 
@@ -263,7 +264,7 @@ public class Enemy : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-//--------------------------------------------------------------------
+//Called when the enemy reaches the end. Reduces the numb of player lives and updates the enemy count--------------------------------------------------------------------
     void Endpath (){
        if (isDestroyed) return; // Prevent double-counting if somehow called again
 

@@ -23,7 +23,7 @@ public class Slots : MonoBehaviour
 
     private bool isSpinning = false;
     private Dictionary<Sprite, int> symbolMultipliers = new Dictionary<Sprite, int>();
-
+//Sets up the slot machine and refreshes the UI--------------------------------------------------------------------
     private void Start()
     {
         // Ensure Economy is ready
@@ -40,7 +40,7 @@ public class Slots : MonoBehaviour
         // Refresh money display
         Economy.Instance.RefreshUI(moneyText); // Add this if you have a money display
     }
-
+//Initializes the slot machine by assigning multipliers to each symbol--------------------------------------------------------------------
     private void InitializeSlotMachine()
     {
         if (symbols.Length != 3)
@@ -54,7 +54,7 @@ public class Slots : MonoBehaviour
             { symbols[0], 2 }, { symbols[1], 4 }, { symbols[2], 8 }
         };
     }
-
+//Starts spinning when player click spin --------------------------------------------------------------------
     public void StartSpinning()
     {
         if (isSpinning) return;
@@ -68,7 +68,7 @@ public class Slots : MonoBehaviour
         Economy.Instance.AddMoney(-betAmount);
         StartCoroutine(SpinRoutine());
     }
-
+//This handles the spin cycle such as spin anamation, stop reels,and check resault--------------------------------------------------------------------
     private IEnumerator SpinRoutine()
     {
         isSpinning = true;
@@ -84,7 +84,7 @@ public class Slots : MonoBehaviour
         isSpinning = false;
         spinButton.interactable = true;
     }
-
+//Spins slot reel by changing the image quickly--------------------------------------------------------------------
     private IEnumerator SpinAnimation(float duration)
     {
         float elapsed = 0f;
@@ -98,7 +98,7 @@ public class Slots : MonoBehaviour
             yield return new WaitForSeconds(spinSpeed);
         }
     }
-
+//Stops each reel one by one with a small delay--------------------------------------------------------------------
     private IEnumerator StopReelsWithDelay()
     {
         for (int i = 0; i < slotImages.Length; i++)
@@ -109,7 +109,7 @@ public class Slots : MonoBehaviour
     }
 
     private Sprite GetRandomSymbol() => symbols[Random.Range(0, symbols.Length)];
-
+//Checks if the player has won --------------------------------------------------------------------
     private void CheckWinCondition()
     {
         if (IsJackpot())
@@ -121,11 +121,11 @@ public class Slots : MonoBehaviour
             resultText.text = "Try again!";
         }
     }
-
+//--------------------------------------------------------------------
     private bool IsJackpot() => 
         slotImages[0].sprite == slotImages[1].sprite && 
         slotImages[1].sprite == slotImages[2].sprite;
-
+//Awards the player with the gold if they win --------------------------------------------------------------------
     private void AwardJackpot()
     {
         Sprite winningSymbol = slotImages[0].sprite;
@@ -136,18 +136,19 @@ public class Slots : MonoBehaviour
         Economy.Instance.RefreshUI(moneyText);
         resultText.text = $"Jackpot! You win {winnings} coins!";
     }
-
+//Makes sure that the bet amount and speeds are correct.--------------------------------------------------------------------
     private void OnValidate()
     {
         betAmount = Mathf.Max(1, betAmount);
         spinSpeed = Mathf.Clamp(spinSpeed, 0.01f, 0.5f);
         reelStopDelay = Mathf.Clamp(reelStopDelay, 0.1f, 1f);
     }
+//--------------------------------------------------------------------
 
-
-
+//This button sends you back to the main menu --------------------------------------------------------------------
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
+//--------------------------------------------------------------------
 }

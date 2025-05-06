@@ -6,7 +6,7 @@ public class AudioSettings : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider volumeSlider;
-//--------------------------------------------------------------------
+// Loads the saved volume preference and applies it--------------------------------------------------------------------
     void Start()
     {
         // Optional: Load saved volume
@@ -17,7 +17,7 @@ public class AudioSettings : MonoBehaviour
             SetVolume(savedVolume);
         }
     }
-//--------------------------------------------------------------------
+// Sets the volume and saves the preference--------------------------------------------------------------------
     public void SetVolume(float volume)
     {
         // Convert to decibels

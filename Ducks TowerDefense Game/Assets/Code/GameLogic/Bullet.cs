@@ -4,22 +4,24 @@ using System.Collections.Generic;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 10f;
+    public float speed = 10f;// bullet speed
 
-    public int damage = 50; 
-    public static int totalKills = 0;
+    public int damage = 50; //damge on enemy
+    public static int totalKills = 0;// number of kills you have
 
     //For AOE effect
-    public float explosionRadius = 0f;
+    public float explosionRadius = 0f; // radius of aoe
     public GameObject effect;
     private bool hasHitTarget = false; // Prevent multiple hits
 
-//--------------------------------------------------------------------
+//assign the target --------------------------------------------------------------------
     public void Seek(Transform _target){
         target = _target;
     }
-//--------------------------------------------------------------------
+//This is used to move the bullet to the target.--------------------------------------------------------------------
+ //after it hits a target it calls hit target    
     void Update(){
+        
         if (target == null){
             Destroy(gameObject);
             return;
@@ -41,7 +43,7 @@ public class Bullet : MonoBehaviour
         //Debug.DrawLine(transform.position, target.position, Color.red, 0.1f);
         //Debug.Log("Bullet Position: " + transform.position);//Check to see if bullet is moving
     }
-//--------------------------------------------------------------------
+//This deals with what happens when the bullet hits the target --------------------------------------------------------------------
     void HitTarget() {
         if (hasHitTarget) return; // Prevent multiple hits
         hasHitTarget = true;
@@ -57,7 +59,7 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject);
     }
-//--------------------------------------------------------------------
+//This deals AOE damge by doing damage to all of the enemies in the radius--------------------------------------------------------------------
     void Explode() {
         // Changed to Physics2D for 2D games
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -73,7 +75,7 @@ public class Bullet : MonoBehaviour
             }
         }
     }
-//--------------------------------------------------------------------
+//This deals damage to an enemy--------------------------------------------------------------------
     void Damage(Transform enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
 

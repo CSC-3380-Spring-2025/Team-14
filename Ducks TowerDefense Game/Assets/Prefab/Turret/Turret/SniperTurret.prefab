@@ -422,7 +422,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -4320900468475142264, guid: 17e7322c1b8d9ec48808243237772289, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 3237635601680603694}
   - component: {fileID: -8095145799337856242}
   - component: {fileID: 1732483576326327536}
+  - component: {fileID: 5339709015208608562}
   m_Layer: 0
   m_Name: SniperTurret
   m_TagString: Duck
@@ -629,8 +630,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -21712395
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -3616551280250075446, guid: cb23d08c6c0c8b043848a1df356b103f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -737,6 +738,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6, y: 2.3}
   m_EdgeRadius: 0
+--- !u!114 &5339709015208608562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909787044488887820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdf86e16e87a2a468e381f2f3a7fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sellUI: {fileID: 1373388404706564428}
 --- !u!1 &1933328107695453538
 GameObject:
   m_ObjectHideFlags: 0

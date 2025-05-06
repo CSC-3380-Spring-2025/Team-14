@@ -8,7 +8,7 @@ public class TurretBlueprint
     public int cost;
     [HideInInspector] public bool isUnlocked; // Indicates if the turret is unlocked for purchase
 
-//--------------------------------------------------------------------
+// This calc the money you get back when selling a turret--------------------------------------------------------------------
     public int GetSellAmount (){
         return cost / 2;
     }

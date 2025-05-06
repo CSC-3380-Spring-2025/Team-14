@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class SellUIHandler : MonoBehaviour
 {
     public GameObject sellUI;
-//--------------------------------------------------------------------
+//Hides the sell UI when the game starts--------------------------------------------------------------------
     private void Start()
     {
         if (sellUI != null)
@@ -20,17 +20,5 @@ public class SellUIHandler : MonoBehaviour
             Debug.LogWarning("SellUI reference is missing!");
     }
 //--------------------------------------------------------------------
-    // private void OnMouseEnter()
-    // {
-    //     Debug.Log("MOUSE ENTERED!");
-    //     if (sellUI != null)
-    //         sellUI.SetActive(true);
-    // }
-
-    // private void OnMouseExit()
-    // {
-    //     Debug.Log("MOUSE EXITED!");
-    //     if (sellUI != null)
-    //         sellUI.SetActive(false);
-    // }
+    
 }

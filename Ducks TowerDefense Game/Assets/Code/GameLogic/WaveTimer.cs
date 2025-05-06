@@ -24,7 +24,7 @@ public class WaveTimer : MonoBehaviour
     public Vector2 indicatorUIPosition = new Vector2(13.5f, -4.5f); // Set this in Inspector
     private GameObject pathIndicatorInstance;
     private bool firstWave = true;
-//--------------------------------------------------------------------
+//Initializes references, sets up UI, and sets up path indicator before first wave--------------------------------------------------------------------
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
@@ -61,7 +61,7 @@ public class WaveTimer : MonoBehaviour
             
         }
     }
-//--------------------------------------------------------------------
+//Checks for lives lost and updates continue button each frame--------------------------------------------------------------------
     void Update()
     {
         int currentLives = PlayerStats.Lives;
@@ -71,7 +71,7 @@ public class WaveTimer : MonoBehaviour
 
         UpdateButtonState();
     }
-//--------------------------------------------------------------------
+//Make sure continue button starts disabled --------------------------------------------------------------------
     private void OnEnable()
     {
         if (continueButton != null)
@@ -80,7 +80,7 @@ public class WaveTimer : MonoBehaviour
             continueButton.interactable = false;
         }
     }
-//--------------------------------------------------------------------
+//Updates the continue button based on the shop status and the wave activity--------------------------------------------------------------------
     private void UpdateButtonState()
     {
         if (continueButton == null || shopManager == null) return;
@@ -101,7 +101,8 @@ public class WaveTimer : MonoBehaviour
             continueButton.gameObject.SetActive(false);
         }
     }
-//--------------------------------------------------------------------
+//Called when all enemies are defeated--------------------------------------------------------------------
+//Stops the wave and enables the contunue button and gives the gold for winning wave  
     public void OnWaveDefeated()
     {
         if (gameManager == null) return;
@@ -114,7 +115,7 @@ public class WaveTimer : MonoBehaviour
         if (currentWave % 10 == 0 && currentWave > 0) gameManager.WinGame();
         
     }
-//--------------------------------------------------------------------
+//Starts a new wave if it was allowed. increment the wave counter and spawns enemies--------------------------------------------------------------------
     public void StartNewWave()
     {
         if (!continueButton.interactable || IsShopOpen() || isWaveActive) return;
@@ -134,7 +135,7 @@ public class WaveTimer : MonoBehaviour
 
         UpdateWaveText();
     }
-//--------------------------------------------------------------------
+//Gives the player money for winning the wave based on what wave it is--------------------------------------------------------------------
     private void AwardWaveCompletionReward()
     {
         if (Economy.Instance == null) return;
@@ -142,7 +143,7 @@ public class WaveTimer : MonoBehaviour
         int reward = Mathf.RoundToInt(baseReward * Mathf.Pow(rewardScalingFactor, currentWave));
         Economy.Instance.AddMoney(reward);
     }
-//--------------------------------------------------------------------
+//Resets the wave state--------------------------------------------------------------------
     // Add the ResetWaves method
     public void ResetWaves()
     {
@@ -157,7 +158,9 @@ public class WaveTimer : MonoBehaviour
         firstWave = true; // Reset firstWave to true
         lastLives = 3; // Reset lastLives to 3
     }
-//--------------------------------------------------------------------
+//Helper methods to get wave state--------------------------------------------------------------------
+//shop state 
+//upgrade the wave number text    
     public bool IsWaveActive() => isWaveActive;
     private bool IsShopOpen() => shopManager != null && shopManager.IsShopOpen();
     private void UpdateWaveText() => waveText.text = $"Wave: {currentWave}";

@@ -14,25 +14,21 @@ public class PauseGame : MonoBehaviour
     private bool ifPause = false;
 
     private GameManager gameManager; // Reference to the GameManager script
-//--------------------------------------------------------------------
+//Finds the game Manages in the scene--------------------------------------------------------------------
     void Awake(){
-        // Find GameManager in the scene
         gameManager = Object.FindFirstObjectByType<GameManager>();
         if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
     }
-//--------------------------------------------------------------------
+ // Add listener to the Pause button--------------------------------------------------------------------
     private void OnEnable(){
-        // Add listener to the Pause button
         if (PauseButton != null) PauseButton.onClick.AddListener(GamePause);
     }
-//--------------------------------------------------------------------
+// Clean up button listeners/ removes the pause button listener--------------------------------------------------------------------
     private void OnDisable(){
-        // Clean up button listeners
         if (PauseButton != null) PauseButton.onClick.RemoveListener(GamePause);
     }
-//--------------------------------------------------------------------
+//Initializes the pause panel position and checks the UI references--------------------------------------------------------------------
     private void Start(){
-        // Check if UI references are assigned
         if (PausePanel == null || PauseButton == null){
             Debug.LogError("ShopManager: UI references are not assigned!");
             return;
@@ -44,7 +40,8 @@ public class PauseGame : MonoBehaviour
         // Hide the shop panel at the start
         PausePanel.anchoredPosition = offScreenPosition;
     }
-//--------------------------------------------------------------------
+//Listens for escape key for pause.--------------------------------------------------------------------
+// moves the pause panel smoothly  
     private void Update(){
         if (PausePanel == null) return;
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -59,8 +56,8 @@ public class PauseGame : MonoBehaviour
             PausePanel.anchoredPosition = Vector2.MoveTowards(PausePanel.anchoredPosition, offScreenPosition, slideSpeed * Time.unscaledDeltaTime );
         }
     }
-//--------------------------------------------------------------------
-    // Calculate the on-screen and off-screen positions dynamically
+// Calculate the on-screen and off-screen positions dynamically--------------------------------------------------------------------
+    
     private void CalculatePositions(){
         if (PausePanel == null) return;
         // Get the height of the pause panel in local coordinates
@@ -72,9 +69,9 @@ public class PauseGame : MonoBehaviour
         // Define on-screen position as aligned to the top edge of the screen
         onScreenPosition = new Vector2(0, 0);
     }
- //--------------------------------------------------------------------   
+ //Pauses the game and shows the pause panel--------------------------------------------------------------------   
 
-    // Opens the shop panel
+    
     public void GamePause(){
         // Check if UI references are assigned
         if (PausePanel == null || PauseButton == null) return;
@@ -86,8 +83,8 @@ public class PauseGame : MonoBehaviour
         // Pause the game
         Time.timeScale = 0;
     }
-//--------------------------------------------------------------------
-    // Closes the shop panel
+//resumes the game and hides the pause panel--------------------------------------------------------------------
+    
     public void GameResume(){
         // Check if UI references are assigned
         if (PausePanel == null || PauseButton == null) return;
@@ -99,7 +96,7 @@ public class PauseGame : MonoBehaviour
         // Resume the game
         Time.timeScale = 1;
     }
-//--------------------------------------------------------------------
+//Quits the current maps and returns to the main menu--------------------------------------------------------------------
     public void quitMap()
     {
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene

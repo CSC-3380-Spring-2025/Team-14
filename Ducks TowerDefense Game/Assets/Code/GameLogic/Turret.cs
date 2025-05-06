@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 
-//Ep 4, lock the turret to enemy around 15 min
-//Ep 5, creating a bullet and setting its position, around 6 min
+
 public class Turret : MonoBehaviour{
 
     private Transform target; //turret targeting the target, it is hidden because private, but if public you will see active change as enemy come into range
@@ -72,8 +71,9 @@ public class Turret : MonoBehaviour{
     // ======== Range Indicator ========
     public GameObject rangeInd;
 
-// Start is called once before the first execution of Update after the MonoBehaviour is created
-//--------------------------------------------------------------------
+
+// Start is called once before the first execution of Update after the MonoBehaviour is created--------------------------------------------------------------------   
+    
     void Start(){
        
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every 0.5 seconds
@@ -111,8 +111,8 @@ public class Turret : MonoBehaviour{
 
 
 
-// UpdateTarget is called to find the nearest enemy within the range of the turret
-//--------------------------------------------------------------------
+
+// UpdateTarget is called to find the nearest enemy within the range of the turret--------------------------------------------------------------------
     void UpdateTarget(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag); //find all the enemies and store it into this array
         GameObject nearestEnemy = null; //Set the nearest enemy to null
@@ -156,8 +156,8 @@ public class Turret : MonoBehaviour{
 
 
 
-// Update is called once per frame
-//--------------------------------------------------------------------
+
+//Handles aiming, attacking, and firerate cooldowns--------------------------------------------------------------------
     void Update(){
         //if there is no target, exit the method
         if(target == null) {
@@ -188,7 +188,7 @@ public class Turret : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-//--------------------------------------------------------------------
+// Rotates the turret to face the target--------------------------------------------------------------------
     void LockOnTarget(){
         if (target == null) return;
 
@@ -203,7 +203,8 @@ public class Turret : MonoBehaviour{
     }
 //--------------------------------------------------------------------
 
-//--------------------------------------------------------------------
+//Applies damage and slow effects on the target when using the laser--------------------------------------------------------------------
+// uses LineRenderer to connect the turret to the target    
     void Laser() {
         if (targetEnemy == null || targetEnemy.IsDestroyed) return; // Ensure the target is valid and not destroyed
 
@@ -217,8 +218,8 @@ public class Turret : MonoBehaviour{
         lineRenderer.SetPosition(1, target.position);
     }
 //--------------------------------------------------------------------
-// Shoot is called to instantiate a bullet, set its position, and seek the target
-//--------------------------------------------------------------------
+
+// Shoot is called to instantiate a bullet, set its position, and seek the target--------------------------------------------------------------------
     void Shoot() {
         if (target == null) return; // Ensure there is a valid target
         if (canFreeze) {
@@ -245,18 +246,18 @@ public class Turret : MonoBehaviour{
         bullet.damage = bulletDamage; // Set the bullet damage
     }
     
-//--------------------------------------------------------------------
+// Opens the upgrade UI for this turret.--------------------------------------------------------------------
 
     public void OpenUpgradeUI(){
         Debug.Log("Opening upgrade UI");
         upgradeUI.SetActive(true);
     }
-//--------------------------------------------------------------------
+// Closes the upgrade UI--------------------------------------------------------------------
     public void CloseUpgradeUI(){
         upgradeUI.SetActive(false);
         UIManager.main.SetHoveringState(false);
     }
- //-------------------------------------------------------------------- 
+ //Sells the turret for half of the amount that you got it for-------------------------------------------------------------------- 
     public void SellTurret(){
         int sellAmount = Mathf.RoundToInt(purchaseCost * 0.5f);
         PlayerStats.Money += sellAmount;
@@ -266,13 +267,13 @@ public class Turret : MonoBehaviour{
         Destroy(gameObject);
     }
 //--------------------------------------------------------------------
-    private int CalculateCost() => Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));
+    private int CalculateCost() => Mathf.RoundToInt(baseCost * Mathf.Pow(level, .8f));// Calculates the cost of the next upgrade based on the turret's level
     
 
-    private float CalculateFireRate() => fireRateBase * Mathf.Pow(level, .6f);
+    private float CalculateFireRate() => fireRateBase * Mathf.Pow(level, .6f);// Calculates the fire rate after upgrading
     
-    private float CalculateRange() => targetingRangeBase * Mathf.Pow(level, .4f);
-//--------------------------------------------------------------------
+    private float CalculateRange() => targetingRangeBase * Mathf.Pow(level, .4f);// Calculates the attack range after upgrading
+// Instantly kills all enemies on the map--------------------------------------------------------------------
     private void KillAllEnemies(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         foreach (GameObject enemy in enemies){
@@ -282,26 +283,26 @@ public class Turret : MonoBehaviour{
             }
         }
     }
-//--------------------------------------------------------------------
+//shows the freeze laser for the set amount time--------------------------------------------------------------------
     private IEnumerator ShowFreezeLaser(){
         lineRenderer.enabled = true; 
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(.5f);
         lineRenderer.enabled = false;
     }
-//--------------------------------------------------------------------
+//Opens the upgrage UI(the firerate range and damage)--------------------------------------------------------------------
     public void OpenUpgradeOptions(){ //Onclick
         if (upgradeOptionsPanel == null || costText == null) return;
         upgradeOptionsPanel.SetActive(true); 
         costText.text = $"Cost: {CalculateCost()}" ; // Update the cost text
     }
-//--------------------------------------------------------------------
+//Closes the upgrage UI(the firerate range and damage)--------------------------------------------------------------------
     public void CloseUpgradeOptions() { //onClick
         if (upgradeOptionsPanel != null)
             upgradeOptionsPanel.SetActive(false); 
             upgradeUI.SetActive(false);
     }
-//--------------------------------------------------------------------
+//Shows "Not Enough Money" for 1.5 seconds--------------------------------------------------------------------
     private IEnumerator ShowNotEnoughMoney()
     {
         notEnoughMoneyText.gameObject.SetActive(true);
@@ -309,7 +310,7 @@ public class Turret : MonoBehaviour{
         notEnoughMoneyText.gameObject.SetActive(false); // Only hide text
         upgradeUI.SetActive(false);
     }
-//--------------------------------------------------------------------
+//Upgrades the turret's fire rate and range if the player has enough money--------------------------------------------------------------------
     public void UpgradeFireRateAndRange(){
         if (CalculateCost() > PlayerStats.Money){
             StartCoroutine(ShowNotEnoughMoney()); // Show not enough money message
@@ -327,7 +328,7 @@ public class Turret : MonoBehaviour{
 
         CloseUpgradeOptions();
     }
-//--------------------------------------------------------------------}
+//Upgrades the turret's bullet damage if the player has enough money--------------------------------------------------------------------}
     public void UpgradeDamage()
     {
         if (CalculateCost() > PlayerStats.Money){
@@ -343,14 +344,14 @@ public class Turret : MonoBehaviour{
 
         CloseUpgradeOptions(); 
     }
-//--------------------------------------------------------------------
+//Shows the turrret's range indicator--------------------------------------------------------------------
         public void ShowRange(float seconds){
         if (rangeInd != null){
             rangeInd.SetActive(true);
             StartCoroutine(HideRange(seconds));
         }
     }
-//--------------------------------------------------------------------
+//hides the turret range indicator--------------------------------------------------------------------
     private IEnumerator HideRange(float delay){
         yield return new WaitForSeconds(delay);
         if(rangeInd != null){

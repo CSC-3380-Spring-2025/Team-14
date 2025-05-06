@@ -19,7 +19,7 @@ public class MenuShop : MonoBehaviour
     public Button nukeButton;
 
     private Economy economy => Economy.Instance;
-//--------------------------------------------------------------------
+//Initializes turret unlock status and sets up the UI--------------------------------------------------------------------
     void Start()
     {
         if (Economy.Instance == null) return;
@@ -50,7 +50,7 @@ public class MenuShop : MonoBehaviour
             nukeButton.interactable = true;
         }
     }
-//--------------------------------------------------------------------
+// Purchase methods for each turret type--------------------------------------------------------------------
     public void PurchaseGatlingTurret() => PurchaseTurret(GatlingTurret, "GatlingUnlocked");
     public void PurchaseFreezeTurret() => PurchaseTurret(FreezeTurret, "FreezeUnlocked");
     public void PurchaseNukeTurret() => PurchaseTurret(NukeTurret, "NukeUnlocked");

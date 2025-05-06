@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class UpgradeUIHandler : MonoBehaviour
 {
     public GameObject upgradeUI;
-//--------------------------------------------------------------------
+//Hides the upgrade UI when it starts --------------------------------------------------------------------
     private void Start()
     {
         if (upgradeUI != null)

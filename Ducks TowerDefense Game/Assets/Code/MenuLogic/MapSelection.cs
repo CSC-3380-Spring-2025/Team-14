@@ -19,7 +19,7 @@ public class MapSelection : MonoBehaviour
 
     // Map buttons array
     public Button[] mapButton;
-//--------------------------------------------------------------------
+//Initializes map buttons, loads player progress, sets up button listeners--------------------------------------------------------------------
     void Start()
     {
         clickableButton.interactable = false;
@@ -49,33 +49,33 @@ public class MapSelection : MonoBehaviour
             });
         }
     }
-//--------------------------------------------------------------------
-    void Update()
-    {
-        // Reset map lock to default when "R" is pressed
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Resetting map locks to default...");
-            PlayerPrefs.SetInt("LevelProgress", 1); // Reset progress to default (Map 1 unlocked)
-            PlayerPrefs.Save();
+// //Listens for player input to reset map progess this is for the live demo.This might not be needed --------------------------------------------------------------------
+    // void Update()
+    // {
+    //     // Reset map lock to default when "R" is pressed
+    //     if (Input.GetKeyDown(KeyCode.R))
+    //     {
+    //         Debug.Log("Resetting map locks to default...");
+    //         PlayerPrefs.SetInt("LevelProgress", 1); // Reset progress to default (Map 1 unlocked)
+    //         PlayerPrefs.Save();
 
-            // Update map buttons to reflect the reset state
-            for (int i = 0; i < mapButton.Length; i++)
-            {
-                mapButton[i].interactable = (i == 0); // Only Map 1 is unlocked
-            }
+    //         // Update map buttons to reflect the reset state
+    //         for (int i = 0; i < mapButton.Length; i++)
+    //         {
+    //             mapButton[i].interactable = (i == 0); // Only Map 1 is unlocked
+    //         }
 
-            clickableButton.interactable = false; // Disable the PlayMap button
+    //         clickableButton.interactable = false; // Disable the PlayMap button
 
-            // Reset the game state using GameManager
-            GameManager gameManager = FindFirstObjectByType<GameManager>();
-            if (gameManager != null)
-            {
-                gameManager.ContinueGameState(); // Reset the game state
-            }
-        }
-    }
-//--------------------------------------------------------------------
+    //         // Reset the game state using GameManager
+    //         GameManager gameManager = FindFirstObjectByType<GameManager>();
+    //         if (gameManager != null)
+    //         {
+    //             gameManager.ContinueGameState(); // Reset the game state
+    //         }
+    //     }
+    // }
+//Loads the selected map and resets the game before starting the new map--------------------------------------------------------------------
     public void PlayMap()
     {
         // Reset the game state before starting the map
@@ -94,7 +94,7 @@ public class MapSelection : MonoBehaviour
             Debug.Log("No Map Selected");
         }
     }
-//--------------------------------------------------------------------
+//Unlocks the next map if the map before was won--------------------------------------------------------------------
     public void CompleteMap(string completedMap)
     {
         int progress = PlayerPrefs.GetInt("LevelProgress", 1);
@@ -110,7 +110,7 @@ public class MapSelection : MonoBehaviour
 
         PlayerPrefs.Save();
     }
-//--------------------------------------------------------------------
+//Returns to main menu scene --------------------------------------------------------------------
     //Do Not Delete, Loads Main Menu -_-
     //ok :) My bad :3
     public void goToMainMenu()

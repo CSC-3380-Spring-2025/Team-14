@@ -11,35 +11,35 @@ public class GameOver : MonoBehaviour
     public Button menuButton; // Reference to the menu button
     private GameManager gameManager; // Reference to the GameManager script
     
-    // Unity built-in method that is called when the object is instantiated
+//--------------------------------------------------------------------
+// Unity built-in method that is called when the object is instantiated
     void Awake(){
         // Find GameManager in the scene
         gameManager = Object.FindFirstObjectByType<GameManager>();
         if (gameManager == null) Debug.LogError("GameManager not found in the scene!");
     }
-//--------------------------------------------------------------------
+// Called when the GameOver UI becomes active--------------------------------------------------------------------
     void OnEnable(){
         roundsText.text = PlayerStats.Rounds.ToString(); // Update the text with the number of rounds
         retryButton.onClick.AddListener(Retry);
         menuButton.onClick.AddListener(Menu);
     }
-//--------------------------------------------------------------------
+// Called when the GameOver UI is disabled--------------------------------------------------------------------
     void OnDisable(){
         retryButton.onClick.RemoveListener(Retry);
         menuButton.onClick.RemoveListener(Menu);
     }
-//--------------------------------------------------------------------
+//Reference in Unity, the onClick event of Retry button in GameOver UI--------------------------------------------------------------------
 
-    //Reference in Unity, the onClick event of Retry button in GameOver UI
+    
     public void Retry(){
         Time.timeScale = 1f; // Unpause before retrying, Prevents Frozen UI in Next Scene
         gameManager.ResetGame(false);
         gameObject.SetActive(false);
         //gameManager.ContinueGameState(); // Resumes gameplay
     }
-//--------------------------------------------------------------------
-    //Reference in Unity, the onClick event of Menu button in GameOver UI
-    public void Menu(){
+ //Reference in Unity, the onClick event of Menu button in GameOver UI--------------------------------------------------------------------
+        public void Menu(){
         Time.timeScale = 1f; // Unpause before leaving, Prevents Frozen UI in Next Scene
         //Full game reset if returning to menu
         gameManager.ResetGame(); // Clear gameplay state
