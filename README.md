@@ -31,6 +31,7 @@ Unity
 - Download: Unity Hub (Web Download) [[download](https://unity.com/download)] (Install via Unity Hub, then select the correct version)
 - Notes:
   - Requires Unity Hub for installation.
+  - Next when Unity Hub is installed by clicking the install tab on the left side of the screen then click on the blue button called "install Editor" find version Unity 6 (6000.0.37f1) and install it
   - If version 6000.0.37f1 is unavailable, check Unity Beta Downloads.
   - A powerful and widely-used real-time development platform primarily known as a game engine for creating 2D, 3D, virtual reality (VR), and augmented reality (AR) experiences.
   - It provides a comprehensive suite of tools and services that enable developers and creators to build interactive content, deploy it across a multitude of platforms (including PC, consoles, mobile, and web), and manage their projects from conception to completion.
@@ -71,6 +72,8 @@ Discord
 
 ## Commands
 Describe how the commands and process to launch the project on the main branch in such a way that anyone working on the project knows how to check the affects of any code they add.
+
+Follow this [[link](https://github.com/CSC-3380-Spring-2025/Team-14)], this link will redirect you to Team 14 github repository, by default the tab should be on "Code" and branch should be main. Find the green button name "<> Code" on the screen. Click on that button and a dropdown should pop up, below that dropdown you should see "Download Zip" option. Click on that option and once the file finsih downloading make sure to un-zip the file or an easier way is to cut (ctrl x) the file inside the zip file and paste it outside the zip file. Make sure the folder name of the file in inside the zip file be Team-14. After making sure the folder is outside the zip file open Unity if you have downloaded it already. If you don't have Unity download click this [[link](https://unity.com/download)] and download Unity. Once Unity is downloaded make sure to install version Unity 6 (6000.0.37f1) by clicking the install tab on the left side of the screen then click on the blue button called "install Editor" find version Unity 6 (6000.0.37f1) and install it. After everything is set up on the left side of Unity Hub click projects, find the "Add" button, it should be next to a blue button call "New Project." Once "add" button is click a dropdown menu should pop up, click on "Add project from disk" find Team-14 folder and go inside the Team-14 folder and another folder name "Duck TowerDefense Game" folder should be shown, click that folder and open it by the bottom right of the file explorer. This should show a project on Unity, open that file and you can start the game.
 
 ```sh
 Example terminal command syntax
