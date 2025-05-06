@@ -22,36 +22,52 @@ Styles Guide(s): [[link](https://google.github.io/styleguide/)]
 - Unity - Unity 6 (6000.0.37f1) 
 - Krita - Krita (5.2.9) 
 - VsCode - version 1.99 
-- Discord - Windows 11 64-bit (10.0.26100) 
+- Discord - Windows 11 64-bit (10.0.26100)
+- .Net - SDK 9.0.203
 
 ### Downloading Dependencies
-Describe where to download the dependencies here. Some will likely require a web download. Provide links here. For IDE extensions, make sure your project works with the free version of them, and detail which IDE(s) these are available in. 
 Unity
 - Version: Unity 6 (6000.0.37f1)
-- Download: Unity Hub [[download](https://unity.com/download)] (Install via Unity Hub, then select the correct version)
+- Download: Unity Hub (Web Download) [[download](https://unity.com/download)] (Install via Unity Hub, then select the correct version)
 - Notes:
   - Requires Unity Hub for installation.
   - If version 6000.0.37f1 is unavailable, check Unity Beta Downloads.
+  - A powerful and widely-used real-time development platform primarily known as a game engine for creating 2D, 3D, virtual reality (VR), and augmented reality (AR) experiences.
+  - It provides a comprehensive suite of tools and services that enable developers and creators to build interactive content, deploy it across a multitude of platforms (including PC, consoles, mobile, and web), and manage their projects from conception to completion.
  
 Krita
 - Version: Krita 5.2.9
-- Download: Krita Official Site [[download](https://krita.org/en/download/)]
+- Download: Krita Official Site (Web Download) [[download](https://krita.org/en/download/)]
 - Notes:
   - Available for Windows (64-bit).
   - Portable version also offered.
+  - A free and open-source digital painting program designed for artists of all levels, from beginners to professionals.
+  - It offers a comprehensive suite of tools for creating illustrations, concept art, comics, 2D animations, and more, with a strong focus on providing an intuitive and customizable painting experience.
 
 VS Code
 - Version: 1.99
-- Download: Visual Studio Code [[download](https://code.visualstudio.com/download)]
+- Download: Visual Studio Code (Web Download) [[download](https://code.visualstudio.com/download)]
 - Notes:
   - Works with Windows 10/11 (x64).
   - Extensions C# Dev Kit
+  - A free and powerful source code editor developed by Microsoft that runs on Windows, macOS, and Linux.
+  - It's designed to be lightweight yet highly extensible, offering features like syntax highlighting, intelligent code completion (IntelliSense), debugging tools, and built-in Git integration for version control.
  
 Discord
 - Version: Windows 11 64-bit (10.0.26100)
 - Download: Microsoft Store [[download](https://apps.microsoft.com/detail/xpdc2rh70k22mn?launch=true&mode=full&hl=en-us&gl=us&ocid=bingwebsearch)]
 - Notes:
   - Auto-updates via Microsoft Store.
+  - A popular free communication platform where people can connect with friends, creators, and communities that share similar interests.
+  - Users interact on servers, which are invite-only spaces that can be customized with various text and voice channels for discussing specific topics, sharing media, and hanging out in real-time.
+ 
+.Net
+- Version: SDK 9.0.203
+- Download: .Net (Web Download) [[download](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)]
+- Notes:
+  - A free, open-source development platform created by Microsoft for building many kinds of applications, such as web, mobile, desktop, and games.
+  - It supports multiple programming languages (like C#, F#, and Visual Basic) and allows developers to create applications that can run on Windows, macOS, Linux, and other operating systems.
+
 
 ## Commands
 Describe how the commands and process to launch the project on the main branch in such a way that anyone working on the project knows how to check the affects of any code they add.
