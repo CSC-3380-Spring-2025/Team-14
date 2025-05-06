@@ -96,7 +96,6 @@ It is very common in these sections to see code in peculiar boxes to help them s
             if (health > startHealth) 
                 health = startHealth;
 
-            // Optional: update health bar
             if (healthBar != null)
                 healthBar.fillAmount = health / startHealth; // Use startHealth here as well
         }
@@ -133,7 +132,7 @@ It is very common in these sections to see code in peculiar boxes to help them s
         }
         PlayerStats.Money -= turretBuilding.cost;
         // Apply position AND rotation offset from the Node
-        Quaternion rotation = Quaternion.Euler(node.rotationOffSet); // Fix typo in variable name
+        Quaternion rotation = Quaternion.Euler(node.rotationOffSet);
         GameObject turret = (GameObject)Instantiate(turretBuilding.prefab, node.GetPlacePosition(), transform.rotation);
         node.turret = turret;
         Turret turretScript = turret.GetComponent<Turret>();
