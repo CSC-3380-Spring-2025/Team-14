@@ -8,17 +8,13 @@ Quality Assurance Tester: [Adithya Anand] ([_adi])
 
 # About Our Software
 
-Describe a little about what the project is about here.
+Duck Defense is a 2D tower defense game where players strategically place duck turrets—including four core types (Basic, AOE, Laser, and Sniper) and three unlockable variants (Gatling Gun, Freeze, and Nuke)—to stop waves of snakes. The snakes feature six types: three basic (default, high-HP, and fast), and three bosses (Regeneration, Resurrection, and Emperor, which spawns minions). Players start with $500 currency and three lives, battling across three increasingly difficult maps. A Nuke ability wipes all on-screen enemies, while a stretch-feature Slots minigame offers optional risk-reward gameplay, letting players gamble for bonuses. The game includes music, sound effects, and upgrade paths for each duck.
 ## Platforms Tested on
-- MacOS
-- Android
-- iOS
-- Linux
 - Windows
 # Important Links
-Kanban Board: [link]\
-Designs: [link]\
-Styles Guide(s): [link]
+Kanban Board: [[link](https://attackonquack.atlassian.net/jira/software/projects/BTS/boards/1?cloudId=522abf96-cf51-46df-b223-57521ce60e7d&atlOrigin=eyJwIjoiaiIsImkiOiI2MjJmMmUzNDQ2Nzc0NzM2YjQ2MDkyMTQ5ZWVmOTA0YyJ9)]\
+Designs: [https://docs.krita.org/en/user_manual/getting_started/installation.html]\
+Styles Guide(s): [https://google.github.io/styleguide/]
 
 # How to Run Dev and Test Environment
 
