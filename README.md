@@ -78,17 +78,6 @@ Example terminal command syntax
 
 It is very common in these sections to see code in peculiar boxes to help them stand out. Check the markdown section of the Project Specifications to see how to add more / customize these.
 
-```python
-def code_highlight_example(m: int, m: float, s: str) -> str:
-	return s + str(n*m)
-```
-
-```java
-public static void main(String[] args){
-	System.out.println("Hello, World!");
-}
-```
-
 ```c#
 static void Main(){
 	Console.WriteLine("Hello, World!");
