@@ -87,7 +87,7 @@ After making sure the folder is outside the zip file open Unity if you have down
 ![image](https://github.com/user-attachments/assets/ef655dc4-2d99-431e-aebe-2c7f45e3ca92)
 ![image](https://github.com/user-attachments/assets/44483f75-25cf-4f69-ad15-b8ce68ace03c)
 
-After everything is set up on the left side of Unity Hub click projects, find the "Add" button, it should be next to a blue button call "New Project." Once "add" button is click a dropdown menu should pop up, click on "Add project from disk" find Team-14 folder and go inside the Team-14 folder and another folder name "Duck TowerDefense Game" folder should be shown, click that folder and open it by the bottom right of the file explorer. This should show a project on Unity, open that file and you can start the game.
+After everything is set up on the left side of Unity Hub click projects, find the "Add" button, it should be next to a blue button call "New Project." Once "add" button is click a dropdown menu should pop up, click on "Add project from disk" find Team-14 folder and go inside the Team-14 folder and another folder name "Duck TowerDefense Game" folder should be shown, click that folder and open it by the bottom right of the file explorer. This should show a project on Unity, open that file and in the asset folder click scene then MainMenu scene then click play button on the top center of the screen. The Game is start. Have Fun.
 
 ![image](https://github.com/user-attachments/assets/bcefc7ab-cf79-4c06-a96a-5c730f4e2ab4)
 ![image](https://github.com/user-attachments/assets/4885fa8c-6f0f-4926-a882-4d262da495af)
