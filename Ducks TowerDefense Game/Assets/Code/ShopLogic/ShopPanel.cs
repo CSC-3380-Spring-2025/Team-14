@@ -16,7 +16,6 @@ public class ShopManager : MonoBehaviour
     //Initializes positions and hides the shop panel when game starts--------------------------------------------------------------------
     private void Start(){
         // Check if UI references are assigned
-        isShopOpen = false; 
         if (shopPanel == null || startButton == null){
             Debug.LogError("ShopManager: UI references are not assigned!");
             return;
