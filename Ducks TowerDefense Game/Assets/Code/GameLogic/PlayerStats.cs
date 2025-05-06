@@ -15,7 +15,8 @@ public class PlayerStats : MonoBehaviour {
     public static int startLives = 3;  // Initial lives
 
     private static int money;
-//This is assign the and update the players moeny --------------------------------------------------------------------
+
+//This is assign the and update the players moeny --
 //Prevents negative values    
     public static int Money {
         get { return money; }
@@ -25,7 +26,8 @@ public class PlayerStats : MonoBehaviour {
             OnMoneyChanged?.Invoke(money); // Trigger the money changed event
         }
     }
-//Access and update the player lives--------------------------------------------------------------------
+
+//Access and update the player lives--
 //Prevents native value in lives     
 // ends the game if # of lives hit 0    
     private static int lives;
@@ -40,13 +42,13 @@ public class PlayerStats : MonoBehaviour {
             }
         }
     }
-//--------------------------------------------------------------------
-    // Events to notify when money or lives change
+
+// Events to notify when money or lives change
     public static event System.Action<int> OnMoneyChanged;
     public static event System.Action<int> OnLivesChanged;
-// Initialize stats--------------------------------------------------------------------
+
+// Initialize stats
     private void Start() {
-        
         Money = startMoney;
         Lives = startLives;
 
@@ -58,33 +60,29 @@ public class PlayerStats : MonoBehaviour {
         UpdateMoneyText(Money);
         UpdateLivesText(Lives);
     }
-// Unsubscribe from events to avoid memory leaks--------------------------------------------------------------------
+
+// Unsubscribe from events to avoid memory leaks
     private void OnDestroy() {
         OnMoneyChanged -= UpdateMoneyText;
         OnLivesChanged -= UpdateLivesText;
     }
-// Updates the money text UI--------------------------------------------------------------------
+
+// Updates the money text UI
     private void UpdateMoneyText(int currentMoney) {
-        if (moneyText == null) {
-            Debug.LogError("MoneyText is not assigned in the inspector.");
-            return;
-        }
+        if (moneyText == null) return;
         Debug.Log("current money is " + currentMoney);
         moneyText.text = $"{currentMoney}";
     }
-//Updates the lives text UI--------------------------------------------------------------------
+
+//Updates the lives text UI
     private void UpdateLivesText(int currentLives) {
-        if (livesText == null) {
-            Debug.LogError("LivesText is not assigned in the inspector.");
-            return;
-        }
+        if (livesText == null) return;
         livesText.text = $"Lives: {currentLives}";
     }
-//Resets money, lives, and rounds to starting values--------------------------------------------------------------------
+//Resets money, lives, and rounds to starting values
     public static void ResetAll(){
-        Money = 999999;
+        Money = 500;
         Lives = 3;
         Rounds = 0;
     }
- //--------------------------------------------------------------------   
-}
+}//End of PlayerStats.cs

@@ -14,7 +14,7 @@ public class PlaceTurret : MonoBehaviour{
     private TurretBlueprint turretBuilding;
     public static PlaceTurret instance;
     public Node LastNodeWithUI;
-//Initalizes the Singleton instance and listens for when new scenes are loaded--------------------------------------------------------------------
+//Initalizes the Singleton instance and listens for when new scenes are loaded
     void Awake(){ 
         if(instance != null){
             Debug.LogError("More than once PlaceTurret in scene");
@@ -29,7 +29,7 @@ public class PlaceTurret : MonoBehaviour{
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log("PlaceTurret initialized for scene: " + SceneManager.GetActiveScene().name);
     }
-//Resets the turret selection when new scene loads--------------------------------------------------------------------
+//Resets the turret selection when new scene loads
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Reset turret selection when changing maps
@@ -38,19 +38,18 @@ public class PlaceTurret : MonoBehaviour{
         LastNodeWithUI = null;
         Debug.Log("PlaceTurret cleared for new scene: " + scene.name);
     }
-// Unity built-in method that is called when the object is destroyed--------------------------------------------------------------------
+// Unity built-in method that is called when the object is destroyed
     
     void OnDestroy(){
         // Clean up event handler
         if (instance == this) instance = null;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-//--------------------------------------------------------------------
     
-//Returns true is a turret has been selected for placement--------------------------------------------------------------------
+//Returns true is a turret has been selected for placement
     public bool CanPlace { get { return turretBuilding != null; } }
 
-//Closes any open upgrade UI if the player clicks outside of the UI--------------------------------------------------------------------
+//Closes any open upgrade UI if the player clicks outside of the UI
     void Update() {
         if (Input.GetMouseButtonDown(0) && !UIManager.main.IsHoveringUI()) {
             if (LastNodeWithUI != null) {
@@ -59,7 +58,7 @@ public class PlaceTurret : MonoBehaviour{
             }
         }
     }
-//Places the turret on the specific node--------------------------------------------------------------------   
+//Places the turret on the specific node   
 //deducts money and places the turret on the chosen spot   
     public void PlaceTurretOn(Node node)
     {
@@ -81,11 +80,9 @@ public class PlaceTurret : MonoBehaviour{
         Debug.Log ("Money left after building: " + PlayerStats.Money);
         turretBuilding = null;
     }
-//--------------------------------------------------------------------
     
-//You can choice which turret to build--------------------------------------------------------------------
+//You can choice which turret to build
     public void selectTurretToPlace(TurretBlueprint turret) {
         turretBuilding = turret;
     }
-//--------------------------------------------------------------------
-}
+}//End of PlaceTurret.cs

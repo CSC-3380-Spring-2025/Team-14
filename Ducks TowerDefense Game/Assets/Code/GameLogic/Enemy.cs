@@ -57,8 +57,7 @@ public class Enemy : MonoBehaviour{
 
     private bool isDestroyed = false; // Flag to check if the enemy is destroyed for the Endpath method
     public bool IsDestroyed => isDestroyed; // Property to check if the enemy is destroyed for other scripts
-
-    private bool isFrozen = false;
+    private bool isFrozen = false; // Flag to check if the enemy is frozen for the Freeze method
 
 
 // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,27 +77,21 @@ public class Enemy : MonoBehaviour{
             Debug.LogError("WaveTimer not found!");
         }
     }
-//--------------------------------------------------------------------
 
-//Deals damage to enemy and updates the hp bar. If enemy is at 0 then the enemy dies --------------------------------------------------------------------
+//Deals damage to enemy and updates the hp bar. If enemy is at 0 then the enemy dies
     public void TakeDamage( float amount ){
         if (isDestroyed || isDead || isInvulnerable) return; // Prevent further damage if already destroyed
 
         health -= amount;
-
         healthBar.fillAmount = health / startHealth; // Update the health bar UI
 
-        if (health <= 0){
-            Die();
-        }
-    }
-//Slows the enemy by the given %--------------------------------------------------------------------
-
-    public void Slow (float Pct){
-        speed = startSpeed * (1f - Pct);
+        if (health <= 0) Die();
     }
 
-//Deals with the death of the enemy or resurrection. Also gives money to the player --------------------------------------------------------------------
+//Slows the enemy by the given %
+    public void Slow (float Pct) => speed = startSpeed * (1f - Pct);
+    
+//Deals with the death of the enemy or resurrection. Also gives money to the player --
     void Die(){
         if (isDestroyed || isDead) return; // Ensure Die() is only called once
 
@@ -113,13 +106,11 @@ public class Enemy : MonoBehaviour{
         PlayerStats.Money += value; // Add money to the player's stats
         enemiesRemaining--;
 
-        if (enemiesRemaining <= 0 && waveTimer != null) {
-            waveTimer.OnWaveDefeated();
-        }
+        if (enemiesRemaining <= 0 && waveTimer != null) waveTimer.OnWaveDefeated();
         Destroy(gameObject); // Destroy the enemy
-    }   
-//This is the resurrect snake code. Deals with giving hp back to the boss and making it not able to be hit or move when resurrection --------------------------------------------------------------------
+    }  
 
+//This is the resurrect snake code. Deals with giving hp back to the boss and making it not able to be hit or move when resurrection 
     IEnumerator Resurrect() {
         // Mark as dead and increment count
         isDead = true;
@@ -134,9 +125,6 @@ public class Enemy : MonoBehaviour{
         if (spriteRenderer != null) spriteRenderer.enabled = false;
         if (collider2D != null) collider2D.enabled = false;
         if (rb != null) rb.simulated = false; // Important for 2D physics
-        
-        // Optional: Play death particles
-        //if (deathParticles != null) deathParticles.Play();
         
         // Wait for resurrection delay
         yield return new WaitForSeconds(resurrectDelay);
@@ -155,20 +143,19 @@ public class Enemy : MonoBehaviour{
             healthBar.fillAmount = health / startHealth;
             healthBar.gameObject.SetActive(true);
         }
-        
-        // Optional: Play resurrection particles
-        //if (resurrectParticles != null) resurrectParticles.Play();
 
         isInvulnerable = true;
         yield return new WaitForSeconds(invulnerabilityDuration);
         isInvulnerable = false;
     }
-//Freezes the enemy for a set duration --------------------------------------------------------------------
+
+//Freezes the enemy for a set duration
     public void Freeze(float duration){
         if (isFrozen) return;
         StartCoroutine(FreezeCoroutine(duration));
     }
-//Coroutine that freezes an enemy for a specified duration. Sets speed to 0 and then gives the enemy regular speed back --------------------------------------------------------------------
+
+//Coroutine that freezes an enemy for a specified duration. Sets speed to 0 and then gives the enemy regular speed back --
     private IEnumerator FreezeCoroutine(float duration){
         isFrozen = true;
         float originalSpeed = speed;
@@ -181,15 +168,12 @@ public class Enemy : MonoBehaviour{
     }
 
 // Update is called once per frame, updating target to each waypoint
-//--------------------------------------------------------------------
     void Update(){
         if (isDead) return; // Skip if currently "dead" (resurrecting)
 
         // Regen Boss Logic
-        if(isRegenBoss) {
-            RegenerateHealth();
-        }
-
+        if(isRegenBoss) RegenerateHealth();
+        
         // Target is null if the enemy is destroyed or dead
         // Target is the next waypoint
         if(target == null) return;
@@ -203,20 +187,17 @@ public class Enemy : MonoBehaviour{
                                                                                     //time.deltatime  make sure the speed we are moving at is not dependent on the frame rate
                                                                                     //space.world mean the space that we are moving is relative to the world space
         //if the distance between the enemy and the target is less then 0.08f, then get the next waypoint
-        if(Vector3.Distance(transform.position, target.position) <= 0.08f){
-            //find if the distance of the enemy postion and target(waypoint) position is less then 0.2 unit
-            //if the character is lagging, you might need to change 0.2f to something else like 0.4f
-            GetNextWayPoint();//new target will be the next waypoint
-        }
-
+        //find if the distance of the enemy postion and target(waypoint) position is less then 0.2 unit
+        //if the character is lagging, you might need to change 0.2f to something else like 0.4f
+        //new target will be the next waypoint
+        if(Vector3.Distance(transform.position, target.position) <= 0.08f) GetNextWayPoint();
+    
         // Add head rotation logic
         // Add head rotation logic
-        if (target != null) {
-            RotateTowardsTarget();
-        }
-
+        if (target != null) RotateTowardsTarget();
     }
-//Rotates the enemy to face the waypoint --------------------------------------------------------------------
+
+//Rotates the enemy to face the waypoint
     void RotateTowardsTarget() {
         Vector3 direction = target.position - transform.position;
         direction.Normalize();
@@ -225,9 +206,7 @@ public class Enemy : MonoBehaviour{
         transform.rotation = Quaternion.Euler(0, 0, angle);// Apply Z-axis rotation to face the movement direction
     }
 
-
-
-//This regens hp for the Regeneration boss at set seconds --------------------------------------------------------------------
+//This regens hp for the Regeneration boss at set seconds
     void RegenerateHealth() {
         if (health <= 0) return; 
 
@@ -240,18 +219,12 @@ public class Enemy : MonoBehaviour{
             regenTimer = 0f;
             health += regenRate;
 
-            if (health > startHealth) 
-                health = startHealth;
-
-            // Optional: update health bar
-            if (healthBar != null)
-                healthBar.fillAmount = health / startHealth; // Use startHealth here as well
+            if (health > startHealth) health = startHealth; // Ensure health does not exceed starting health
+            if (healthBar != null) healthBar.fillAmount = health / startHealth; // Use startHealth here as well
         }
     }
-//--------------------------------------------------------------------
 
 // GetNextWayPoint is called to find the next waypoint in the path
-//--------------------------------------------------------------------
     void GetNextWayPoint(){
         //if the wavepointIndex is greater then or equal to the total number of waypoints, destroy the enemy and notify that the enemy is defeated
         //if the wavepointIndex is less then the total number of waypoints, increment the index and set the target to the next waypoint
@@ -262,21 +235,16 @@ public class Enemy : MonoBehaviour{
         wavepointIndex++;//increment the index
         target = WayPoint.points[wavepointIndex];//new target will be the next index
     }
-//--------------------------------------------------------------------
 
-//Called when the enemy reaches the end. Reduces the numb of player lives and updates the enemy count--------------------------------------------------------------------
+//Called when the enemy reaches the end. Reduces the numb of player lives and updates the enemy count--
     void Endpath (){
-       if (isDestroyed) return; // Prevent double-counting if somehow called again
+        if (isDestroyed) return; // Prevent double-counting if somehow called again
 
-    isDestroyed = true; // Mark as destroyed so it's not handled twice
-    PlayerStats.Lives--; // Reduce lives
-    enemiesRemaining--; // Decrement enemy counter
+        isDestroyed = true; // Mark as destroyed so it's not handled twice
+        PlayerStats.Lives--; // Reduce lives
+        enemiesRemaining--; // Decrement enemy counter
 
-    if (enemiesRemaining <= 0 && waveTimer != null) {
-        waveTimer.OnWaveDefeated();
+        if (enemiesRemaining <= 0 && waveTimer != null) waveTimer.OnWaveDefeated();
+        Destroy(gameObject);
     }
-
-    Destroy(gameObject);
-}
-//--------------------------------------------------------------------
-}//end of class Enemy
+}//End of Enemy.cs
