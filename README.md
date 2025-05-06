@@ -79,7 +79,27 @@ Example terminal command syntax
 It is very common in these sections to see code in peculiar boxes to help them stand out. Check the markdown section of the Project Specifications to see how to add more / customize these.
 
 ```c#
-static void Main(){
-	Console.WriteLine("Hello, World!");
-}
+//This regens hp for the Regeneration boss at set seconds
+//--------------------------------------------------------------------
+    void RegenerateHealth() {
+        if (health <= 0) return; 
+
+        regenTimer += Time.deltaTime;
+
+        // Check if the regeneration timer has reached the interval
+        // If so, regenerate health and reset the timer
+        // Also ensure health does not exceed the starting health
+        if (regenTimer >= regenInterval) {
+            regenTimer = 0f;
+            health += regenRate;
+
+            if (health > startHealth) 
+                health = startHealth;
+
+            // Optional: update health bar
+            if (healthBar != null)
+                healthBar.fillAmount = health / startHealth; // Use startHealth here as well
+        }
+    }
+//--------------------------------------------------------------------
 ```
