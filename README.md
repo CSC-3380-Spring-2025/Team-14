@@ -13,13 +13,16 @@ Duck Defense is a 2D tower defense game where players strategically place duck t
 - Windows
 # Important Links
 Kanban Board: [[link](https://attackonquack.atlassian.net/jira/software/projects/BTS/boards/1?cloudId=522abf96-cf51-46df-b223-57521ce60e7d&atlOrigin=eyJwIjoiaiIsImkiOiI2MjJmMmUzNDQ2Nzc0NzM2YjQ2MDkyMTQ5ZWVmOTA0YyJ9)]\
-Designs: [https://docs.krita.org/en/user_manual/getting_started/installation.html]\
-Styles Guide(s): [https://google.github.io/styleguide/]
+Designs: [[link](https://docs.krita.org/en/user_manual/getting_started/installation.html)]\
+Styles Guide(s): [[link](https://google.github.io/styleguide/)]
 
 # How to Run Dev and Test Environment
 
 ## Dependencies
 - List all dependencies here
+- Unity - Unity 6 (6000.0.37f1) [[download](https://unity.com/download)]
+- Krita - Krita (5.2.9) [[download](https://krita.org/en/download/)]
+- VsCode - version 1.99 [[download](https://code.visualstudio.com/download)] 
 - Don't forget to include versions
 ### Downloading Dependencies
 Describe where to download the dependencies here. Some will likely require a web download. Provide links here. For IDE extensions, make sure your project works with the free version of them, and detail which IDE(s) these are available in. 
