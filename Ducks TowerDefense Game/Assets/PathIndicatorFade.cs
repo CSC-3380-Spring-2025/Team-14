@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PathIndicatorFade : MonoBehaviour
+    public class PathIndicatorFade : MonoBehaviour
 {
     public float fadeDuration = 1.0f;
     public float stayDuration = 3.0f;
