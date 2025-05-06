@@ -19,13 +19,39 @@ Styles Guide(s): [[link](https://google.github.io/styleguide/)]
 # How to Run Dev and Test Environment
 
 ## Dependencies
-- List all dependencies here
-- Unity - Unity 6 (6000.0.37f1) [[download](https://unity.com/download)]
-- Krita - Krita (5.2.9) [[download](https://krita.org/en/download/)]
-- VsCode - version 1.99 [[download](https://code.visualstudio.com/download)] 
-- Don't forget to include versions
+- Unity - Unity 6 (6000.0.37f1) 
+- Krita - Krita (5.2.9) 
+- VsCode - version 1.99 
+- Discord - Windows 11 64-bit (10.0.26100) 
+
 ### Downloading Dependencies
 Describe where to download the dependencies here. Some will likely require a web download. Provide links here. For IDE extensions, make sure your project works with the free version of them, and detail which IDE(s) these are available in. 
+Unity
+- Version: Unity 6 (6000.0.37f1)
+- Download: Unity Hub [[download](https://unity.com/download)] (Install via Unity Hub, then select the correct version)
+- Notes:
+  - Requires Unity Hub for installation.
+  - If version 6000.0.37f1 is unavailable, check Unity Beta Downloads.
+ 
+Krita
+- Version: Krita 5.2.9
+- Download: Krita Official Site [[download](https://krita.org/en/download/)]
+- Notes:
+  - Available for Windows (64-bit).
+  - Portable version also offered.
+
+VS Code
+- Version: 1.99
+- Download: Visual Studio Code [[download](https://code.visualstudio.com/download)]
+- Notes:
+  - Works with Windows 10/11 (x64).
+  - Extensions C# Dev Kit
+ 
+Discord
+- Version: Windows 11 64-bit (10.0.26100)
+- Download: Microsoft Store [[download](https://apps.microsoft.com/detail/xpdc2rh70k22mn?launch=true&mode=full&hl=en-us&gl=us&ocid=bingwebsearch)]
+- Notes:
+  - Auto-updates via Microsoft Store.
 
 ## Commands
 Describe how the commands and process to launch the project on the main branch in such a way that anyone working on the project knows how to check the affects of any code they add.
