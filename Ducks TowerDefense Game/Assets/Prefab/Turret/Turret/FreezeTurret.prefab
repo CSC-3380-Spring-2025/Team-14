@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2619880600335446052}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: UpgradeDamage
         m_Mode: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2619880600335446052}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: OpenUpgradeOptions
         m_Mode: 1
@@ -760,7 +760,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -4320900468475142264, guid: 17e7322c1b8d9ec48808243237772289, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2619880600335446052}
         m_TargetAssemblyTypeName: Turret, Assembly-CSharp
         m_MethodName: UpgradeFireRateAndRange
         m_Mode: 1

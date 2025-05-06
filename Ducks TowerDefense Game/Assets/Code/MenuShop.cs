@@ -2,8 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuShop : MonoBehaviour
-{
+public class MenuShop : MonoBehaviour{ 
     [Header("References")]
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI shopMoneyText;
@@ -20,8 +19,8 @@ public class MenuShop : MonoBehaviour
 
     private Economy economy => Economy.Instance;
 
-    void Start()
-    {
+//Initializes turret unlock status and sets up the UI
+    void Start(){
         if (Economy.Instance == null) return;
     
         GatlingTurret.isUnlocked = PlayerPrefs.GetInt("GatlingUnlocked", 0) == 1;
@@ -36,10 +35,9 @@ public class MenuShop : MonoBehaviour
         economy.RefreshUI(moneyText);
         shopMoneyText.text = $"Coins: {economy.Money:N0}";
     }
-    void Update()
-    {
-        if(Input.GetKeyDown("b"))
-        {
+
+    void Update(){
+        if(Input.GetKeyDown("b")){
             PlayerPrefs.SetInt("GatlingUnlocked", 0);
             PlayerPrefs.SetInt("FreezeUnlocked", 0);
             PlayerPrefs.SetInt("NukeUnlocked", 0);
@@ -50,19 +48,18 @@ public class MenuShop : MonoBehaviour
         }
     }
 
+// Purchase methods for each turret type
     public void PurchaseGatlingTurret() => PurchaseTurret(GatlingTurret, "GatlingUnlocked");
     public void PurchaseFreezeTurret() => PurchaseTurret(FreezeTurret, "FreezeUnlocked");
     public void PurchaseNukeTurret() => PurchaseTurret(NukeTurret, "NukeUnlocked");
 
-    private void PurchaseTurret(TurretBlueprint turret, string saveKey)
-    {
+    private void PurchaseTurret(TurretBlueprint turret, string saveKey){
         if (turret.cost > economy.Money || !economy.CanAfford(turret.cost)) return;
         
         economy.SpendMoney(turret.cost);
         turret.isUnlocked = true;
         PlayerPrefs.SetInt(saveKey, 1);
         PlayerPrefs.Save();
-
 
         economy.RefreshUI(moneyText);
         shopMoneyText.text = $"Coins: {economy.Money:N0}";
@@ -72,4 +69,4 @@ public class MenuShop : MonoBehaviour
         else if (turret == FreezeTurret) freezeButton.interactable = false;
         else if (turret == NukeTurret) nukeButton.interactable = false;
     }
-}
+}//End of MenuShop.cs

@@ -4,28 +4,26 @@ using System.Collections;
 public class Spawner : MonoBehaviour{
     public GameObject[] enemyPrefabs; // The enemy prefab to spawn
     public Transform spawnPoint; // The location where enemies will spawn
-   
     public int baseEnemies = 2;
-
     private int waveNumber = 0; // Current wave number
     private int enemiesInCurrentWave = 0;
-
     private WaveTimer waveTimer; // Reference to the WaveTimer script
 
+//Finds the WaveTimer in the scene
     void Start(){
         waveTimer = FindFirstObjectByType<WaveTimer>();
         if (waveTimer == null) Debug.LogError("WaveTimer not found!");
     }
-    // Add similar wave completion logic for redundancy
-    void Update()
-    {
-        if (waveTimer.IsWaveActive() && GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
-            waveTimer.OnWaveDefeated();
-        }
+
+// Add similar wave completion logic for redundancy
+// Checks if there is a wave still acive and if all enemies are dead -
+// if those met then starts next wave if start clicked.     
+    void Update(){
+        if (waveTimer.IsWaveActive() && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) waveTimer.OnWaveDefeated();
     }
     
-// Start is called once before the first execution of Update after the MonoBehaviour is created
-//--------------------------------------------------------------------
+//Starts spawning new wave--
+// calculates how many enemies to spawn 
     public void StartWave(int wave){
         StopAllCoroutines(); // Stop any previous wave spawning
         waveNumber = wave; // Update the wave number
@@ -34,17 +32,14 @@ public class Spawner : MonoBehaviour{
         Debug.Log($"Starting wave {waveNumber} with {enemiesInCurrentWave} enemies");
         StartCoroutine(SpawnWave()); // Start spawning
     }
-//--------------------------------------------------------------------
 
-
+    // calculates how many enemies to spawn based on the wave number
     private int CalculateEnemiesForWave(int wave) => baseEnemies + Mathf.FloorToInt(wave  * (1 + wave * 0.1f));
-    
-
 
 // SpawnWave is called to spawn a wave of enemies
+//Handles spawning bosses and regular enemies--
 //Ienumerator is a coroutine, which is a function that can pause execution and return control to Unity but then continue where it left off on the following frame
 //This is useful for creating animations, moving objects, and other tasks that require a series of steps to be completed over time
-//--------------------------------------------------------------------
     IEnumerator SpawnWave(){
         Debug.Log("Spawning wave...");
         bool regenBoss = (waveNumber % 3 == 0) && waveNumber > 0; // Check if it's a regen boss wave
@@ -83,23 +78,15 @@ public class Spawner : MonoBehaviour{
             yield return new WaitForSeconds(delay);
         }
     }
-//--------------------------------------------------------------------
 
-
-
-
-
-// SpawnEnemy is called to spawn a single enemy
-//--------------------------------------------------------------------
+//SpawnEnemy is called to spawn a single enemy
     void SpawnEnemy(GameObject enemyPrefab){
         if(enemyPrefab == null) return; // Check if the enemy prefab is assigned
-
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         Enemy.enemiesRemaining++; // Increment enemy counter
     }
-//--------------------------------------------------------------------
 
-
+//Resets the spawner. stops all coroutines and resets counter--
     public void ResetSpawner(){
         Debug.Log("Spawner has been reset.");
         StopAllCoroutines(); // Add this
@@ -107,4 +94,4 @@ public class Spawner : MonoBehaviour{
         enemiesInCurrentWave = 0; // Reset enemies in current wave
         Enemy.enemiesRemaining = 0; // Reset the enemy counter
     }
-}//end of class
+}//End of Spawner.cs
