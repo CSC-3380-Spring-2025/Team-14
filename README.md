@@ -103,3 +103,46 @@ It is very common in these sections to see code in peculiar boxes to help them s
     }
 //--------------------------------------------------------------------
 ```
+```c#
+//Applies damage and slow effects on the target when using the laser--------------------------------------------------------------------
+// uses LineRenderer to connect the turret to the target
+    void Laser() {
+        if (targetEnemy == null || targetEnemy.IsDestroyed) return; // Ensure the target is valid and not destroyed
+
+        targetEnemy.TakeDamage(DamageOverTime * Time.deltaTime); // Apply damage over time
+        targetEnemy.Slow(slowAmount); // Apply slow effect
+
+        if (!lineRenderer.enabled)
+            lineRenderer.enabled = true;
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+    }
+//--------------------------------------------------------------------
+```
+```c#
+//Places the turret on the specific node
+//deducts money and places the turret on the chosen spot
+//--------------------------------------------------------------------
+    public void PlaceTurretOn(Node node)
+    {
+        if (PlayerStats.Money < turretBuilding.cost)
+        {
+            Debug.Log("Not enough money to build that!");
+            return;
+        }
+        PlayerStats.Money -= turretBuilding.cost;
+        // Apply position AND rotation offset from the Node
+        Quaternion rotation = Quaternion.Euler(node.rotationOffSet); // Fix typo in variable name
+        GameObject turret = (GameObject)Instantiate(turretBuilding.prefab, node.GetPlacePosition(), transform.rotation);
+        node.turret = turret;
+        Turret turretScript = turret.GetComponent<Turret>();
+        if (turretScript != null)
+        {
+        turretScript.ShowRange(2f);
+        }
+        Debug.Log ("Money left after building: " + PlayerStats.Money);
+        turretBuilding = null;
+    }
+//--------------------------------------------------------------------
+```
