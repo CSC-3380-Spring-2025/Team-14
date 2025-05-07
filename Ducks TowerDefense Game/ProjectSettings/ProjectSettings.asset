@@ -897,11 +897,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8652778c-c15e-424c-95c0-333d88e1de93
+  cloudProjectId: 57cdf154-1e2b-4076-afb8-301eff7abe10
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Ducks TowerDefense Game 2025-02-20_19-27-20
-  organizationId: zernullo
+  projectName: Ducks TowerDefense Game
+  organizationId: lsukenny
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

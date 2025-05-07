@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 01c22b329136661448727e54b3f44218
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - waveText: {instanceID: 0}
+  - continueButton: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - pathIndicatorPrefab: {fileID: 6337421185287695455, guid: 736cb603d47a4b24ca869de9eeb71db7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
