@@ -23,66 +23,55 @@ public class Slots : MonoBehaviour{
     private bool isSpinning = false;
     private Dictionary<Sprite, int> symbolMultipliers = new Dictionary<Sprite, int>();
 
-//Sets up the slot machine and refreshes the UI--
     private void Start(){
-        // Ensure Economy is ready
         if (Economy.Instance == null){
             SceneManager.LoadScene("MainMenu");
             return;
         }
 
-        // Rest of your existing Start() code
         InitializeSlotMachine();
         spinButton.onClick.AddListener(StartSpinning);
         
-        // Refresh money display
-        Economy.Instance.RefreshUI(moneyText); // Add this if you have a money display
+        // update money text to reflect current balance when scene loads
+        Economy.Instance.RefreshUI(moneyText); 
     }
 
-
-//Initializes the slot machine by assigning multipliers to each symbol--
     private void InitializeSlotMachine(){
-        if (symbols.Length != 3){
-            Debug.LogError("Slot machine requires exactly 3 symbols!");
-            return;
-        }
-
-        symbolMultipliers = new Dictionary<Sprite, int> {
-            { symbols[0], 2 }, { symbols[1], 4 }, { symbols[2], 8 }
+        // assigns payout multipliers
+        symbolMultipliers = new Dictionary<Sprite, int>{
+            { symbols[0], 2 }, 
+            { symbols[1], 4 }, 
+            { symbols[2], 8 }
         };
     }
 
-
-//Starts spinning when player click spin --
     public void StartSpinning(){
+        //allow spin if its not already spinning and enough money
         if (isSpinning) return;
+
         if (!Economy.Instance.CanAfford(betAmount)){
             resultText.text = "Not enough money!";
-            return;
+            return; // cant play with no money
         }
+
         Economy.Instance.AddMoney(-betAmount);
         StartCoroutine(SpinRoutine());
     }
 
-
-//This handles the spin cycle such as spin anamation, stop reels, and check resault--
-    private IEnumerator SpinRoutine(){
+    private IEnumerator SpinRoutine() {// logic for the script for the slots 
         isSpinning = true;
         spinButton.interactable = false;
         resultText.text = "Spinning...";
-
         float spinDuration = Random.Range(spinDurationRange.x, spinDurationRange.y);
         yield return SpinAnimation(spinDuration);
         yield return StopReelsWithDelay();
-
         CheckWinCondition();
         Economy.Instance.RefreshUI(moneyText);
         isSpinning = false;
         spinButton.interactable = true;
     }
 
-//Spins slot reel by changing the image quickly--
-    private IEnumerator SpinAnimation(float duration){
+    private IEnumerator SpinAnimation(float duration) {// changes the  actual images in the slots
         float elapsed = 0f;
         while (elapsed < duration){
             for (int i = 0; i < slotImages.Length; i++){
@@ -93,8 +82,7 @@ public class Slots : MonoBehaviour{
         }
     }
 
-//Stops each reel one by one with a small delay--
-    private IEnumerator StopReelsWithDelay(){
+    private IEnumerator StopReelsWithDelay() {// stops the images
         for (int i = 0; i < slotImages.Length; i++){
             yield return new WaitForSeconds(reelStopDelay);
             slotImages[i].sprite = GetRandomSymbol();
@@ -102,35 +90,35 @@ public class Slots : MonoBehaviour{
     }
 
     private Sprite GetRandomSymbol() => symbols[Random.Range(0, symbols.Length)];
-//Checks if the player has won --
-    private void CheckWinCondition(){
+
+    private void CheckWinCondition() {// obvious
         if (IsJackpot()) AwardJackpot();
+        
         else resultText.text = "Try again!";
+        
     }
 
-    private bool IsJackpot() => 
+    private bool IsJackpot() => // checks for jackpot
         slotImages[0].sprite == slotImages[1].sprite && 
         slotImages[1].sprite == slotImages[2].sprite;
 
-//Awards the player with the gold if they win --
-    private void AwardJackpot(){
+    private void AwardJackpot() {// reward system
         Sprite winningSymbol = slotImages[0].sprite;
         int multiplier = symbolMultipliers[winningSymbol];
         int winnings = betAmount * multiplier;
-
         Economy.Instance.AddMoney(winnings);
         Economy.Instance.RefreshUI(moneyText);
         resultText.text = $"Jackpot! You win {winnings} coins!";
     }
-//Makes sure that the bet amount and speeds are correct.--
+
     private void OnValidate(){
         betAmount = Mathf.Max(1, betAmount);
         spinSpeed = Mathf.Clamp(spinSpeed, 0.01f, 0.5f);
         reelStopDelay = Mathf.Clamp(reelStopDelay, 0.1f, 1f);
     }
 
-//This button sends you back to the main menu --
-    public void goToMainMenu(){
-        SceneManager.LoadScene("MainMenu");
-    }
-}//End of Slots.cs
+
+// mainmenu button
+    public void goToMainMenu() => SceneManager.LoadScene("MainMenu");
+    
+}

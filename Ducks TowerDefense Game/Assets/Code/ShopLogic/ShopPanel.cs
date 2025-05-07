@@ -10,7 +10,6 @@ public class ShopManager : MonoBehaviour{
     private Vector2 offScreenPosition;
     private Vector2 onScreenPosition;
     private bool isShopOpen = false;
-    internal static bool isShopOpwn;
 
     //Initializes positions and hides the shop panel when game starts
     private void Start(){
