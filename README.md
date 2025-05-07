@@ -8,7 +8,7 @@ Quality Assurance Tester: [Adithya Anand] ([_adi])
 
 # About Our Software
 
-Duck Defense is a 2D tower defense game where players strategically place duck turrets—including four core types (Basic, AOE, Laser, and Sniper) and three unlockable variants (Gatling Gun, Freeze, and Nuke)—to stop waves of snakes. The snakes feature six types: three basic (default, high-HP, and fast), and three bosses (Regeneration, Resurrection, and Emperor, which spawns minions). Players start with $500 currency and three lives, battling across three increasingly difficult maps. A Nuke ability wipes all on-screen enemies, while a stretch-feature Slots minigame offers optional risk-reward gameplay, letting players gamble for bonuses. The game includes music, sound effects, and upgrade paths for each duck.
+Duck Defense is a 2D tower defense game where players strategically place duck turrets—including four core types (Basic, AOE, Laser, and Sniper) and three unlockable variants (Gatling Gun, Freeze, and Nuke)—to stop waves of snakes. The snakes feature six types: three basic (default, high-HP, and fast), and three bosses (Regeneration, Resurrection, and Emperor, which spawns minions). Players start with $500 currency and 20 lives, battling across three increasingly difficult maps. A Nuke ability wipes all on-screen enemies, while a stretch-feature Slots minigame offers optional risk-reward gameplay, letting players gamble for bonuses. The game includes music, sound effects, and upgrade paths for each duck.
 ## Platforms Tested on
 - Windows
 # Important Links
