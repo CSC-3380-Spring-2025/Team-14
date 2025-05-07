@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseGame : MonoBehaviour
-{
+public class PauseGame : MonoBehaviour{
     // [SerializeField] is an attribute in Unity that allows you to keep private variables visible and editable in the Inspector while maintaining encapsulation in your code.
     [SerializeField] private RectTransform PausePanel;  // Reference to the Pause Panel
     [SerializeField] private Button PauseButton;       // Reference to the Pause Button

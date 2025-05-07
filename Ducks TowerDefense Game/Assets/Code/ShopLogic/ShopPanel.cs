@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
-{
+public class ShopManager : MonoBehaviour{
     // [SerializeField] is an attribute in Unity that allows you to keep private variables visible and editable in the Inspector while maintaining encapsulation in your code.
     [SerializeField] private RectTransform shopPanel;  // Reference to the Shop Panel
     [SerializeField] private Button startButton;       // Reference to the Start Button

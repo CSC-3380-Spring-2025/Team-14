@@ -82,63 +82,46 @@ public class MapSelection : MonoBehaviour{
         PlayerPrefs.Save();
     }
 
-    //Do Not Delete, Loads Main Menu -_-
-    //ok :) My bad :3
-    public void goToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
+//Returns to the main menu
+    public void goToMainMenu() => SceneManager.LoadScene("MainMenu");
 
-    }
-
-    public string checkTag(Button objectToCheck)
-    {
+//Checks the tag of the button to determine the difficulty
+    public string checkTag(Button objectToCheck){
         string objectTag = objectToCheck.tag;
         return objectTag;
     }
 
-    public void showDif(Button objectToCheck)
-    {
+//Shows the difficulty stars based on the button's tag
+    public void showDif(Button objectToCheck){
         string objectTag = checkTag(objectToCheck);
 
-        if (string.Compare(objectTag, "EasyDif") == 0)
-        {
+        if (string.Compare(objectTag, "EasyDif") == 0){
             difficultyStars[0].SetActive(true);
             oldDifIndex = 0;
         }
-        else if (string.Compare(objectTag, "NormalDif") == 0)
-        {
+        else if (string.Compare(objectTag, "NormalDif") == 0){
             difficultyStars[1].SetActive(true);
             oldDifIndex = 1;
         }
-        else if (string.Compare(objectTag, "HardDif") == 0)
-        {
+        else if (string.Compare(objectTag, "HardDif") == 0){
             difficultyStars[2].SetActive(true);
             oldDifIndex = 2;
         }
-        else
-        {
+        else{
             oldDifIndex = -1;
             return;
         }
     }
 
-    public void turnOffOldDif(int index)
-    {
-        if (oldDifIndex != -1)
-        {
-            difficultyStars[index].SetActive(false);
-        }
-        else
-        {
-            return;
-        }
+//Turns off the old difficulty stars
+    public void turnOffOldDif(int index){
+        if (oldDifIndex != -1) difficultyStars[index].SetActive(false);
+        else return;
     }
 
-    public void Difficulty(Button objectToUse)
-    {
+////Handles the difficulty selection and updates the UI accordingly
+    public void Difficulty(Button objectToUse){
         turnOffOldDif(oldDifIndex);
         showDif(objectToUse);
-
     }
-
-}
+}//End of MapSelection.cs
