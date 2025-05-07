@@ -65,7 +65,7 @@ public class Slots : MonoBehaviour
         StartCoroutine(SpinRoutine());
     }
 
-    private IEnumerator SpinRoutine() // logic that runs
+    private IEnumerator SpinRoutine() // logic for the script for the slots 
     {
         isSpinning = true;
         spinButton.interactable = false;

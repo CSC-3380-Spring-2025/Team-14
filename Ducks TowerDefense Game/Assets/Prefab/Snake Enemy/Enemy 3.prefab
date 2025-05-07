@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 5
-  startHealth: 100
-  value: 300
+  startHealth: 150
+  value: 150
   healthBar: {fileID: 287628625345971527}
   isRegenBoss: 0
   isResurrectionBoss: 0
