@@ -10,13 +10,13 @@ public class MainMenu : MonoBehaviour{
     void Start() => ShopUI.SetActive(false); // Hide the shop UI at the start
     
 //This is not needed this was just used for the live demo
-    void Update(){
-        // Reset money when D is pressed this is used for the live demo not needed in real game 
-        if (Input.GetKeyDown(KeyCode.D)){
-            Economy.Instance.AddMoney(-Economy.Instance.Money); // Set to 0
-            Economy.Instance.AddMoney(500); // Reset to default
-        }
-    }
+    // void Update(){
+    //     // Reset money when D is pressed this is used for the live demo not needed in real game 
+    //     if (Input.GetKeyDown(KeyCode.D)){
+    //         Economy.Instance.AddMoney(-Economy.Instance.Money); // Set to 0
+    //         Economy.Instance.AddMoney(500); // Reset to default
+    //     }
+    // }
 
 //When you come back to the main menu from another scene, this ensures your money display (moneyText) shows the current amount
 //OnEnable() runs every time the GameObject becomes active (including when returning to the menu scene)
